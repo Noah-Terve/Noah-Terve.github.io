@@ -1,0 +1,20 @@
+Here are the urls to my pages:
+cpanel: https://noaht.sgedu.site/hw01/
+github: https://noah-terve.github.io/cs20/hw01/
+
+1. Name one advantage to using github and one advantage to using the cpanel hosting.
+
+    An andvantage of github is that it is very easy to set up, and uses the same interface
+    we are used to seeing as computer science people (namely git). An advantage to cpanel is
+    that for it to have a website available to everyone you don't need to show them the source
+    code (in git you have to have a public repo).
+
+2. Which of the two types of hosting do you prefer and why?
+
+    I prefer git just because I am very used to using git and it's intricies.
+
+3. What was the most satisfying part of this assignment?
+
+    When I realized that hosting through git was something I could really take charge of, and
+    then I went and made a whole series of pages to effectively help myself and anyone else who
+    is interested navigate through my github pages site. So, setting up hyperlinks.
