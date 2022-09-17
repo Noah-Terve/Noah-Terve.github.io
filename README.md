@@ -1,2 +1,2 @@
 # Noah-Terve.github.io
-Website hosted through pages
+This is my repo for github pages.
