@@ -2,10 +2,61 @@ body, h1, h2, p, figure, blockquote, dl, dd {
     margin: 0;
 }
 
-.header {
-    padding: 10px 16px 20px;
-    color: #ffffff;
-    font-size: 48px;
-    font-family: 'Notable', sans-serif;
+header {
     background-image: url(legos.jpg);
+    width: 100%;
+    height: 100px;
+    display: inline-flex;
+    position: fixed;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.header_text {
+    padding: 5px 12px 15px;
+    color: #ffffff;
+    background-color: rgb(255, 0, 0);
+    font-size: 27px;
+    font-family: 'Notable', sans-serif;
+    display: inline-flex;
+    position: fixed;
+    box-sizing: border-box;
+    margin-left: 16px;
+}
+
+.header_nav {
+    padding: 11px 15px;
+    height: 60px;
+    color: #ffffff;
+    font-size: 20px;
+    background-color: rgb(255, 0, 0);
+    font-family: 'Notable', sans-serif;
+    display: inline-flex;
+    box-sizing: border-box;
+    margin: 0 auto;
+    margin-right: 16px;
+}
+
+header a:link, header a:visited {
+    color: rgb(255, 255, 255);
+}
+
+header a:hover {
+    color: rgb(0, 255, 251);
+}
+
+footer {
+    padding: 5px;
+    color: #ffffff;
+    font-size: 12px;
+    background-color: rgb(255, 0, 0);
+    box-sizing: border-box;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 25px;
+}
+
+footer a {
+    color: rgb(255, 255, 255);
 }
