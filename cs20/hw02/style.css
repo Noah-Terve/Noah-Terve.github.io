@@ -1,0 +1,11 @@
+body, h1, h2, p, figure, blockquote, dl, dd {
+    margin: 0;
+}
+
+.header {
+    padding: 10px 16px 20px;
+    color: #ffffff;
+    font-size: 48px;
+    font-family: 'Notable', sans-serif;
+    background-image: url(legos.jpg);
+}
