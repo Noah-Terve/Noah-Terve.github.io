@@ -6,33 +6,50 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Notable&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Notable&display=swap" rel="stylesheet">
-    
+
+    <style>
+        form {
+            font-family: 'Notable', sans-serif;
+            font-size: 20px;
+        }
+    </style>
+
 </head>
 
 <body>
     <header>
         <h1 class="header_text">
-            Terve's <br /> Toys
+            Terve's Toys
         </h1>
         
         <p class="header_nav">
             <a href="./index.html">Home</a>&nbsp;&nbsp;
-            <a href="./shop.html">Shop</a>&nbsp;&nbsp;
+            <a href="./shop.html">Toys</a>&nbsp;&nbsp;
             <a href="./services.html">What we do</a>&nbsp;&nbsp;
             <a href="./contact_us.html">Contact Us</a>
         </p>
     </header> 
 
-    <div style="padding-top: 100px;">
-        stuff in the middle
+    <div id="first_info">
+        Tell us what's going on:
     </div>
+
+    <form id="info_text" style="display: revert;">
+        Name <input type="text" id="name"><br />
+        Issue <select id="issue">
+            <option></option>
+            <option>Inventory</option>
+            <option>Order Status</option>
+            <option>Toy Suggestions</option>
+            <option>Join Our Mailing List</option>
+            <option>Other</option>
+        </select><br />
+        Explanation <textarea name="explanation"></textarea><br />
+        <input type="submit">
+    </form>
     
     <footer>
         Header banner photo by <a href="https://unsplash.com/@xavi_cabrera?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Xavi Cabrera</a> on <a href="https://unsplash.com/s/photos/toys?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-  
     </footer>
 </body>
 
