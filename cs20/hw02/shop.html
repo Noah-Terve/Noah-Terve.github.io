@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Terve's Toys</title>
@@ -10,6 +10,48 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Notable&display=swap" rel="stylesheet">
     
+    <style>
+        @media (max-width: 670px) {
+            .card {
+                width: 150px;
+            }
+        }
+
+        .card {
+            border: #ffffff;
+            border-width: 7px;
+            border-style: solid;
+            max-width: 300px;
+            margin: auto;
+            font-family: arial;
+        }
+
+        .card_title {
+            font-size: 20px;
+        }
+
+        .price {
+            color: grey;
+            font-size: 22px;
+        }
+
+        .card button {
+            border: none;
+            outline: 0;
+            padding: 12px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+        }
+
+        .card button:hover {
+            opacity: 0.7;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -35,24 +77,24 @@
         </p>
     </header> 
 
-    <div id="first_info">
+    <div id="first_info" style="flex-wrap: wrap;">
         <div class="card">
             <img src="toy1.jpg" style="width:100%">
-            <h1>Buzz Lightyear</h1>
+            <p class="card_title">Buzz Lightyear</p>
             <p class="price">$14.99</p>
             <p>Woody's best adventuring friend!</p>
             <p><button>Add to Cart</button></p>
         </div>
         <div class="card">
             <img src="toy2.jpg" style="width:100%">
-            <h1>Train set</h1>
+            <p class="card_title">Train set</p>
             <p class="price">$24.99</p>
             <p>Build the train system of your dreams</p>
             <p><button>Add to Cart</button></p>
         </div>
         <div class="card">
             <img src="toy3.jpg" style="width:100%">
-            <h1>Minion</h1>
+            <p class="card_title">Minion</p>
             <p class="price">$19.99</p>
             <p>Your one way to talk to Gru</p>
             <p><button>Add to Cart</button></p>
