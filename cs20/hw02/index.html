@@ -12,19 +12,64 @@
             padding: 6px;
             display: inline-flex;
         }
+
         div a {
             font-family: 'Notable', sans-serif;
             font-size: 20px;
         }
+
         div a:link, div a:visited {
             color: rgb(0, 0, 0);
             padding: 5px;
         }
+
         div a:hover {
             padding: 5px;
             color: rgb(255, 255, 255);
             background-color: rgb(0, 0, 0);
         }
+
+        #hello_image {
+            margin: 100px 0px 0px 0px;
+            padding: 75px 0px 150px 75px;
+            background-image: url(legos.jpg);
+            display: inline-flex;
+            align-items: center;
+            box-sizing: border-box;
+            width: 100%;
+            height: 427px;
+        }
+
+        #hello_words {
+            display: inline-flex;
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-55%, -175%);
+            font-size: 30px;
+            font-family: 'Notable', sans-serif;
+            background-color: rgb(255, 0, 0);
+            color: rgb(255, 255, 255);
+            padding: 10px 15px 15px 15px;
+        }
+
+        @media (max-width: 900px) {
+            #hello_words {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            #hello_words {
+                top: 50%;
+                left: 50%;
+                transform: translate(-65%, +35%);
+            }
+            #hello_image {
+                height: 250px;
+            }
+        }
+
     </style>
 </head>
 
@@ -33,17 +78,28 @@
         <h1 class="header_text">
             Terve's Toys
         </h1>
-        
+
         <p class="header_nav">
             <a href="./index.html">Home</a>&nbsp;&nbsp;
             <a href="./shop.html">Toys</a>&nbsp;&nbsp;
             <a href="./services.html">What we do</a>&nbsp;&nbsp;
             <a href="./contact_us.html">Contact Us</a>
         </p>
+
+        <p class="header_mobile">
+            <ul class="header_mobile">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./shop.html">Toys</a></li>
+                <li><a href="./services.html">What we do</a></li>
+                <li><a href="./contact_us.html">Contact Us</a></li>
+            </ul>
+        </p>
     </header> 
 
-    <div id="first_info" style="font-size: 18px;">
-        Find the toys for you here!!
+    <div id="hello_image">
+        <p id="hello_words">
+            Find the toys for you at Terve's Toys
+        </p>
     </div>
 
     <div id="info_text" style="display: revert; border: 0px;">
@@ -60,14 +116,24 @@
         the highest quality toys. When you buy from us you are guarunteed to get a toy that
         will last forever and you will have fun with.
     </div>
+
+    <div id="info_text">
+        Meet the founder:<br />
+        Noah Tervalon grew up in California playing with all sorts of toys from Legos to Thomas the Tank Engine.
+        As he grew up he realized that the toys he played with built by companies
+        that had no real values behind them. His goal was the create a compnay
+        that could suply kids everywhere with toys they could use that wouldn't destroy the
+        environemnt.
+    </div>
     
     <footer>
-        Header banner photo by <a href="https://unsplash.com/@xavi_cabrera?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Xavi Cabrera</a> on <a href="https://unsplash.com/s/photos/toys?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash, </a>
-        Toy photos by <a href="https://unsplash.com/@jerry_318?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jerry Wang</a> on <a href="https://unsplash.com/s/photos/toy?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash, </a>
+        Photos by <a href="https://unsplash.com/@xavi_cabrera?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Xavi Cabrera</a> on <a href="https://unsplash.com/s/photos/toys?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash, </a>
+        and <a href="https://unsplash.com/@jerry_318?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jerry Wang</a> on <a href="https://unsplash.com/s/photos/toy?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash, </a>
         and <a href="https://unsplash.com/es/@rocknrollmonkey?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Rock'n Roll Monkey</a> on <a href="https://unsplash.com/s/photos/toy?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash, </a>
         and <a href="https://unsplash.com/es/@joebeta?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jose Betancourt</a> on <a href="https://unsplash.com/s/photos/toy?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash, </a>
-        and <a href="https://unsplash.com/@alison_wang?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Alison Wang</a> on <a href="https://unsplash.com/s/photos/toy?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-  
+        and <a href="https://unsplash.com/@alison_wang?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Alison Wang</a> on <a href="https://unsplash.com/s/photos/toy?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash, </a>
+        and <a href="https://unsplash.com/@mealpro?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">MealPro</a> on <a href="https://unsplash.com/s/photos/package-delivery?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash, </a>
+        and <a href="https://unsplash.com/@v2osk?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">v2osk</a> on <a href="https://unsplash.com/s/photos/nature?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
     </footer>
 </body>
 

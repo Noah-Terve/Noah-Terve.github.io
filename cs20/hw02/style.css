@@ -3,19 +3,20 @@ body, h1, h2, p, figure, blockquote, dl, dd {
 }
 
 header {
-    background-image: url(legos.jpg);
+    background-color: rgb(255, 0, 0);
     width: 100%;
     height: 100px;
     display: inline-flex;
     position: fixed;
     align-items: center;
     box-sizing: border-box;
+    top: 0;
+    z-index: 50;
 }
 
 .header_text {
     padding: 5px 12px 15px;
     color: #ffffff;
-    background-color: rgb(255, 0, 0);
     font-size: 27px;
     font-family: 'Notable', sans-serif;
     display: inline-flex;
@@ -31,12 +32,28 @@ header {
     height: 60px;
     color: #ffffff;
     font-size: 20px;
-    background-color: rgb(255, 0, 0);
     font-family: 'Notable', sans-serif;
     display: inline-flex;
     box-sizing: border-box;
     margin: 0 auto;
     margin-right: 16px;
+}
+
+.header_mobile {
+    color: #ffffff;
+    font-size: 13px;
+    font-family: 'Notable', sans-serif;
+    box-sizing: border-box;
+    margin: 0 auto;
+    margin-right: 16px;
+    display: none;
+    right: 0;
+    top: 12px;
+    position: fixed;
+    border: none;
+    z-index: 100;
+    list-style-type: none;
+    background-color: rgb(255, 0, 0);
 }
 
 header a:link, header a:visited {
@@ -48,7 +65,7 @@ header a:hover {
 }
 
 #first_info {
-    margin: 125px 0px 0px 25px;
+    margin: 115px 0px 0px 25px;
     font-family: 'Notable', sans-serif;
     display: inline-flex;
     box-sizing: border-box;
@@ -74,7 +91,6 @@ footer {
     font-size: 10px;
     background-color: rgb(255, 0, 0);
     box-sizing: border-box;
-    position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -83,4 +99,54 @@ footer {
 
 footer a {
     color: rgb(255, 255, 255);
+}
+
+.card {
+    border: #ffffff;
+    border-width: 7px;
+    border-style: solid;
+    max-width: 300px;
+    margin: auto;
+    font-family: arial;
+}
+
+.price {
+    color: grey;
+    font-size: 22px;
+}
+
+.card button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+.card button:hover {
+    opacity: 0.7;
+}
+
+
+@media (max-width: 700px) {
+    .header_text {
+        font-size: 20px;
+    }
+    #info_text {
+        font-size: 12px;         
+    }
+}
+
+
+@media (max-width: 730px) {
+    .header_nav {
+        display: none;
+    }
+    .header_mobile {
+        display: block;
+    }
 }
