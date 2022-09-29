@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="style.css" ?>
+
+<Songs>
+    <Song>
+        <Name>
+            Hammers
+        </Name>
+
+        <Artists>
+            <Artist>
+                Alec Benjamin
+            </Artist>
+        </Artists>
+
+        <Year>
+            2022
+        </Year>
+
+        <Genres>
+            <Genre>
+                Bedroom pop
+            </Genre>
+        </Genres>
+    </Song>
+
+    <Song>
+        <Name>
+            Gives You Hell
+        </Name>
+
+        <Artists>
+            <Artist>
+                The All-American Rejects
+            </Artist>
+        </Artists>
+
+        <Year>
+            2008
+        </Year>
+
+        <Genres>
+            <Genre>
+                Electro
+            </Genre>
+        </Genres>
+    </Song>
+
+    <Song>
+        <Name>
+            Still Into You
+        </Name>
+
+        <Artists>
+            <Artist>
+                Paramore
+            </Artist>
+        </Artists>
+
+        <Year>
+            2013
+        </Year>
+
+        <Genres>
+            <Genre>
+                Pop
+            </Genre>
+            <Genre>
+                Rock
+            </Genre>
+        </Genres>
+    </Song>
+
+    <Song>
+        <Name>
+            Heat Waves
+        </Name>
+
+        <Artists>
+            <Artist>
+                Glass Animals
+            </Artist>
+        </Artists>
+
+        <Year>
+            2020
+        </Year>
+
+        <Genres>
+            <Genre>
+                Pop
+            </Genre>
+        </Genres>
+    </Song>
+
+    <Song>
+        <Name>
+            Robin Hood
+        </Name>
+
+        <Artists>
+            <Artist>
+                Anson Seabra
+            </Artist>
+        </Artists>
+
+        <Year>
+            2018
+        </Year>
+
+        <Genres>
+            <Genre>
+                Acoustic
+            </Genre>
+            <Genre>
+                Pop
+            </Genre>
+            <Genre>
+                Indie
+            </Genre>
+            <Genre>
+                Folk
+            </Genre>
+        </Genres>
+    </Song>
+
+    <Song>
+        <Name>
+            River Flows In You
+        </Name>
+
+        <Artists>
+            <Artist>Yiruma</Artist>
+        </Artists>
+
+        <Year>
+            2001
+        </Year>
+
+        <Genres>
+            <Genre>
+                Classical
+            </Genre>
+        </Genres>
+    </Song>
+
+    <Song>
+        <Name>
+            Train Wreck
+        </Name>
+
+        <Artists>
+            <Artist>
+                James Arthur
+            </Artist>
+        </Artists>
+
+        <Year>
+            2016
+        </Year>
+
+        <Genres>
+            <Genre>
+                Pop
+            </Genre>
+        </Genres>
+    </Song>
+
+    <Song>
+        <Name>
+            Say You Won't Let Go
+        </Name>
+
+        <Artists>
+            <Artist>
+                James Arthur
+            </Artist>
+        </Artists>
+
+        <Year>
+            2016
+        </Year>
+
+        <Genres>
+            <Genre>
+                Pop
+            </Genre>
+        </Genres>
+    </Song>
+
+    <Song>
+        <Name>
+            She's Got a Way
+        </Name>
+
+        <Artists>
+            <Artist>
+                Billy Joel
+            </Artist>
+        </Artists>
+
+        <Year>
+            1971
+        </Year>
+
+        <Genres>
+            <Genre>
+                Pop
+            </Genre>
+        </Genres>
+    </Song>
+
+    <Song>
+        <Name>
+            the lakes
+        </Name>
+
+        <Artists>
+            <Artist>
+                Taylor Swift
+            </Artist>
+        </Artists>
+
+        <Year>
+            2020
+        </Year>
+
+        <Genres>
+            <Genre>
+                Indie
+            </Genre>
+            <Genre>
+                Orchestral
+            </Genre>
+        </Genres>
+    </Song>
+
+    <Song>
+        <Name>
+            Forever Winter (Taylor's Version) (From The Vault)
+        </Name>
+
+        <Artists>
+            <Artist>
+                Taylor Swift
+            </Artist>
+        </Artists>
+
+        <Year>
+            2021
+        </Year>
+
+        <Genres>
+            <Genre>
+                Pop
+            </Genre>
+        </Genres>
+    </Song>
+
+    <Song>
+        <Name>
+            I Forgot That You Existed
+        </Name>
+
+        <Artists>
+            <Artist>
+                Taylor Swift
+            </Artist>
+        </Artists>
+
+        <Year>
+            2019
+        </Year>
+
+        <Genres>
+            <Genre>
+                Pop
+            </Genre>
+        </Genres>
+    </Song>
+
+    <Song>
+        <Name>
+            You Are In Love
+        </Name>
+
+        <Artists>
+            <Artist>
+                Taylor Swift
+            </Artist>
+        </Artists>
+
+        <Year>
+            2014
+        </Year>
+
+        <Genres>
+            <Genre>
+                Pop
+            </Genre>
+        </Genres>
+    </Song>
+</Songs>

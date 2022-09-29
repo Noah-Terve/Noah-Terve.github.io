@@ -1,0 +1,21 @@
+* {
+    display: block;
+}
+
+Songs {
+    background-color: rgb(0, 0, 0);
+}
+
+Song {
+    padding: 10px 15px;
+    color: rgb(255, 0, 0);
+    font-size: 12px;
+}
+
+Name {
+    font-size: 16px;
+}
+
+Genres, Genre {
+    display: inline-block;
+}
