@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Joe's Hotdogs</title>
+
+</head>
+
+<body>
+    <div id="Items"></div>
+    <div id="Discount"></div>
+    <div id="Tax"></div>
+    <div id="Cost"></div>
+
+    <script>
+        // This is made so you can add more items if you want and it will handle that just fine :)
+        // Add or change item names, and then add price at that index, then make sure num_items has 0s for each of your items.
+        item_names = ["Hotdogs", "Fries", "Sodas"];
+        prices = [4.25, 2.60, 1.50];
+        num_items = [0, 0, 0];
+        mass_tax = .0625;
+
+        bad_input = true;
+        while(bad_input){
+            // Prompts
+            restart_loop = false;
+            for (i = 0; i < num_items.length; i++) {
+                num_items[i] = parseInt(prompt("How many " + item_names[i].toLowerCase() + " do you want? They are " + prices[i].toFixed(2) +"$ each."));
+                
+                // If they gave a non-int then we need to restart loop and try again, can't finish problem.
+                if (isNaN(num_items[i])) {
+                    restart_loop = true;
+                    break;
+                }
+            }
+
+            // If we need to restart the loop do so, otherwise, make sure we end the loop
+            if (restart_loop) {
+                alert("You provided a non-interger value, please try placing your oder again by clicking next. Only input decimals.");
+                continue;
+            } else {
+                bad_input = false;
+            }
+        }
+
+        // getting how much padding we will need based on names of items being sold, and quantities
+        max_len_items = 0;
+        max_len_num_itmes = 0;
+        for (i = 0; i < num_items.length; i++) {
+            len_i = item_names[i].length;
+            if (len_i > max_len_items) {
+                max_len_items = len_i;
+            }
+
+            len_i = String(num_items[i]).length;
+            if (len_i > max_len_num_itmes) {
+                max_len_num_itmes = len_i;
+            }
+        }
+
+        sub_cost = 0;
+        items = ""
+        item_line_len = 0;
+        // Build subtotal string, and calculate subtotal cost
+        for (i = 0; i < num_items.length; i++) {
+            price_of_i = (prices[i]*num_items[i]).toFixed(2);
+
+            item_line = "Price of: " + String(num_items[i]) + " " 
+                      + item_names[i].toLowerCase() + ": "
+                      + String(price_of_i) +"$";
+            item_line_len = item_line.length;
+
+            items += (item_line + "<br />");
+            sub_cost += parseFloat(price_of_i);
+        }
+        sub_line = "Subtotal: " + String(sub_cost) + "$";
+        items += sub_line
+        console.log(items)
+        document.getElementById("Items").innerHTML = items;
+
+        // Apply discount if needed
+        discount = 0;
+        discount_applied = false
+        if (sub_cost > 20.00) {
+            discount_applied = true;
+            discount = parseFloat(String((sub_cost * .1).toFixed(2)));
+            document.getElementById("Discount").innerHTML = "Special discount applied: -" + discount.toFixed(2) + "$";
+            discount = sub_cost - discount;
+        }
+
+        // Get total cost
+        total_cost = 0;
+        if (discount_applied) {
+            tax = parseFloat(String((discount * mass_tax).toFixed(2)));
+            total_cost = parseFloat(String((discount + tax).toFixed(2)));
+        } else {
+            tax = parseFloat(String((sub_cost * mass_tax).toFixed(2)));
+            total_cost = parseFloat(String((sub_cost + tax).toFixed(2)));
+        }
+
+        tax_line = "Tax: " + String(tax) + "$";
+        document.getElementById("Tax").innerHTML = tax_line;
+
+        total_cost_line = "Total: " + String(total_cost) + "$";
+        document.getElementById("Cost").innerHTML = total_cost_line;
+    </script>
+</body>
+</html>
