@@ -12,6 +12,17 @@
     <div id="Cost"></div>
 
     <script>
+        // round to 2 decimal places, would rather use tofixed
+        // Wrote the homework over the weekend, so I didn't have time after
+        // being told we couldn't use tofixed to make this round function more general like the rest of my code
+        // it is also very brute force, and not pretty to look at, again because I didn't have time.
+        function round_to_2(num){
+            num *= 100;
+            rounded = Math.round(num);
+            reset = rounded / 100;
+            return reset;
+        }
+
         // This is made so you can add more items if you want and it will handle that just fine :)
         // Add or change item names, and then add price at that index, then make sure num_items has 0s for each of your items.
         item_names = ["Hotdogs", "Fries", "Sodas"];
@@ -24,7 +35,7 @@
             // Prompts
             restart_loop = false;
             for (i = 0; i < num_items.length; i++) {
-                num_items[i] = parseInt(prompt("How many " + item_names[i].toLowerCase() + " do you want? They are " + prices[i].toFixed(2) +"$ each."));
+                num_items[i] = parseInt(prompt("How many " + item_names[i].toLowerCase() + " do you want? They are " + String(prices[i]) +"$ each."));
                 
                 // If they gave a non-int then we need to restart loop and try again, can't finish problem.
                 if (isNaN(num_items[i])) {
@@ -59,42 +70,41 @@
 
         sub_cost = 0;
         items = ""
-        item_line_len = 0;
         // Build subtotal string, and calculate subtotal cost
-        for (i = 0; i < num_items.length; i++) {
-            price_of_i = (prices[i]*num_items[i]).toFixed(2);
+        for (i = 0; i < item_names.length; i++) {
+            sub_of_item = prices[i]*num_items[i];
+            price_of_i = parseFloat(round_to_2(sub_of_item));
 
             item_line = "Price of: " + String(num_items[i]) + " " 
                       + item_names[i].toLowerCase() + ": "
                       + String(price_of_i) +"$";
-            item_line_len = item_line.length;
 
             items += (item_line + "<br />");
             sub_cost += parseFloat(price_of_i);
         }
         sub_line = "Subtotal: " + String(sub_cost) + "$";
         items += sub_line
-        console.log(items)
         document.getElementById("Items").innerHTML = items;
+
 
         // Apply discount if needed
         discount = 0;
         discount_applied = false
         if (sub_cost > 20.00) {
             discount_applied = true;
-            discount = parseFloat(String((sub_cost * .1).toFixed(2)));
-            document.getElementById("Discount").innerHTML = "Special discount applied: -" + discount.toFixed(2) + "$";
+            discount = parseFloat(round_to_2(sub_cost * .1));
+            document.getElementById("Discount").innerHTML = "Special discount applied: -" + round_to_2(discount) + "$";
             discount = sub_cost - discount;
         }
 
         // Get total cost
         total_cost = 0;
         if (discount_applied) {
-            tax = parseFloat(String((discount * mass_tax).toFixed(2)));
-            total_cost = parseFloat(String((discount + tax).toFixed(2)));
+            tax = parseFloat(round_to_2(discount * mass_tax));
+            total_cost = parseFloat(round_to_2(discount + tax));
         } else {
-            tax = parseFloat(String((sub_cost * mass_tax).toFixed(2)));
-            total_cost = parseFloat(String((sub_cost + tax).toFixed(2)));
+            tax = parseFloat(round_to_2(sub_cost * mass_tax));
+            total_cost = parseFloat(round_to_2(sub_cost + tax));
         }
 
         tax_line = "Tax: " + String(tax) + "$";
