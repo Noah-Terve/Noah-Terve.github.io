@@ -5,8 +5,108 @@
 </head>
 
 <body>
-    Page not built yet:
-    <a href="./../"> Go Back</a>
+    <script>
+        function is_amicable(num1, num2) {
+            if (isNaN(num1) || isNaN(num2)) {
+                alert("Only numbers are accepted in the form, please resubmit.");
+                return false;
+            }
+
+            num1_factors = get_factors(num1);
+            num2_factors = get_factors(num2);
+
+            num1_amic = equal(num1, sum_array(num2_factors));
+            num2_amic = equal(num2, sum_array(num1_factors));
+
+            amic = num1_amic && num2_amic ? true : false;
+            
+            display_result(amic, num1, num2, num1_factors, num2_factors);
+            return true;
+        }
+
+        function get_factors(n) {
+            factors = [];
+            for (i = 1; i < n; i++) {
+                if (is_factor(n, i)) factors.push(i);
+            }
+            return factors;
+        }
+
+        function is_factor(num, fact) {
+            if (num % fact == 0) return true;
+            return false;
+        }
+
+        function sum_array(arr) {
+            // Two ways to do it, commented out the one I found on the web, which looks nicer.
+
+            // return arr.reduce((totalValue, currentValue) => totalValue + currentValue, 0);
+
+            sum = 0;
+            for (i = 0; i < arr.length; i++) {
+                sum += arr[i];
+            }
+            return sum;
+        }
+
+        function equal(n1, n2_sum){
+            if (n1 == n2_sum) return true;
+            return false;
+        }
+
+        function display_result(amic, n1, n2, fact1, fact2) {
+            update_amicable_text(amic, n1, n2);
+            update_factors_text(n1, n2, fact1, fact2);
+            return;
+        }
+        
+        function update_amicable_text(amic, n1, n2) {
+            amicable_text = "";
+            if (amic) amicable_text = "The numbers " + n1 + " and " + n2 + " are amicable.";
+            else amicable_text = "The numbers " + n1 + " and " + n2 + " are not amicable.";
+            document.getElementById("amicable").innerHTML = amicable_text;
+            return;
+        }
+
+        function update_factors_text(n1, n2, fact1, fact2) {
+            factors_text = one_factor_text(n1, fact1) + "<br />";
+            factors_text += one_factor_text(n2, fact2);
+            document.getElementById("factors").innerHTML = factors_text;
+            return;
+        }
+
+        function one_factor_text(n, facts) {
+            text = "The factors for " + n + " sum to " + String(sum_array(facts)) + ", and are: <br /> &emsp;";
+            // edge case for any prime number and 0
+            if (facts.length <= 1) {
+                if (n == 0) text += "[0, *] <br />";
+                else text += "[1] <br />";
+            } else {
+                for (i = 0; i < facts.length; i++) {
+                    if (i == facts.length - 1) {
+                        text += String(facts[facts.length - 1]) + "] <br />";
+                        break;
+                    } else if (i == 0) {
+                        text += "[" + String(facts[i]) + ", ";
+                        continue;
+                    }
+                    text += String(facts[i]) + ", ";
+                }
+            }
+            return text
+        }
+    </script>
+
+    <form>
+        <label for="num1">First num:</label><br>
+        <input type="text" id="num1" name="num1" value="0"><br>
+        <label for="num2">Second num:</label><br>
+        <input type="text" id="num2" name="num2" value="0"><br><br>
+        <input type="button" value="Submit" onclick="is_amicable(document.getElementById('num1').value, document.getElementById('num2').value)">
+    </form>
+
+    <div id="amicable"></div>
+    <div id="factors"></div>
 </body>
 
 </html>
