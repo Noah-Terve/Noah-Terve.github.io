@@ -2,6 +2,28 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Jade Delight</title>
+
+
+<style>
+	/* new code starts here ----------- */
+	.userInfo label,.userInfo\ address label {
+        display: inline-block;
+        width: 314px;
+        text-align: right;
+	}
+
+	label{
+        display: inline-block;
+        width: 302px;
+        text-align: right;
+	}
+
+	h1 {
+		text-align: center;
+	}
+	/* new code ends here ----------- */
+</style>
+
 </head>
 
 <body>
@@ -10,7 +32,7 @@
 function MenuItem(name, cost)
 {
 	this.name = name;
-	this.cost=cost;
+	this.cost = cost;
 }
 
 menuItems = new Array(
@@ -73,7 +95,7 @@ function td(content, className="")
   document.writeln(s);
 </script>
 </table>
-<p class="subtotal totalSection"><label>Subtotal</label>: 
+<p class="subtotal totalSection"><label>Subtotal:</label>
    $ <input type="text"  name='subtotal' id="subtotal" />
 </p>
 <p class="tax totalSection"><label>Mass tax 6.25%:</label>
@@ -85,5 +107,194 @@ function td(content, className="")
 <input type = "button" value = "Submit Order" />
 
 </form>
+
+<script>
+	/* new code starts here ----------- */
+
+	// set user info bits to be the empty string so they aren't undefined later
+	for (i = 0; i < 3; i++) {
+		document.getElementsByClassName("userInfo").value = ""
+	}
+	
+	// stuff for street and city being displayed or not, sets onclicks to call
+	// the change_display_address function, and uses a bool to monitor whether
+	// or not they are currently displayed or not
+	address = document.getElementsByClassName("userInfo address")
+	p_or_ds = document.getElementsByName("p_or_d")
+	address_displayed = false
+	
+	for (i = 0; i < address.length; i++) {
+		address[i].style = "display:none"
+	}
+
+	for (i = 0; i < p_or_ds.length; i++) {
+		p_or_ds[i].setAttribute("onclick","change_display_address()")
+	} 
+
+	// change the displays for address on or off, gets called onclick, see above
+	function change_display_address() {
+		if (address_displayed) {
+			for (i = 0; i < address.length; i++) {
+				address[i].style = "display:none"
+			}
+			address_displayed = false
+		}
+		else {
+			for (i = 0; i < address.length; i++) {
+				address[i].style = "display:revert"
+			}
+			address_displayed = true
+		}
+	}
+	
+	// stuff for updating costs when new quantities get clicked, gets all value
+	// fields, then updates all onselect functions to update their respective
+	// value field and then update the totals accordingly
+	costs = document.getElementsByName("cost")
+	subtotal = document.getElementById("subtotal")
+	tax = document.getElementById("tax")
+	total = document.getElementById("total")
+	mass_tax = .0625;
+
+	// initialize all to 0, and set to readonly
+	zero = 0
+	for (i = 0; i < costs.length; i++) {
+		costs[i].value = zero.toFixed(2)
+		costs[i].setAttribute("readonly", true)
+	}
+	subtotal.value = zero.toFixed(2)
+	subtotal.setAttribute("readonly", true)
+	tax.value = zero.toFixed(2)
+	tax.setAttribute("readonly", true)
+	total.value = zero.toFixed(2)
+	total.setAttribute("readonly", true)
+
+	// set onchange functions for all menu items
+	for (i = 0; i < menuItems.length; i++) {
+		x = document.getElementsByName("quan" + String(i))[0]
+		function_call = "update_item_total(" + String(i) + ", this.selectedIndex)"
+		x.setAttribute("onchange",function_call)
+	}
+	
+	// update the cost associated with the index that was updated
+	function update_item_total(index, num_ordered) {
+		costs[index].value = (num_ordered * menuItems[index].cost).toFixed(2)
+		update_totals()
+	}
+	
+	// updates the totals for subtotal, tax, and total
+	function update_totals() {
+		sum = 0
+		for (i = 0; i < costs.length; i++) {
+			cost = parseFloat(costs[i].value)
+			// Assumes costs[i] will be a float (in string format beacuse we use
+			// toFixed for display purposes), which it will be unless the user
+			// has tampered with it. If tampering is an issue (see my piazza question
+			// https://piazza.com/class/l7p16y3wy4x6vi/post/132), we can check
+			// if NaN before adding cost into sum.
+			sum += cost 
+		}
+		subtotal.value = sum.toFixed(2)
+		tax.value = (sum * mass_tax).toFixed(2)
+		total.value = (parseFloat(subtotal.value) + parseFloat(tax.value)).toFixed(2) 
+	}
+
+	// update the final button to call the verify.. I don't like having to use
+	// the input tag, and then use length, so many better ways to do this if I
+	// could touch the html. Which I could update from here to give it a class,
+	// but I've already gotten it the hard way..
+	inputs = document.getElementsByTagName("input")
+	inputs[inputs.length - 1].setAttribute("onclick","verify()")
+
+	// verifies all information, and then makes new page and displays it, or
+	// alerts the user that the info was bad
+	function verify() {
+		issue = false
+		time = new Date()
+		// ... (sigh) because every ternary operator must be explained, if the address
+		// is being displayed (i.e. delivery), add 40 minutes to the time, if not add 20
+		address_displayed ? time = addTimeToDate(time, 40) : time = addTimeToDate(time, 20)
+
+		// address check
+		if (address_displayed) {
+			if (document.getElementsByName("street")[0].value === "" || 
+			    document.getElementsByName("city")[0].value === "") {
+				issue = update_issue(issue, "You must provide an address when asking for delivery!\n")
+			}
+		}
+
+		// last name check
+		if (document.getElementsByName("lname")[0].value == "") {
+			issue = update_issue(issue, "You must provide a last name for the order!\n")
+		}
+
+		// phone number check, super mundane, I didn't feel like coming up with
+		// an actual check that makes sure it's a realistic phone num, this also
+		// fails when they input things that result in isNaN giving false that aren't
+		// actually numbers, like - ( ) 
+		phone_num = document.getElementsByName("phone")[0].value
+		num_digits = 0
+		for (i = 0; i < phone_num.length; i++) {
+			if (!isNaN(phone_num[i])) num_digits ++
+		}
+		if (num_digits != 7 && num_digits != 10) {
+			issue = update_issue(issue, "You must provide a phone number that is 7 or 10 digits!\n")
+		}
+
+		// Because I am doing the math all internally, if the total is greater than
+		// 0 they have ordered something.. I know I could also do this by looping
+		// through the selects and checking their values.
+		if (parseFloat(total.value) <= 0) {
+			issue = update_issue(issue, "You must order at least 1 item, do so by selecting a value on the left!\n")
+		}
+
+		// if an issue was found, alert the user, otherwise give them the new page
+		issue ? alert(issue) : display_order(time)
+	}
+
+	// adds minutes minutes to the given date passed in
+	function addTimeToDate(date, minutes) {
+		current_time = date.getTime();
+		add_ms = minutes * 60 * 1000;
+		new_time = new Date(current_time + add_ms);
+	
+		return new_time;
+	}
+
+	// if the issue is false, set it to the empty string so it can be appended
+	function update_issue(issue, string) {
+		if (!issue) issue = ""
+		issue += string
+		return issue
+	}
+
+	// create new page and display it, takes in the pickup/delivery time
+	function display_order(time) {
+		alert("We have recieved your order, and are working on it now. Thank you so much for choosing Jade Delight!")
+		order_details = "<h1>Order Details:</h1><p>Items:<br />"
+		
+		for (i = 0; i < menuItems.length; i++) {
+			// if they didn't order any of an item dont display it
+			if (costs[i].value <= 0) continue
+			order_details += document.getElementsByName("quan" + String(i))[0].value + 
+							 " x " + menuItems[i].name + " at $" + menuItems[i].cost.toFixed(2) + 
+							 " each, is $" + costs[i].value + "<br />"
+		}
+		
+		order_details += "</p><p>subtotal: $" + subtotal.value + 
+						 "<br />tax: $" + tax.value + 
+						 "<br />total: $" + total.value + "</p>"
+		
+		// see comment above for the reasoning of this statement
+		address_displayed ? order_details += "<p>We will deliver around " + time.toLocaleString() + "</p>" :
+							order_details += "<p>Your oder will be ready for pickup around " + time.toLocaleString() + "</p>"
+
+		order_window = window.open("", "_blank")
+		order_window.document.write(order_details)
+	}
+
+	/* new code ends here ----------- */
+</script>
+
 </body>
 </html>
