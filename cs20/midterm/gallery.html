@@ -3,24 +3,87 @@
 <head>
     <title>Hain's Bakery</title>
     <link rel="stylesheet" type = "text/css" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        div,h1 {font-family: var(--font_default);}
+        header {width: 100%; margin: -20px -10px 0px 0px;
+                height: 150px; background-color: black;}
+
+        .backdrop {text-align: center; background-image: url("./media/gallery/cake/wedding_cake.jpeg");
+                   margin: 0px 0px 0px 0px; width: 100%; height: 15vw; vertical-align: middle; line-height: 15vw;
+                   filter: blur(0px);}
+
+        h1 {text-align: center; font-size: 5vw; color: #000;
+             margin: 0px 0px 0px 0px; filter: blur(8px);}
+
+
+
+        .image_grid img {width: 15vw; height: 15vw; object-fit: cover}
+
+    </style>
 </head>
 
 <body>
-    <div>
-        Page not built yet:
-        <a href="./../">Back to Github navigation</a>
-    </div>
-
-    <div>
+    <header>
         Links to other unfinished pages:
-        <a href="./">Home</a> <br />
+        <!-- <a href="./">Home</a> <br />
         <a href="./about.html">About</a> <br />
         <a href="./catering.html">Catering</a> <br />
         <a href="./contact.html">Contact Us</a> <br />
         <a href="./gallery.html">Gallery</a> <br />
         <a href="./mission.html">Mission</a> <br />
-        <a href="./services.html">Services</a> <br />
+        <a href="./services.html">Services</a> <br /> -->
+    </header>
+
+
+    <div class="backdrop">
+        <h1>
+            <strong>The Gallery</strong>
+        </h1>
     </div>
+
+
+    <div class="image_grid" id="cakes">
+        <table>
+            <tr>
+                <td>
+                    <img src="./media/gallery/cake/wedding_cake.jpeg" alt="wedding_cake"> <!-- Source: https://www.brides.com/cherry-blossom-wedding-cakes-5194069 -->
+                    <img src="./media/gallery/cake/wedding_cake.jpeg" alt="wedding_cake"> <!-- Source: https://www.brides.com/cherry-blossom-wedding-cakes-5194069 -->
+                    <img src="./media/gallery/cake/wedding_cake.jpeg" alt="wedding_cake"> <!-- Source: https://www.brides.com/cherry-blossom-wedding-cakes-5194069 -->
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="./media/gallery/cake/wedding_cake.jpeg" alt="wedding_cake"> <!-- Source: https://www.brides.com/cherry-blossom-wedding-cakes-5194069 -->
+                    <img src="./media/gallery/cake/wedding_cake.jpeg" alt="wedding_cake"> <!-- Source: https://www.brides.com/cherry-blossom-wedding-cakes-5194069 -->
+                    <img src="./media/gallery/cake/wedding_cake.jpeg" alt="wedding_cake"> <!-- Source: https://www.brides.com/cherry-blossom-wedding-cakes-5194069 -->
+                </td>
+            </tr>
+        </table>
+        
+    </div>
+
+
+    <div class="image_grid" id="pastries">
+
+    </div>
+
+
+    <div class="image_grid" id="bread">
+
+    </div>
+
+
+    <div class="pre-footer" id="bread">
+        
+    </div>
+
+
+    <footer>
+        
+    </footer>
+
+
 </body>
 
 </html>
