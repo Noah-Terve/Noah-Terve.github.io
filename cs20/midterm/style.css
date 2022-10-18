@@ -7,8 +7,10 @@
     margin: 0;
 }
 
+/* Header */
+/* Header photo (logo) by <a href="https://unsplash.com/@picoftasty?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Mae Mu</a> on <a href="https://unsplash.com/s/photos/bakery-logo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a> */
 header {
-    background-color: rgb(245, 245, 220);
+    background-color: #F7ECD4;
     width: 100%;
     height: 75px;
     display: inline-flex;
@@ -19,6 +21,7 @@ header {
     z-index: 50;
 }
 
+/* Nav bar */
 .nav_bar {
     width: 100%;
     display: inline-flex;
@@ -47,3 +50,25 @@ header {
     font-family: "Palatino";
     color:black;
 }
+
+/* Page Heading */
+/* Image Source: https://www.istockphoto.com/photo/preparation-of-pastry-woman-rolling-dough-top-view-gm1154068600-313663947 */
+.backdrop {
+    text-align: center;
+    background-image: url("./media/gallery/cake/dough-rolling.jpg");
+    margin: 0px 0px 0px 0px;
+    width: 100%; height: 20vw;
+    vertical-align: center;
+    line-height: 20vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding-top: 75px;
+}
+
+/* Heading Rules */
+h1,h2 {
+    text-align: center;
+    font-size: 6vw;
+    color: #000000;
+    margin: 0px 0px 0px 0px;}
