@@ -5,27 +5,48 @@
     <link rel="stylesheet" type = "text/css" href="./style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style type="text/css">
-        div,h1 {font-family: var(--font_default);}
+        :root {
+            /* Temporary Color Pallette */
+            --muave: #7E5A6E;
+            --gray-pink: #A57F88;
+            --light-pink: #D9B8AD;
+            --creme: #F7ECD4;
+
+        }
+        /* "Global" Rules */
+        div {font-family: var(--font_default);}
+        
+        
+        /* Header Rules (Currently Dummy Header) */
         header {width: 100%; margin: -20px -10px 0px 0px;
-                height: 150px; background-color: black;}
+            height: 150px; background-color: black;}
+            
+            
+        /* Page Heading */
+        /* Image Source: https://www.istockphoto.com/photo/preparation-of-pastry-woman-rolling-dough-top-view-gm1154068600-313663947 */
+        .backdrop {text-align: center; background-image: url("./media/gallery/cake/dough-rolling.jpg");
+                   margin: 0px 0px 0px 0px; width: 100%; height: 20vw; vertical-align: center; line-height: 20vw;
+                   background-repeat: no-repeat; background-size: cover; background-position: center;}
 
-        .backdrop {text-align: center; background-image: url("./media/gallery/cake/wedding_cake.jpeg");
-                   margin: 0px 0px 0px 0px; width: 100%; height: 15vw; vertical-align: middle; line-height: 15vw;
-                   filter: blur(0px);}
+        /* Heading Rules */
+        h1,h2 {text-align: center; font-size: 6vw; color: #000; margin: 0px 0px 0px 0px;}
+        
+        /* Image Grid Rule */
+        .image_grid { background-color: var(--gray-pink); text-align: center; width: 100%;}
+        .image_grid * {text-align: center; color: white; width: 100%;}
+        .image_grid h2 {text-align: center; color: white; width: 100%; font-size: 4vw;
+                        padding: 20px 0px}
+        .image_grid img {width: 20vw; height: 20vw; object-fit: cover;
+                         margin: 0px 25px 25px 25px; border: 10px;
+                         border-color: white; border-radius: 20px; border-width: 10px; border-image-width: 10px;}
 
-        h1 {text-align: center; font-size: 5vw; color: #000;
-             margin: 0px 0px 0px 0px; filter: blur(8px);}
-
-
-
-        .image_grid img {width: 15vw; height: 15vw; object-fit: cover}
 
     </style>
 </head>
 
 <body>
     <header>
-        Links to other unfinished pages:
+        [Space for Header]:
         <!-- <a href="./">Home</a> <br />
         <a href="./about.html">About</a> <br />
         <a href="./catering.html">Catering</a> <br />
@@ -37,13 +58,12 @@
 
 
     <div class="backdrop">
-        <h1>
-            <strong>The Gallery</strong>
-        </h1>
+        <h1>The Gallery</h1>
     </div>
 
 
     <div class="image_grid" id="cakes">
+        <h2>Meet the Cakes</h2>
         <table>
             <tr>
                 <td>
