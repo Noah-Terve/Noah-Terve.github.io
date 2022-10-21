@@ -186,8 +186,17 @@ h1,h2,h3 {
     border-radius: 10px;
 }
 
+.menuWrapper {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    MARGIN-BOTTOM: 100px;
+}
 
-
+table, tr, td {
+    border: 1px solid;
+}
 
 /* footer */
 footer {
