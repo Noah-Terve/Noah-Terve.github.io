@@ -144,6 +144,50 @@ h1,h2,h3 {
 
 
 
+/* Image Grid Rules */
+.image_grid {
+    background-color: var(--gray-pink);
+    text-align: center;
+    width: 100%;
+}
+
+.image_grid * {
+    text-align: center;
+    color: white;
+    width: 100%;
+}
+
+.image_grid h2 {
+    color: white;
+    width: 100%;
+    font-size: 4vw;
+    padding-top: 2vw;
+}
+
+.image_grid img {
+    width: 20vw;
+    height: 20vw;
+    object-fit: cover;
+    margin: 0vw 0vw;
+    border-radius: 10px;
+    /* border: 3.5px solid; border-color: var(--muave); */
+}
+
+.image_grid td {
+    padding: 2vw 0vw;
+}
+
+.image_grid .item {
+    display: inline;
+    width: 20vw;
+    height: 20vw;
+    object-fit: cover;
+    margin: 2vw;
+    border-radius: 10px;
+}
+
+
+
 
 /* footer */
 footer {
