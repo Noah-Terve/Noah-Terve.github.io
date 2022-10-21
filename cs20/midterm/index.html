@@ -5,13 +5,17 @@
     <title>Hain's Bakery</title>
     <link rel="stylesheet" type = "text/css" href="./style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous">
+    </script>
 
     <style>
 
         /* Heading Rules */
         .multi-drop { line-height: 5vw; }
-        .multi-drop h1 { padding: 4.50vw 0px 0px 0px; font-size: 5vw; }
-        .multi-drop h2 { padding: 1.5vw 0px 0px 0px; font-size: 4vw; }
+        .multi-drop h1 { padding: 2.50vw 0px 0px 0px; font-size: 5vw; }
+        .multi-drop h2 { font-size: 4vw; }
 
         #gallery1 {background-color: var(--gray-pink);}
         #gallery2 {background-color: var(--muave);}
@@ -20,6 +24,10 @@
         .gallery * {text-align: center; color: #ffffff; width: 100%;}
         .gallery h2 {text-align: center; color: #ffffff; width: 100%; font-size: 2vw;
                         padding: 20px 0px}
+        
+        #gallery1 a:hover { background-color: #ffffff; color: var(--gray-pink);}
+        #gallery2 a:hover { background-color: #ffffff; color: var(--muave);}
+
         #gallery1 img {width: 15vw; height: 15vw; object-fit: cover;
                          margin: 0vw 1vw 1vw 1vw; border: 10px;
                          border-color: white; border-radius: 20px; border-width: 10px; border-image-width: 10px;}
@@ -39,7 +47,10 @@
             text-align: center;
             font-size: 2vw;
         }
-
+        
+        #pre_footer_services {
+            height: 17vw;
+        }
     </style>
 
 </head>
@@ -80,10 +91,10 @@
         <table>
             <tr>
                 <td>
-                    <img src="" class="pastry">
-                    <img src="" class="pastry">
-                    <img src="" class="pastry">
-                    <img src="" class="pastry"> 
+                    <img src="" class="pastry" id="pastry0">
+                    <img src="" class="pastry" id="pastry1">
+                    <img src="" class="pastry" id="pastry2">
+                    <img src="" class="pastry" id="pastry3"> 
                 </td>
             </tr>
         </table>
@@ -96,17 +107,21 @@
         <table>
             <tr>
                 <td>
-                    <img src="" class="cake">
-                    <img src="" class="cake">
-                    <img src="" class="cake">
+                    <img src="" class="cake" id="cake0">
+                    <img src="" class="cake" id="cake1">
+                    <img src="" class="cake" id="cake2">
                 </td>
             </tr>
         </table>
     </div>
 
     <div class="text_block" id="pre_footer_services">
-        <p>
-            Order ahead to get stuff from us and make sure you get it (will be changed.. its 11:30pm) <a href="./contact.html">Get in touch</a>
+        <h3>
+            We are here to provide you the best connection between you and your baked goodies.
+        </h3>
+        <p> 
+            You can see our <a href="./mission.html">mission statement</a> and read more <a href="./about.html">about us.</a> <br />
+            Check out our <a href="./contact.html">menu</a> to see everything we offer or swing by the store to see what we have on hand!
         </p>
     </div>
 
@@ -131,6 +146,8 @@
         current_cake = 0
         gallery2_position = 0
 
+        fade_time = 1200
+
         // set pastries
         for (i = 0; i < pastry.length; i++) {
             pastry[i].setAttribute("src", gallery1[current_pastry])
@@ -145,14 +162,22 @@
 
         function update_image(update_pastry) {
             if (update_pastry) {
-                pastry[gallery1_position].setAttribute("src", gallery1[current_pastry])
-                gallery1_position = (gallery1_position + 1) % pastry.length
-                current_pastry = (current_pastry + 1) % gallery1.length
+                $("#pastry" + gallery1_position).fadeOut(fade_time)
+                setTimeout(function(){
+                    pastry[gallery1_position].setAttribute("src", gallery1[current_pastry])
+                    $("#pastry" + gallery1_position).fadeIn(fade_time)
+                    gallery1_position = (gallery1_position + 1) % pastry.length
+                    current_pastry = (current_pastry + 1) % gallery1.length
+                },fade_time - 100)
             }
             else {
-                cake[gallery2_position].setAttribute("src", gallery2[current_cake])
-                gallery2_position = (gallery2_position + 1) % cake.length
-                current_cake = (current_cake + 1) % gallery2.length
+                $("#cake" + gallery2_position).fadeOut(fade_time)
+                setTimeout(function(){
+                    cake[gallery2_position].setAttribute("src", gallery2[current_cake])
+                    $("#cake" + gallery2_position).fadeIn(fade_time)
+                    gallery2_position = (gallery2_position + 1) % cake.length
+                    current_cake = (current_cake + 1) % gallery2.length
+                },fade_time - 100)
             }
         }
 
