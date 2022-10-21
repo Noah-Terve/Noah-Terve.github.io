@@ -24,7 +24,7 @@ div,p {font-family: var(--font_default);}
 /* Header */
 /* Header photo (logo) by <a href="https://unsplash.com/@picoftasty?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Mae Mu</a> on <a href="https://unsplash.com/s/photos/bakery-logo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a> */
 header {
-    background-color: #F7ECD4;
+    background-color: var(--creme);
     width: 100%;
     height: 85px;
     display: inline-flex;
@@ -196,7 +196,7 @@ h1,h2,h3 {
 
 /* footer */
 footer {
-    background-color: #F7ECD4;
+    background-color: var(--creme);
     width: 100%;
     height: 50px;
     display: inline-flex;
