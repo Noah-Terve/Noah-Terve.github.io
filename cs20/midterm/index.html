@@ -9,30 +9,23 @@
 
         /* Heading Rules */
         .multi-drop { line-height: 5vw; }
-        .multi-drop h1 { padding: 4.50vw 0px 0px 0px }
-        .multi-drop h2 { padding: 1.5vw 0px 0px 0px }
+        .multi-drop h1 { padding: 4.50vw 0px 0px 0px; font-size: 5vw; }
+        .multi-drop h2 { padding: 1.5vw 0px 0px 0px; font-size: 4vw; }
 
-        h1 {
-            text-align: center;
-            font-size: 5vw;
-        }
+        #gallery1 {background-color: var(--gray-pink);}
+        #gallery2 {background-color: var(--muave);}
 
-        h2 {
-            font-size: 4vw;
-        }
-        .smaller_goods_gallery,.larger_goods_gallery {
-            padding: 1vw;
-            text-align: center;
-        }
-
-        .gallery { background-color: var(--gray-pink); text-align: center; width: 100%;}
+        .gallery { text-align: center; width: 100%;}
         .gallery * {text-align: center; color: #ffffff; width: 100%;}
         .gallery h2 {text-align: center; color: #ffffff; width: 100%; font-size: 2vw;
                         padding: 20px 0px}
-        .gallery img {width: 20vw; height: 20vw; object-fit: cover;
-                         margin: 0px 25px 25px 25px; border: 10px;
+        #gallery1 img {width: 15vw; height: 15vw; object-fit: cover;
+                         margin: 0vw 1vw 1vw 1vw; border: 10px;
                          border-color: white; border-radius: 20px; border-width: 10px; border-image-width: 10px;}
-
+        
+        #gallery2 img {width: 20vw; height: 20vw; object-fit: cover;
+                         margin: 0vw 1vw 1vw 1vw; border: 10px;
+                         border-color: white; border-radius: 20px; border-width: 10px; border-image-width: 10px;}
 
         .order_ahead {
             padding: 1vw;
@@ -79,50 +72,96 @@
         </div>
     </div>
 
-    <div class="gallery">
+    <div class="gallery" id="gallery1">
         <h2>
-            Head to our galley to see our creations on display
+            Head to <a href="./gallery.html">our gallery</a> to see our creations on display
         </h2>
         <table>
             <tr>
                 <td>
-                    <img src="./media/gallery/cake/wedding_cake.jpeg" alt="wedding_cake"> <!-- Source: https://www.brides.com/cherry-blossom-wedding-cakes-5194069 -->
-                    <img src="./media/gallery/cake/fondant_cake_1.jpg" alt="fondant_1"> <!-- Source: https://www.brides.com/cherry-blossom-wedding-cakes-5194069 -->
-                    <img src="./media/gallery/cake/chocolate_cake.jpg" alt="vanilla"> <!-- Source: https://www.brides.com/cherry-blossom-wedding-cakes-5194069 -->
+                    <img src="" class="pastry">
+                    <img src="" class="pastry">
+                    <img src="" class="pastry">
+                    <img src="" class="pastry"> 
                 </td>
             </tr>
         </table>
     </div>
     
-    <div class="gallery">
+    <div class="gallery" id="gallery2">
         <h2>
-            Order from us for your special events
+            <a href="./contact.html">Order from us</a> for your special events
         </h2>
         <table>
             <tr>
                 <td>
-                    <img src="./media/gallery/cake/wedding_cake.jpeg" alt="wedding_cake"> <!-- Source: https://www.brides.com/cherry-blossom-wedding-cakes-5194069 -->
-                    <img src="./media/gallery/cake/fondant_cake_1.jpg" alt="fondant_1"> <!-- Source: https://www.brides.com/cherry-blossom-wedding-cakes-5194069 -->
-                    <img src="./media/gallery/cake/chocolate_cake.jpg" alt="vanilla"> <!-- Source: https://www.brides.com/cherry-blossom-wedding-cakes-5194069 -->
+                    <img src="" class="cake">
+                    <img src="" class="cake">
+                    <img src="" class="cake">
                 </td>
             </tr>
         </table>
     </div>
 
-    <div class="order_ahead">
-        <div>
+    <div class="text_block" id="pre_footer_services">
+        <p>
             Order ahead to get stuff from us and make sure you get it (will be changed.. its 11:30pm) <a href="./contact.html">Get in touch</a>
-        </div>
-    </div>
-
-    <div class="contact_us">
-        <div>
-            say you should contact us
-        </div>
+        </p>
     </div>
 
     <footer>
     </footer>
+
+    <script>
+        // making the images rotate through
+        gallery1 = ["./media/gallery/pastries/muffins.jpeg", "./media/gallery/pastries/cookies.webp", "./media/gallery/bread/classic.webp", "./media/gallery/bread/sourdough.jpeg", 
+                    "./media/gallery/bread/brioche.jpeg", "./media/gallery/pastries/cannolis.jpeg", "./media/gallery/pastries/danishes.jpeg", "./media/gallery/bread/baguette.jpeg",
+                    "./media/gallery/pastries/french-crullers.jpeg", "./media/gallery/bread/croissants.webp", "./media/gallery/pastries/scones.jpeg", "./media/gallery/bread/ciabatta.jpeg"]
+        
+        gallery2 = ["./media/gallery/cake/wedding_cake.jpeg", "./media/gallery/cake/vanilla_cake_2.jpg", "./media/gallery/cake/chocolate_cake.jpg", "./media/gallery/cake/fondant_cake_1.jpg",
+                    "./media/gallery/cake/fondant_cake_2.jpg", "./media/gallery/cake/chocolate_cake_2.jpg", "./media/gallery/cake/vanilla_cake.jpg", "./media/gallery/cake/fondant_cake_3.jpeg"]
+        
+        pastry = document.getElementsByClassName("pastry")
+        cake = document.getElementsByClassName("cake")
+
+        current_pastry = 0
+        gallery1_position = 0
+
+        current_cake = 0
+        gallery2_position = 0
+
+        // set pastries
+        for (i = 0; i < pastry.length; i++) {
+            pastry[i].setAttribute("src", gallery1[current_pastry])
+            current_pastry = (current_pastry + 1) % gallery1.length
+        }
+
+        // set cakes
+        for (i = 0; i < cake.length; i++) {
+            cake[i].setAttribute("src", gallery2[current_cake])
+            current_cake = (current_cake + 1) % gallery2.length
+        }
+
+        function update_image(update_pastry) {
+            if (update_pastry) {
+                pastry[gallery1_position].setAttribute("src", gallery1[current_pastry])
+                gallery1_position = (gallery1_position + 1) % pastry.length
+                current_pastry = (current_pastry + 1) % gallery1.length
+            }
+            else {
+                cake[gallery2_position].setAttribute("src", gallery2[current_cake])
+                gallery2_position = (gallery2_position + 1) % cake.length
+                current_cake = (current_cake + 1) % gallery2.length
+            }
+        }
+
+        // update the pastry image every 4 seconds
+        setInterval(update_image, 4000, true)
+
+        // udpate the cake image every 5 seconds
+        setInterval(update_image, 5000, false)
+
+    </script>
 </body>
 
 </html>
