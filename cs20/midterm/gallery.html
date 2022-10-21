@@ -6,6 +6,7 @@
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
             crossorigin="anonymous">
     </script>
+    <script type="text/javascript" src="script.js"></script>
     <link rel="stylesheet" type = "text/css" href="./style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -31,7 +32,7 @@
                 <li><a href="./index.html">Home</a></li>
                 <li><a href="./about.html">About</a></li>
                 <li><a href="./contact.html">Contact Us</a></li>
-                <li><a href="./catering.html">Catering</a></li>
+                <li><a href="./menu.html">Menu</a></li>
                 <li><a href="./gallery.html">Gallery</a></li>
                 <li><a href="./services.html">Services</a></li>
                 <li><a href="./mission.html">Our Mission</a></li>
@@ -153,7 +154,7 @@
     <div class="text_block" id="pre_footer_services">
         <em>
             <h3>Like What You See?</h3>
-            <p>Click <a href="./services.html">here</a> to travel to our services page where you can find <strong>exactly</strong> what you're craving.</p>
+            <p>Click <a href="./menu.html">here</a> to travel to our menu page where you can find <strong>exactly</strong> what you're craving.</p>
         </em>
     </div>
 
@@ -163,28 +164,7 @@
     </footer>
 
     <script>
-        function image_hover_listener() {
-            img = $('.item > *:not(:hover)')
-
-            $(document).ready(function() {
-                img.mouseenter(function() {
-                    blur_and_display($('.item > *:not(:hover)'))
-                });
-                img.mouseleave(function() {
-                    img.removeAttr("style")
-                });
-            });
-
-
-        }
-
-        function blur_and_display(item) {
-            item.css({"filter": "blur(4px)"})
-            // item.blur()
-        }
-
         image_hover_listener();
-
     </script>
 
 
