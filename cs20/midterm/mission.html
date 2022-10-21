@@ -6,6 +6,7 @@
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
             crossorigin="anonymous">
     </script>
+    <script type="text/javascript" src="script.js"></script>
     <link rel="stylesheet" type = "text/css" href="./style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style type="text/css">
@@ -105,28 +106,7 @@
     </footer>
 
     <script>
-        function image_hover_listener() {
-            img = $('.item > *:not(:hover)')
-
-            $(document).ready(function() {
-                img.mouseenter(function() {
-                    blur_and_display($('.item > *:not(:hover)'))
-                });
-                img.mouseleave(function() {
-                    img.removeAttr("style")
-                });
-            });
-
-
-        }
-
-        function blur_and_display(item) {
-            item.css({"filter": "blur(4px)"})
-            // item.blur()
-        }
-
         image_hover_listener();
-
     </script>
 </body>
 
