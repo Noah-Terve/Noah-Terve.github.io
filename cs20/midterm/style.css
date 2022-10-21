@@ -186,6 +186,7 @@ h1,h2,h3 {
     border-radius: 10px;
 }
 
+/* for menu.html */
 .menuWrapper {
     margin-top: 100px;
     display: flex;
@@ -196,6 +197,39 @@ h1,h2,h3 {
 
 table, tr, td {
     border: 1px solid;
+}
+
+h4 {
+    text-align: center;
+    font-size: 7vw;
+    color: white;
+    /* Adding Stroke to Make Text More Readable --> Didn't Like It */
+    /* -webkit-text-stroke-width: 0.1vw;
+    -webkit-text-stroke-color: var(--creme); */
+}
+
+/* for services.html */
+
+.servicesHeader {
+    text-align: center;
+    color: white;
+    background-image: url("./media/services/baker.jpg");
+    width: 100%;
+    height: 20vw;
+    line-height: 20vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 0px;
+    padding-top: 85px;
+}
+
+.image_grid h5 {
+    font-size: 1.5vw;
+}
+
+.gridInfo {
+    padding: 2vw;
 }
 
 /* footer */
