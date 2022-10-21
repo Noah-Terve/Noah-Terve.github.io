@@ -6,21 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
+        :root {
+            --gray-pink: #A57F88;
+        }
         .smaller_goods_gallery,.larger_goods_gallery {
             padding: 1vw;
             text-align: center;
         }
 
-        .gallery_text {
-            font-size: 2vw;
-        }
+        .gallery { background-color: var(--gray-pink); text-align: center; width: 100%;}
+        .gallery * {text-align: center; color: #ffffff; width: 100%;}
+        .gallery h2 {text-align: center; color: #ffffff; width: 100%; font-size: 2vw;
+                        padding: 20px 0px}
+        .gallery img {width: 20vw; height: 20vw; object-fit: cover;
+                         margin: 0px 25px 25px 25px; border: 10px;
+                         border-color: white; border-radius: 20px; border-width: 10px; border-image-width: 10px;}
+
 
         .order_ahead {
+            padding: 1vw;
             text-align: center;
             font-size: 2vw;
         }
 
         .contact_us {
+            padding: 1vw;
             text-align: center;
             font-size: 2vw;
         }
@@ -56,22 +66,34 @@
         <h2>Baked delicacies for all your needs</h2>
     </div>
 
-    <div class="smaller_goods_gallery">
-        <div class="gallery_text">
-            Baked goods made fresh daily
-        </div>
-        <div class="gallery">
-
-        </div>
+    <div class="gallery">
+        <h2>
+            Head to our galley to see our creations on display
+        </h2>
+        <table>
+            <tr>
+                <td>
+                    <img src="./media/gallery/cake/wedding_cake.jpeg" alt="wedding_cake"> <!-- Source: https://www.brides.com/cherry-blossom-wedding-cakes-5194069 -->
+                    <img src="./media/gallery/cake/fondant_cake_1.jpg" alt="fondant_1"> <!-- Source: https://www.brides.com/cherry-blossom-wedding-cakes-5194069 -->
+                    <img src="./media/gallery/cake/chocolate_cake.jpg" alt="vanilla"> <!-- Source: https://www.brides.com/cherry-blossom-wedding-cakes-5194069 -->
+                </td>
+            </tr>
+        </table>
     </div>
     
-    <div class="larger_goods_gallery">
-        <div class="gallery_text">
+    <div class="gallery">
+        <h2>
             Order from us for your special events
-        </div>
-        <div class="gallery">
-
-        </div>
+        </h2>
+        <table>
+            <tr>
+                <td>
+                    <img src="./media/gallery/cake/wedding_cake.jpeg" alt="wedding_cake"> <!-- Source: https://www.brides.com/cherry-blossom-wedding-cakes-5194069 -->
+                    <img src="./media/gallery/cake/fondant_cake_1.jpg" alt="fondant_1"> <!-- Source: https://www.brides.com/cherry-blossom-wedding-cakes-5194069 -->
+                    <img src="./media/gallery/cake/chocolate_cake.jpg" alt="vanilla"> <!-- Source: https://www.brides.com/cherry-blossom-wedding-cakes-5194069 -->
+                </td>
+            </tr>
+        </table>
     </div>
 
     <div class="order_ahead">
