@@ -2,7 +2,41 @@
 <html>
 <head>
     <title>Hain's Bakery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous">
+    </script>
     <link rel="stylesheet" type = "text/css" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        /* Image Grid Rules */
+        .image_grid { background-color: var(--gray-pink); text-align: center; width: 100%;}
+        .image_grid * {text-align: center; color: white; width: 100%;}
+        .image_grid h2 {color: white; width: 100%; font-size: 4vw;
+                        padding-top: 2vw;}
+        .image_grid img {width: 20vw; height: 20vw; object-fit: cover;
+                         margin: 0vw 0vw; border-radius: 10px;
+                         /* border: 3.5px solid; border-color: var(--muave); */
+                        }
+
+        .image_grid td {padding: 2vw 0vw;}
+        .image_grid .item { display: inline; width: 20vw; height: 20vw; object-fit: cover;
+                            margin: 2vw; border-radius: 10px; }
+        
+
+        #pastries {background-color: var(--muave)}
+
+        /* Mission Statement Rules */
+        .text_block { background-color: var(--taupe); width: 100%;
+                      height: auto; display: inline-block;
+                    }
+        .text_block h2 { margin-top: 2.5vw; }
+        .text_block p:first-of-type { margin: 1vw 0px 2vw 0px; }
+        .text_block p:not(:first-of-type) { margin: 2.5vw 15%; text-align: center;
+            font-size: 1.6vw; line-height: 2.5vw;}
+            
+        .text_block h3 { margin-top: 1.5vw; }
+    </style>
 </head>
 
 <body>
@@ -31,6 +65,80 @@
         <h1>Our Mission</h1>
     </div>
 
+    <div class="text_block">
+        <h2>What is Hain's Bakery?</h2>
+        <p><em>A New Experience</em></p>
+        <p>
+            Founded in 2020, <strong><u>Hain's Bakery</u></strong> brings a
+            <strong>bold</strong>, modern flavor to all your favorite class
+            baked goods and treats. From weddings, to parties, to just that
+            craving you've been having all week, Hain's Bakery is here to bring
+            you the <strong>best bakery items we have to offer.</strong> Every pastry and bakery
+            item we make is made with passion by our excellent team and
+            all-natural ingredients from our local farms. At Hain's, we
+            <strong>value community</strong>—we care about our staff, our
+            ingredients, and, of course, you. We will always look to improve
+            ourselves in order to best help our customers. And with that said,
+            <em>are you ready to give your taste buds a new sensation?</em>
+        </p>
+    </div>
+
+    <div class="image_grid" id="cakes">
+        <h2>Awards & Accolades</h2>
+        <table>
+            <tr>
+                <td>
+                    <div class="item">
+                        <img src="./media/gallery/cake/wedding_cake.jpeg" alt="wedding_cake">  <!-- Source: https://www.brides.com/cherry-blossom-wedding-cakes-5194069 -->
+                    </div>
+                    <div class="item">
+                        <img src="./media/gallery/cake/fondant_cake_1.jpg" alt="fondant_1">     <!-- Source: https://www.wilton.com/radiant-orchid-3-tiered-fondant-cake/WLPROJ-8105.html -->
+                    </div>
+                    <div class="item">
+                        <img src="./media/gallery/cake/chocolate_cake.jpg" alt="vanilla">       <!-- Source: https://www.foodandwine.com/recipes/moms-chocolate-cake -->
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+    <div class="text_block" id="pre_footer_contact">
+        <em>
+            <h3>Questions? Comments? Concerns?</h3>
+            <p>We value your feedback. Click <a href="./contact.html">here</a> to travel to our contact page where you can let us know how we're doing.</p>
+        </em>
+    </div>
+
+
+    <footer>
+        
+    </footer>
+
+    <script>
+        function image_hover_listener() {
+            img = $('.item > *:not(:hover)')
+
+            $(document).ready(function() {
+                img.mouseenter(function() {
+                    blur_and_display($('.item > *:not(:hover)'))
+                });
+                img.mouseleave(function() {
+                    img.removeAttr("style")
+                });
+            });
+
+
+        }
+
+        function blur_and_display(item) {
+            item.css({"filter": "blur(4px)"})
+            // item.blur()
+        }
+
+        image_hover_listener();
+
+    </script>
 </body>
 
 </html>
