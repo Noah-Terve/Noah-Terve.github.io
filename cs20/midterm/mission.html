@@ -6,13 +6,13 @@
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
             crossorigin="anonymous">
     </script>
+    <script type="text/javascript" src="script.js"></script>
     <link rel="stylesheet" type = "text/css" href="./style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style type="text/css">
         /* Image Grid Rules */
         .image_grid img { width: 25vw; }
         
-
         #pastries {background-color: var(--muave)}
 
         /* Mission Statement Rules */
@@ -32,7 +32,8 @@
     <header>
         <div class="nav_bar">
             <div class="name_logo">
-                <a href="./index.html" class="logo"><img src="./media/header/logo.jpg" height="50px"></a>
+                <a href="./index.html" class="logo"><img
+                src="./media/header/logo.jpg" height="50px"></a>
                 <div class="bakery_name">
                     Hain's Bakery
                 </div>
@@ -59,12 +60,12 @@
         <p><em>A New Experience</em></p>
         <p>
             Founded in 2020, <strong><u>Hain's Bakery</u></strong> brings a
-            <strong>bold</strong>, modern flavor to all your favorite class
+            <strong>bold</strong>, modern flavor to all your favorite classic
             baked goods and treats. From weddings, to parties, to just that
             craving you've been having all week, Hain's Bakery is here to bring
             you the <strong>best bakery items we have to offer.</strong> Every
             pastry and bakery item we make is made with passion by our excellent
-            team and all-natural ingredients from our local farms. At Hain's, we
+            team and all-natural, locally-sourced ingredients. At Hain's, we
             <strong>value community</strong>—we care about our staff, our
             ingredients, and, of course, you. We will always look to improve
             ourselves in order to best help our customers. And with that said,
@@ -105,28 +106,7 @@
     </footer>
 
     <script>
-        function image_hover_listener() {
-            img = $('.item > *:not(:hover)')
-
-            $(document).ready(function() {
-                img.mouseenter(function() {
-                    blur_and_display($('.item > *:not(:hover)'))
-                });
-                img.mouseleave(function() {
-                    img.removeAttr("style")
-                });
-            });
-
-
-        }
-
-        function blur_and_display(item) {
-            item.css({"filter": "blur(4px)"})
-            // item.blur()
-        }
-
         image_hover_listener();
-
     </script>
 </body>
 
