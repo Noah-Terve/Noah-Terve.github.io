@@ -10,19 +10,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style type="text/css">
-        /* Image Grid Rule */
+        /* Image Grid Rules */
         .image_grid { background-color: var(--gray-pink); text-align: center; width: 100%;}
         .image_grid * {text-align: center; color: white; width: 100%;}
-        .image_grid h2 {text-align: center; color: white; width: 100%; font-size: 4vw;
-                        padding: 2vw 0px 0px 0px}
+        .image_grid h2 {color: white; width: 100%; font-size: 4vw;
+                        padding-top: 2vw;}
         .image_grid img {width: 20vw; height: 20vw; object-fit: cover;
-                         margin: 2vw; border-radius: 10px;
+                         margin: 0vw 0vw; border-radius: 10px;
                          /* border: 3.5px solid; border-color: var(--muave); */
                         }
 
-        #pastries {background-color: var(--muave)}
-        /* #pastries img {background-color: var(--muave)} */
+        .image_grid td {padding: 2vw 0vw;}
+        .image_grid .item { display: inline; width: 20vw; height: 20vw; object-fit: cover;
+                            margin: 2vw; border-radius: 10px; }
+        
 
+        #pastries {background-color: var(--muave)}
+
+        /* p {display: inline; margin: 0px; width: 0px; font-size: large;
+            position: relative; width: 20vw; line-height: 20vw; height: 20vw;} */
+        
+        /* Pre-Footer Rules */
+        .pre_footer {background-color: var(--taupe); height: 10vw;
+                     display: flex; flex-direction: column; justify-content: space-evenly;}
+        .pre_footer * {color: var(--creme); text-align: center; padding: 0vw 0px; font-style: italic;}
+        .pre_footer p {font-size: 1.75vw;}
     </style>
 </head>
 
@@ -48,76 +60,120 @@
         </div>
     </header>
 
-    <div class="backdrop">
-        <h1>The Gallery</h1>
+    <div id="main_container">
+        <div class="backdrop">
+            <h1>The Gallery</h1>
+        </div>
+
+        <div class="image_grid" id="cakes">
+            <h2>Meet the Cakes</h2>
+            <table>
+                <tr>
+                    <td>
+                        <!-- <div class="item" style="background-image: url(./media/gallery/cake/wedding_cake.jpeg)">
+                            <p>Text</p>
+                            <img src="./media/gallery/cake/wedding_cake.jpeg" alt="wedding_cake">
+                        </div> -->
+                        
+                        <div class="item">
+                            <img src="./media/gallery/cake/wedding_cake.jpeg" alt="wedding_cake">  <!-- Source: https://www.brides.com/cherry-blossom-wedding-cakes-5194069 -->
+                        </div>
+                        <div class="item">
+                            <img src="./media/gallery/cake/fondant_cake_1.jpg" alt="fondant_1">     <!-- Source: https://www.wilton.com/radiant-orchid-3-tiered-fondant-cake/WLPROJ-8105.html -->
+                        </div>
+                        <div class="item">
+                            <img src="./media/gallery/cake/chocolate_cake.jpg" alt="vanilla">       <!-- Source: https://www.foodandwine.com/recipes/moms-chocolate-cake -->
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="item">
+                            <img src="./media/gallery/cake/fondant_cake_2.jpg" alt="fondant_2">     <!-- Source: https://www.pinterest.com/pin/724024077593649824/ -->
+                        </div>
+                        <div class="item">
+                            <img src="./media/gallery/cake/vanilla_cake.jpg" alt="vanilla">         <!-- Source: https://www.foodandwine.com/recipes/yellow-layer-cake-vanilla-frosting -->
+                        </div>
+                        <div class="item">
+                            <img src="./media/gallery/cake/fondant_cake_3.jpeg" alt="fondant_3">    <!-- Source: https://www.wilton.com/draped-fondant-cake/WLPROJ-9590.html -->
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+
+        <div class="image_grid" id="pastries">
+            <h2>Care for A Pastry?</h2>
+            <table>
+                <tr>
+                    <td>
+                        <div class="item">
+                            <img src="./media/gallery/pastries/muffins.jpeg" alt="muffins">                 <!-- Source: https://www.brides.com/cherry-blossom-wedding-cakes-5194069 -->
+                        </div>
+                        <div class="item">
+                            <img src="./media/gallery/pastries/cookies.webp" alt="cookies">                 <!-- Source: https://veronikaskitchen.com/bakery-style-chocolate-chip-cookies/ -->
+                        </div>
+                        <div class="item">
+                            <img src="./media/gallery/pastries/cannolis.jpeg" alt="cannolis">               <!-- Source: https://www.thekitchn.com/cannoli-22931930 -->
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="item">
+                            <img src="./media/gallery/pastries/danishes.jpeg" alt="danishes">               <!-- Source: https://www.foodandwine.com/recipes/yellow-layer-cake-vanilla-frosting -->
+                        </div>
+                        <div class="item">
+                            <img src="./media/gallery/pastries/french-crullers.jpeg" alt="french-crullers"> <!-- Source: https://ofbatteranddough.com/french-cruller-doughnut-recipe/ -->
+                        </div>
+                        <div class="item">
+                            <img src="./media/gallery/pastries/scones.jpeg" alt="scones">                   <!-- Source: https://sallysbakingaddiction.com/scones-recipe/ -->
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+
+        <div class="image_grid" id="bread">
+            <h2>Bready, Set, Go!</h2>
+            <table>
+                <tr>
+                    <td>
+                        <!-- Text Idea?: Like the classics? We do too [...] -->
+                        <div class="item">
+                            <img src="./media/gallery/bread/classic.webp" alt="classic">   <!-- Source: https://www.seriouseats.com/bread-baking-the-simplest-white-bread-recipe-ever -->
+                        </div>
+                        <div class="item">
+                            <img src="./media/gallery/bread/sourdough.jpeg" alt="sourdough">     <!-- Source: https://thewoksoflife.com/sourdough-bread-recipe/ -->
+                        </div>
+                        <div class="item">
+                            <img src="./media/gallery/bread/brioche.jpeg" alt="brioche">       <!-- Source: https://thewoksoflife.com/homemade-brioche-recipe/ -->
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="item">
+                            <img src="./media/gallery/bread/baguette.jpeg" alt="baguette">     <!-- Source: https://www.kingarthurbaking.com/recipes/classic-baguettes-recipe -->
+                        </div>
+                        <div class="item">
+                            <img src="./media/gallery/bread/croissants.webp" alt="croissants">         <!-- Source: https://breadsandsweets.com/croissant-recipe/ -->
+                        </div>
+                        <div class="item">
+                            <img src="./media/gallery/bread/ciabatta.jpeg" alt="ciabatta">    <!-- Source: https://www.aheadofthyme.com/small-batch-sourdough-ciabatta-bread/ -->
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 
-    <div class="image_grid" id="cakes">
-        <h2>Meet the Cakes</h2>
-        <table>
-            <tr>
-                <td>
-                    <img src="./media/gallery/cake/wedding_cake.jpeg" alt="wedding_cake" id="cake1">   <!-- Source: https://www.brides.com/cherry-blossom-wedding-cakes-5194069 -->
-                    <img src="./media/gallery/cake/fondant_cake_1.jpg" alt="fondant_1">     <!-- Source: https://www.wilton.com/radiant-orchid-3-tiered-fondant-cake/WLPROJ-8105.html -->
-                    <img src="./media/gallery/cake/chocolate_cake.jpg" alt="vanilla">       <!-- Source: https://www.foodandwine.com/recipes/moms-chocolate-cake -->
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <img src="./media/gallery/cake/fondant_cake_2.jpg" alt="fondant_2">     <!-- Source: https://www.pinterest.com/pin/724024077593649824/ -->
-                    <img src="./media/gallery/cake/vanilla_cake.jpg" alt="vanilla">         <!-- Source: https://www.foodandwine.com/recipes/yellow-layer-cake-vanilla-frosting -->
-                    <img src="./media/gallery/cake/fondant_cake_3.jpeg" alt="fondant_3">    <!-- Source: https://www.wilton.com/draped-fondant-cake/WLPROJ-9590.html -->
-                </td>
-            </tr>
-        </table>
-    </div>
 
-
-    <div class="image_grid" id="pastries">
-        <h2>Care for A Pastry?</h2>
-        <table>
-            <tr>
-                <td>
-                    <img src="./media/gallery/pastries/muffins.jpeg" alt="muffins">                 <!-- Source: https://www.brides.com/cherry-blossom-wedding-cakes-5194069 -->
-                    <img src="./media/gallery/pastries/cookies.webp" alt="cookies">                 <!-- Source: https://veronikaskitchen.com/bakery-style-chocolate-chip-cookies/ -->
-                    <img src="./media/gallery/pastries/cannolis.jpeg" alt="cannolis">               <!-- Source: https://www.thekitchn.com/cannoli-22931930 -->
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <img src="./media/gallery/pastries/danishes.jpeg" alt="danishes">               <!-- Source: https://www.foodandwine.com/recipes/yellow-layer-cake-vanilla-frosting -->
-                    <img src="./media/gallery/pastries/french-crullers.jpeg" alt="french-crullers"> <!-- Source: https://ofbatteranddough.com/french-cruller-doughnut-recipe/ -->
-                    <img src="./media/gallery/pastries/scones.jpeg" alt="scones">                   <!-- Source: https://sallysbakingaddiction.com/scones-recipe/ -->
-                </td>
-            </tr>
-        </table>
-    </div>
-
-
-    <div class="image_grid" id="bread">
-        <h2>Bready, Set, Go!</h2>
-        <table>
-            <tr>
-                <td>
-                    <!-- Text Idea?: Like the classics? We do too [...] -->
-                    <img src="./media/gallery/bread/classic.webp" alt="classic">   <!-- Source: https://www.seriouseats.com/bread-baking-the-simplest-white-bread-recipe-ever -->
-                    <img src="./media/gallery/bread/sourdough.jpeg" alt="sourdough">     <!-- Source: https://thewoksoflife.com/sourdough-bread-recipe/ -->
-                    <img src="./media/gallery/bread/brioche.jpeg" alt="brioche">       <!-- Source: https://thewoksoflife.com/homemade-brioche-recipe/ -->
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <img src="./media/gallery/bread/baguette.jpeg" alt="baguette">     <!-- Source: https://www.kingarthurbaking.com/recipes/classic-baguettes-recipe -->
-                    <img src="./media/gallery/bread/croissants.webp" alt="croissants">         <!-- Source: https://breadsandsweets.com/croissant-recipe/ -->
-                    <img src="./media/gallery/bread/ciabatta.jpeg" alt="ciabatta">    <!-- Source: https://www.aheadofthyme.com/small-batch-sourdough-ciabatta-bread/ -->
-                </td>
-            </tr>
-        </table>
-    </div>
-
-
-    <div class="pre-footer" id="bread">
-        
+    <div class="pre_footer">
+        <h3>Like What You See?</h3>
+        <p>Click <a href="./services.html">here</a> to travel to our services page where you can find <strong>exactly</strong> what you're craving.</p>
     </div>
 
 
@@ -126,9 +182,30 @@
     </footer>
 
     <script>
-        console.log($('#cake1'))
-        
+        function image_hover_listener() {
+            img = $('.item > *:not(:hover)')
+
+            $(document).ready(function() {
+                img.mouseenter(function() {
+                    blur_and_display($('.item > *:not(:hover)'))
+                });
+                img.mouseleave(function() {
+                    img.removeAttr("style")
+                });
+            });
+
+
+        }
+
+        function blur_and_display(item) {
+            item.css({"filter": "blur(3px)"})
+            // item.blur()
+        }
+
+        image_hover_listener();
+
     </script>
+
 
 </body>
 

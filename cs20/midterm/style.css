@@ -104,9 +104,15 @@ h1 {
 
 h2 {
     font-size: 4vw;
+    text-align: center;
 }
 
-h1,h2 {
+h3 {
+    text-align: center;
+    font-size: 3.5vw;
+}
+
+h1,h2,h3 {
     color: var(--taupe);
 }
 
