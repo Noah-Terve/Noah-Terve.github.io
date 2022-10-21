@@ -194,10 +194,6 @@ h1,h2,h3 {
     MARGIN-BOTTOM: 100px;
 }
 
-table, tr, td {
-    border: 1px solid;
-}
-
 /* footer */
 footer {
     background-color: #F7ECD4;
