@@ -3,6 +3,37 @@
 <head>
     <title>Hain's Bakery</title>
     <link rel="stylesheet" type = "text/css" href="./style.css">
+
+    <style>
+        /* multiple column rules */
+        .row {
+            display: flex;
+        }
+
+        .image {
+            flex: 50%;
+        }
+
+        .content {
+            flex: 50%;
+        }
+
+        /* additional styling */
+        .image img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .text_block {
+            padding: 0px 30px 0px 30px;
+            height: 100%;
+            justify-content: center;
+        }
+
+        #muave {
+            background-color: var(--muave);
+        }
+    </style>
 </head>
 
 <body>
@@ -19,7 +50,7 @@
                 <li><a href="./index.html">Home</a></li>
                 <li><a href="./about.html">About</a></li>
                 <li><a href="./contact.html">Contact Us</a></li>
-                <li><a href="./menu.html">Menu</a></li>
+                <li><a href="./catering.html">Catering</a></li>
                 <li><a href="./gallery.html">Gallery</a></li>
                 <li><a href="./services.html">Services</a></li>
                 <li><a href="./mission.html">Our Mission</a></li>
@@ -31,6 +62,65 @@
         <h1>About us</h1>
     </div>
 
+    <div class="row">
+        <div class="image">
+            <img src="./media/about/img1.jpg">
+        </div>
+        <div class="content">
+            <div class="text_block">
+                <h2>Our Story</h2><br />
+                <p>Hain's Bakery was founded in 2020 by four friends: Helena, Alex, Isaiah and Noah. 
+                    What started as a fun hobby in one of our home kitchens has grown into much more 
+                    than just a business, but rather a community where we strive to bring joy to our 
+                    customers with our fresh pastries and welcoming shop, all while supporting our 
+                    local farmers by sourcing our ingredients close to home. </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="content">
+            <div class="text_block" id="muave">
+                <h2>Our Team</h2><br />
+                <p>Helena Benatar<br>
+                Alex Hu<br>
+                Isaiah Wynruit<br>
+                Noah Tervalon<br></p>
+            </div>
+        </div>
+        <div class="image">
+            <h2>missing image</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="image">
+            <img src="./media/about/img3.jpg">
+        </div>
+        <div class="content">
+            <div class="text_block">
+                <h2>Join Our Family!</h2><br />
+                <p>We <strong>love</strong> our community and are always excited for it 
+                    to grow. Whether you want to place an order or apply for a job with
+                    us, you can contact us <a href="./contact.html">here</a>.
+                <br /><br /> We look forward to hearing from you!</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="content">
+            <div class="text_block" id="muave">
+                <h2>Our Location</h2><br />
+                <p> Located in Cambridge, we invite you to come to our bakery to 
+                    try out our pastries, or just come by and say hi! 
+                    <br /><br />Check out our location <a href="./contact.html">here</a>.</p>
+            </div>
+        </div>
+        <div class="image">
+            <img src="./media/about/img4.jpg">
+        </div>
+    </div>
 </body>
 
 </html>
