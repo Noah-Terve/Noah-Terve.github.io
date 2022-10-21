@@ -2,24 +2,21 @@
 <html>
 <head>
     <title>Hain's Bakery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous">
+    </script>
     <link rel="stylesheet" type = "text/css" href="./style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style type="text/css">
-        :root {
-            /* Temporary Color Pallette */
-            --muave: #7E5A6E;
-            --gray-pink: #A57F88;
-            --light-pink: #D9B8AD;
-            --creme: #F7ECD4;
-        }
 
+    <style type="text/css">
         /* Image Grid Rule */
         .image_grid { background-color: var(--gray-pink); text-align: center; width: 100%;}
         .image_grid * {text-align: center; color: white; width: 100%;}
         .image_grid h2 {text-align: center; color: white; width: 100%; font-size: 4vw;
-                        padding: 1.5vw 0px}
+                        padding: 2vw 0px 0px 0px}
         .image_grid img {width: 20vw; height: 20vw; object-fit: cover;
-                         margin: 0px 25px 25px 25px; border-radius: 10px;
+                         margin: 2vw; border-radius: 10px;
                          /* border: 3.5px solid; border-color: var(--muave); */
                         }
 
@@ -60,7 +57,7 @@
         <table>
             <tr>
                 <td>
-                    <img src="./media/gallery/cake/wedding_cake.jpeg" alt="wedding_cake">   <!-- Source: https://www.brides.com/cherry-blossom-wedding-cakes-5194069 -->
+                    <img src="./media/gallery/cake/wedding_cake.jpeg" alt="wedding_cake" id="cake1">   <!-- Source: https://www.brides.com/cherry-blossom-wedding-cakes-5194069 -->
                     <img src="./media/gallery/cake/fondant_cake_1.jpg" alt="fondant_1">     <!-- Source: https://www.wilton.com/radiant-orchid-3-tiered-fondant-cake/WLPROJ-8105.html -->
                     <img src="./media/gallery/cake/chocolate_cake.jpg" alt="vanilla">       <!-- Source: https://www.foodandwine.com/recipes/moms-chocolate-cake -->
                 </td>
@@ -81,16 +78,16 @@
         <table>
             <tr>
                 <td>
-                    <img src="./media/gallery/pastries/muffins.jpeg" alt="muffins">   <!-- Source: https://www.brides.com/cherry-blossom-wedding-cakes-5194069 -->
-                    <img src="./media/gallery/pastries/cookies.webp" alt="cookies">     <!-- Source: https://veronikaskitchen.com/bakery-style-chocolate-chip-cookies/ -->
-                    <img src="./media/gallery/pastries/cannolis.jpeg" alt="cannolis">       <!-- Source: https://www.thekitchn.com/cannoli-22931930 -->
+                    <img src="./media/gallery/pastries/muffins.jpeg" alt="muffins">                 <!-- Source: https://www.brides.com/cherry-blossom-wedding-cakes-5194069 -->
+                    <img src="./media/gallery/pastries/cookies.webp" alt="cookies">                 <!-- Source: https://veronikaskitchen.com/bakery-style-chocolate-chip-cookies/ -->
+                    <img src="./media/gallery/pastries/cannolis.jpeg" alt="cannolis">               <!-- Source: https://www.thekitchn.com/cannoli-22931930 -->
                 </td>
             </tr>
             <tr>
                 <td>
-                    <img src="./media/gallery/pastries/danishes.jpeg" alt="danishes">         <!-- Source: https://www.foodandwine.com/recipes/yellow-layer-cake-vanilla-frosting -->
-                    <img src="./media/gallery/pastries/french-crullers.jpeg" alt="french-crullers">    <!-- Source: https://ofbatteranddough.com/french-cruller-doughnut-recipe/ -->
-                    <img src="./media/gallery/pastries/scones.jpeg" alt="scones">     <!-- Source: https://sallysbakingaddiction.com/scones-recipe/ -->
+                    <img src="./media/gallery/pastries/danishes.jpeg" alt="danishes">               <!-- Source: https://www.foodandwine.com/recipes/yellow-layer-cake-vanilla-frosting -->
+                    <img src="./media/gallery/pastries/french-crullers.jpeg" alt="french-crullers"> <!-- Source: https://ofbatteranddough.com/french-cruller-doughnut-recipe/ -->
+                    <img src="./media/gallery/pastries/scones.jpeg" alt="scones">                   <!-- Source: https://sallysbakingaddiction.com/scones-recipe/ -->
                 </td>
             </tr>
         </table>
@@ -128,6 +125,10 @@
         
     </footer>
 
+    <script>
+        console.log($('#cake1'))
+        
+    </script>
 
 </body>
 
