@@ -76,7 +76,7 @@ header {
 }
 
 .nav_bar_ul li {
-    font-size: 1.5vw;
+    font-size: 25px;
     padding: 0.75vw;
 }
 
@@ -86,8 +86,8 @@ header {
 
 .nav_bar_ul li a:hover {
     font-weight: bold;
-    text-decoration: underline overline var(--taupe);
 }
+
 
 /* Page Heading */
 /* Image Source: https://www.istockphoto.com/photo/preparation-of-pastry-woman-rolling-dough-top-view-gm1154068600-313663947 */
@@ -252,3 +252,34 @@ footer {
     box-sizing: border-box;
 }
 
+@media (max-width: 1050px) {
+    .nav_bar_ul li {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 740px) {
+    .nav_bar_ul li {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 580px) {
+    .nav_bar_ul li {
+        font-size: 10px;
+    }
+    header {
+        height: 50px;
+    }
+    .logo img {
+        height: 25px;
+    }
+
+    .bakery_name {
+        font-size: 10px;
+    }
+
+    .backdrop {
+        padding-top: 50px;
+    }
+}
