@@ -36,7 +36,7 @@
 
     .formcontainer {
         background-color: var(--creme);
-        height: 450px;
+        height: auto;
         padding: 20px;
     }
 
@@ -94,11 +94,13 @@
 
     #submitNewsletter {
         width: 150px;
+        margin-bottom: 1vw;
     }
 
     .error {
         color: var(--muave);
     }
+
 
 </style>
 
@@ -172,12 +174,14 @@
 
     <div class="newsletter" id="newsletter">
         <h2> Join Our Newsletter! </h2>
-        <br>
         <form>
-            <input type="email" placeholder="Enter your Email Address" />
+            <input type="email" placeholder="Enter your Email Address" id="email_enter"/>
             <input class="button" id="submitNewsletter" type="button" value="Subscribe!" onclick="newsletterSubscribe()">
+            <div class="error" id="emailError2">&nbsp;</div><br /><br />
         </form>
     </div>
+
+    <!-- <footer></footer> -->
 
 </body>
 

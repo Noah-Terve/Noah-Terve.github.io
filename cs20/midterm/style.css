@@ -76,7 +76,8 @@ header {
 }
 
 .nav_bar_ul li {
-    padding: 5px;
+    font-size: 1.5vw;
+    padding: 0.75vw;
 }
 
 .nav_bar_ul li a {
@@ -84,8 +85,8 @@ header {
 }
 
 .nav_bar_ul li a:hover {
-    background-color: var(--taupe);
-    color: var(--creme);
+    font-weight: bold;
+    text-decoration: underline overline var(--taupe);
 }
 
 /* Page Heading */
@@ -114,6 +115,7 @@ h1 {
 }
 
 h2 {
+    padding: 2vw 0vw;
     font-size: 4vw;
     text-align: center;
 }

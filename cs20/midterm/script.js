@@ -13,7 +13,6 @@ function image_hover_listener() {
 
 function blur_and_display(item) {
   item.css({ filter: "blur(4px)" });
-  // item.blur()
 }
 
 image_hover_listener();
@@ -21,7 +20,14 @@ image_hover_listener();
 /* displays message when user subscribes to newsletter */
 function newsletterSubscribe() {
   content =  document.getElementById("newsletter");
-  content.innerHTML = "<br /><br /><h2> Thank you for subscribing! </h2>";
+  email_enter = document.getElementById("email_enter");
+
+  if (email_enter.value == "")
+    _ = error("emailError2", "Email is required");
+  else {
+    clearError("emailError2");
+    content.innerHTML = "<h2> Thank you for subscribing! </h2>";
+  }
 }
 
 /* verifies all inputs on contact form. displays errors if they exist, if not 
@@ -55,7 +61,8 @@ function submitMessage() {
   if (errors > 0) return false;
   else { /* clear form and display form submitted message */
     document.getElementById("contact").reset(); 
-    document.getElementById("formsubmitted").innerHTML = "<h2>Your message has been submitted, <br> we will get back to you soon!</h2>";
+    document.getElementById("formsubmitted").innerHTML =
+      "<h3><em>Your message has been submitted, <br> we will get back to you soon!</em></h3>";
   }
 }
 
