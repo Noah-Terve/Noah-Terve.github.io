@@ -209,10 +209,6 @@ h1,h2,h3 {
     MARGIN-BOTTOM: 100px;
 }
 
-table, tr, td {
-    border: 1px solid;
-}
-
 h4 {
     text-align: center;
     font-size: 7vw;
