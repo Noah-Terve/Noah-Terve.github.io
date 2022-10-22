@@ -2,8 +2,105 @@
 <html>
 <head>
     <title>Hain's Bakery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="script.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type = "text/css" href="./style.css">
 </head>
+
+<style>
+    .text_block {
+        padding: 0px 30px 0px 30px;
+        height: 300px;
+        align-items: center;
+    }
+
+    /* google map styling */
+    iframe {
+        display: block;
+        height: 200px;
+        width: 400px;
+        border: 0;
+    }
+
+    .newsletter {
+        background-color: var(--creme);
+        height: 100px;
+        padding: 20px;
+        display: block;
+        text-align: center;
+    }
+
+    .formcontainer {
+        background-color: var(--creme);
+        height: 450px;
+        padding: 20px;
+    }
+
+    .form {
+        display: flex;
+        justify-content: center;
+    }
+
+    .formcol {
+        margin: 20px;
+    }
+
+    input, textarea {
+        background: none;
+        font-family: inherit;
+        font-size: 100%;
+        padding: 15px;
+        border: 2px solid var(--taupe);
+        box-sizing: border-box;
+        color: var(--taupe);
+        width: 250px;
+    }
+
+    textarea {
+        height: 280px;
+        resize: none;
+    }
+
+    select {
+        appearance: none;
+        background: transparent;
+        cursor: pointer;
+        font-family: inherit;
+        border: 2px solid var(--taupe);
+        padding: 15px;
+        width: 250px;
+        font-size: 100%;
+    }
+
+    .button {
+        background: var(--taupe) !important;
+        color: var(--creme) !important;
+        cursor: pointer;
+    }
+
+    .button:hover {
+        background: var(--muave) !important;
+    }
+
+    #submit {
+        display: block;
+        margin: 0 auto;
+        width: 540px;
+    }
+
+    #submitNewsletter {
+        width: 150px;
+    }
+
+    .error {
+        color: var(--muave);
+    }
+
+</style>
 
 <body>
     <header>
@@ -29,6 +126,57 @@
     
     <div class="backdrop">
         <h1>Contact us</h1>
+    </div>
+
+    <div class="formcontainer">
+        <form name="contact" id="contact">
+            <div class="form">   
+                <div class="formcol">
+                    <input id="name" type="text" placeholder="Name" />
+                    <div class="error" id="nameError">&nbsp;</div><br />
+
+                    <input id="email" type="email" placeholder="Email" />
+                    <div class="error" id="emailError">&nbsp;</div><br />
+
+                    <input id="phone" type="text" placeholder="Phone Number" />
+                    <div class="error" id="phoneError">&nbsp;</div><br />
+
+                    <select id="reason">
+                        <option value selected disabled hidden>Contact Reason</option>
+                        <option>Catering</option>
+                        <option>Order</option>
+                        <option>Job interest</option>
+                        <option>Other inquiries</option>
+                    </select>
+                    <div class="error" id="reasonError">&nbsp;</div>
+
+                </div>
+
+                <div class="formcol">
+                    <textarea form="contact" id="message" placeholder="Message"></textarea>
+                    <div class="error" id="messageError">&nbsp;</div>
+                </div>
+
+            </div>
+
+            <input class="button" id="submit" type="button" value="Submit!" onclick="submitMessage()">
+        </form><br />
+
+        <div id="formsubmitted">&nbsp;</div>
+    </div>
+
+    <div class="text_block">
+        <h2> Our Location </h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2944.5090829912065!2d-71.09548691987904!3d42.43818327928364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e373feb62faa49%3A0x5ee7ef722b32f062!2s1%20Leighton%20St%2C%20Medford%2C%20MA%2002155!5e0!3m2!1sen!2sus!4v1666374643690!5m2!1sen!2sus" ></iframe>
+    </div>
+
+    <div class="newsletter" id="newsletter">
+        <h2> Join Our Newsletter! </h2>
+        <br>
+        <form>
+            <input type="email" placeholder="Enter your Email Address" />
+            <input class="button" id="submitNewsletter" type="button" value="Subscribe!" onclick="newsletterSubscribe()">
+        </form>
     </div>
 
 </body>

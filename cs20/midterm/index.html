@@ -5,41 +5,52 @@
     <title>Hain's Bakery</title>
     <link rel="stylesheet" type = "text/css" href="./style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous">
+    </script>
 
     <style>
 
         /* Heading Rules */
         .multi-drop { line-height: 5vw; }
-        .multi-drop h1 { padding: 4.50vw 0px 0px 0px }
-        .multi-drop h2 { padding: 1.5vw 0px 0px 0px }
+        .multi-drop h1 { padding: 2.50vw 0px 0px 0px; font-size: 5vw; }
+        .multi-drop h2 { font-size: 4vw; }
 
-        h1 {
-            text-align: center;
-            font-size: 5vw;
-        }
+        #gallery1 {background-color: var(--gray-pink);}
+        #gallery2 {background-color: var(--muave);}
 
-        h2 {
-            font-size: 4vw;
-        }
-        .smaller_goods_gallery,.larger_goods_gallery {
-            padding: 1vw;
-            text-align: center;
-        }
+        .gallery { text-align: center; width: 100%;}
+        .gallery * {text-align: center; color: #ffffff; width: 100%;}
+        .gallery h2 {text-align: center; color: #ffffff; width: 100%; font-size: 2vw;
+                        padding: 20px 0px}
+        
+        #gallery1 a:hover { background-color: #ffffff; color: var(--gray-pink);}
+        #gallery2 a:hover { background-color: #ffffff; color: var(--muave);}
 
-        .gallery_text {
-            font-size: 2vw;
-        }
+        #gallery1 img {width: 15vw; height: 15vw; object-fit: cover;
+                         margin: 0vw 1vw 1vw 1vw; border: 10px;
+                         border-color: white; border-radius: 20px; border-width: 10px; border-image-width: 10px;}
+        
+        #gallery2 img {width: 20vw; height: 20vw; object-fit: cover;
+                         margin: 0vw 1vw 1vw 1vw; border: 10px;
+                         border-color: white; border-radius: 20px; border-width: 10px; border-image-width: 10px;}
 
         .order_ahead {
+            padding: 1vw;
             text-align: center;
             font-size: 2vw;
         }
 
         .contact_us {
+            padding: 1vw;
             text-align: center;
             font-size: 2vw;
         }
-
+        
+        #pre_footer_services {
+            height: 17vw;
+        }
     </style>
 
 </head>
@@ -73,38 +84,110 @@
         </div>
     </div>
 
-    <div class="smaller_goods_gallery">
-        <div class="gallery_text">
-            Baked goods made fresh daily
-        </div>
-        <div class="gallery">
-
-        </div>
+    <div class="gallery" id="gallery1">
+        <h2>
+            Head to <a href="./gallery.html">our gallery</a> to see our creations on display
+        </h2>
+        <table>
+            <tr>
+                <td>
+                    <img src="" class="pastry" id="pastry0">
+                    <img src="" class="pastry" id="pastry1">
+                    <img src="" class="pastry" id="pastry2">
+                    <img src="" class="pastry" id="pastry3"> 
+                </td>
+            </tr>
+        </table>
     </div>
     
-    <div class="larger_goods_gallery">
-        <div class="gallery_text">
-            Order from us for your special events
-        </div>
-        <div class="gallery">
-
-        </div>
+    <div class="gallery" id="gallery2">
+        <h2>
+            <a href="./contact.html">Order from us</a> for your special events
+        </h2>
+        <table>
+            <tr>
+                <td>
+                    <img src="" class="cake" id="cake0">
+                    <img src="" class="cake" id="cake1">
+                    <img src="" class="cake" id="cake2">
+                </td>
+            </tr>
+        </table>
     </div>
 
-    <div class="order_ahead">
-        <div>
-            Order ahead to get stuff from us and make sure you get it (will be changed.. its 11:30pm) <a href="./contact.html">Get in touch</a>
-        </div>
-    </div>
-
-    <div class="contact_us">
-        <div>
-            say you should contact us
-        </div>
+    <div class="text_block" id="pre_footer_services">
+        <h3>
+            We are here to provide you the best connection between you and your baked goodies.
+        </h3>
+        <p> 
+            You can see our <a href="./mission.html">mission statement</a> and read more <a href="./about.html">about us.</a> <br />
+            Check out our <a href="./contact.html">menu</a> to see everything we offer or swing by the store to see what we have on hand!
+        </p>
     </div>
 
     <footer>
     </footer>
+
+    <script>
+        // making the images rotate through
+        gallery1 = ["./media/gallery/pastries/muffins.jpeg", "./media/gallery/pastries/cookies.webp", "./media/gallery/bread/classic.webp", "./media/gallery/bread/sourdough.jpeg", 
+                    "./media/gallery/bread/brioche.jpeg", "./media/gallery/pastries/cannolis.jpeg", "./media/gallery/pastries/danishes.jpeg", "./media/gallery/bread/baguette.jpeg",
+                    "./media/gallery/pastries/french-crullers.jpeg", "./media/gallery/bread/croissants.webp", "./media/gallery/pastries/scones.jpeg", "./media/gallery/bread/ciabatta.jpeg"]
+        
+        gallery2 = ["./media/gallery/cake/wedding_cake.jpeg", "./media/gallery/cake/vanilla_cake_2.jpg", "./media/gallery/cake/chocolate_cake.jpg", "./media/gallery/cake/fondant_cake_1.jpg",
+                    "./media/gallery/cake/fondant_cake_2.jpg", "./media/gallery/cake/chocolate_cake_2.jpg", "./media/gallery/cake/vanilla_cake.jpg", "./media/gallery/cake/fondant_cake_3.jpeg"]
+        
+        pastry = document.getElementsByClassName("pastry")
+        cake = document.getElementsByClassName("cake")
+
+        current_pastry = 0
+        gallery1_position = 0
+
+        current_cake = 0
+        gallery2_position = 0
+
+        fade_time = 1200
+
+        // set pastries
+        for (i = 0; i < pastry.length; i++) {
+            pastry[i].setAttribute("src", gallery1[current_pastry])
+            current_pastry = (current_pastry + 1) % gallery1.length
+        }
+
+        // set cakes
+        for (i = 0; i < cake.length; i++) {
+            cake[i].setAttribute("src", gallery2[current_cake])
+            current_cake = (current_cake + 1) % gallery2.length
+        }
+
+        function update_image(update_pastry) {
+            if (update_pastry) {
+                $("#pastry" + gallery1_position).fadeOut(fade_time)
+                setTimeout(function(){
+                    pastry[gallery1_position].setAttribute("src", gallery1[current_pastry])
+                    $("#pastry" + gallery1_position).fadeIn(fade_time)
+                    gallery1_position = (gallery1_position + 1) % pastry.length
+                    current_pastry = (current_pastry + 1) % gallery1.length
+                },fade_time - 100)
+            }
+            else {
+                $("#cake" + gallery2_position).fadeOut(fade_time)
+                setTimeout(function(){
+                    cake[gallery2_position].setAttribute("src", gallery2[current_cake])
+                    $("#cake" + gallery2_position).fadeIn(fade_time)
+                    gallery2_position = (gallery2_position + 1) % cake.length
+                    current_cake = (current_cake + 1) % gallery2.length
+                },fade_time - 100)
+            }
+        }
+
+        // update the pastry image every 4 seconds
+        setInterval(update_image, 4000, true)
+
+        // udpate the cake image every 5 seconds
+        setInterval(update_image, 5000, false)
+
+    </script>
 </body>
 
 </html>
