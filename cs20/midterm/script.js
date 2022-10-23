@@ -26,7 +26,8 @@ function newsletterSubscribe() {
     _ = error("emailError2", "Email is required");
   else {
     clearError("emailError2");
-    content.innerHTML = "<h2> Thank you for subscribing! </h2>";
+    content.innerHTML =
+      "<h2> Thank you for subscribing! </h2><br/><p>&copy; Hain's Bakery 2020</p><br/>";
   }
 }
 

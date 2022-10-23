@@ -286,3 +286,8 @@ footer {
         padding-top: 50px;
     }
 }
+
+footer p,#newsletter p {
+    text-align: center;
+    width: 100%;
+}
