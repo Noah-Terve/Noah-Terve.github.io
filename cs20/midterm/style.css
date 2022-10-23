@@ -106,12 +106,14 @@ header {
 
 /* Heading Rules */
 h1 {
-    text-align: center;
+    /* text-align: center; */
     font-size: 7vw;
-
-    /* Adding Stroke to Make Text More Readable --> Didn't Like It */
-    /* -webkit-text-stroke-width: 0.1vw;
-    -webkit-text-stroke-color: var(--creme); */
+    padding: 0vw 2vw;
+    width: fit-content;
+    margin: 7.5vw auto;
+    line-height: 10vw;
+    background-color: rgba(255, 255, 255, 0.125);
+    border-radius: 2vw;
 }
 
 h2 {
