@@ -15,8 +15,6 @@ function blur_and_display(item) {
   item.css({ filter: "blur(4px)" });
 }
 
-image_hover_listener();
-
 /* displays message when user subscribes to newsletter */
 function newsletterSubscribe() {
   content =  document.getElementById("newsletter");
