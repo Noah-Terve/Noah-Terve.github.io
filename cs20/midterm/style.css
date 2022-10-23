@@ -239,7 +239,8 @@ h4 {
 }
 
 .gridInfo {
-    padding: 2vw;
+    padding-top: 2vw;
+    padding-bottom: 2vw;
 }
 
 /* footer */
