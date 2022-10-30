@@ -74,12 +74,13 @@
 </head>
 <body>
     <form id="form">
-        Get a random recipie:
+        Click a button to get a random recipie:
         <input type="button" value="with XMLHttpRequest" onclick="requestdata()">
         <input type="button" value="with fetch" onclick="fetchdata()">
     </form>
     <div id="waiting_for_data" style="display:none">Waiting for data...</div>
     <div id="data"></div>
+    <hr>
     <div id="info">
         <ul>
             <li>The API: I selected spoonacular, which is basically a database of recipies that can be queried to get just about whatever you desire.
