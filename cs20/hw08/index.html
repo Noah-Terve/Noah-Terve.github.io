@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API ~Fun~</title>
+    <script>
+        function requestdata() {
+            document.getElementById("form").style = "display:none"
+            document.getElementById("waiting_for_data").style = "display:revert"
+
+            reqObj = new XMLHttpRequest();
+            if (!reqObj) {
+                alert("Unable to create HTTPRequest object");
+                return;
+            }
+            reqObj.open("GET", "https://api.spoonacular.com/recipes/random?number=1&apiKey=bd18dc08d7954c4cae19b14f4f47eda8", true);
+            reqObj.onreadystatechange = function () {
+                if (reqObj.readyState == 4 && reqObj.status == 200) {
+                    result = JSON.parse(reqObj.responseText);
+                    console.log(JSON.stringify(result))
+                    html_string = "<h1>" + JSON.stringify(result.recipes[0].title).substring(1, JSON.stringify(result.recipes[0].title).length - 1)
+                                + "</h1><div>Source: " + JSON.stringify(result.recipes[0].sourceName).substring(1, JSON.stringify(result.recipes[0].sourceName).length - 1)
+                                + "<br />Ingredients: <ul>"
+                    for (i = 0; i < result.recipes[0].extendedIngredients.length; i++) {
+                        html_string += "<li>" + JSON.stringify(result.recipes[0].extendedIngredients[i].original).substring(1, JSON.stringify(result.recipes[0].extendedIngredients[i].original).length - 1) + "</li>"
+                    }    
+                    html_string += "</ul>" + JSON.stringify(result.recipes[0].instructions).substring(1, JSON.stringify(result.recipes[0].instructions).length - 1) + "</div>"
+                    document.getElementById("data").innerHTML = html_string
+                    document.getElementById("waiting_for_data").style = "display:none"
+                    document.getElementById("form").style = "display:revert"
+                }
+                else if (reqObj.readyState == 4 && reqObj.status != 200) {
+                    document.getElementById("data").innerHTML = "Something is wrong!  Check the logs to see where this went off the rails";
+                    document.getElementById("waiting_for_data").style = "display:none"
+                    document.getElementById("form").style = "display:revert"
+                }
+
+                else if (reqObj.readyState == 3) {
+                    document.getElementById("data").innerHTML = "Too soon!  Try again";
+                    document.getElementById("waiting_for_data").style = "display:none"
+                    document.getElementById("form").style = "display:revert"
+                }
+            };
+            reqObj.send();
+        }
+
+        function fetchdata(){
+            document.getElementById("form").style = "display:none"
+            document.getElementById("waiting_for_data").style = "display:revert"
+
+            res = fetch("https://api.spoonacular.com/recipes/random?number=1&apiKey=bd18dc08d7954c4cae19b14f4f47eda8")
+            .then (res => res.text())
+            .then (data => {
+                result = JSON.parse(data);
+                console.log(JSON.stringify(result))
+                html_string = "<h1>" + JSON.stringify(result.recipes[0].title).substring(1, JSON.stringify(result.recipes[0].title).length - 1)
+                            + "</h1><div>Source: " + JSON.stringify(result.recipes[0].sourceName).substring(1, JSON.stringify(result.recipes[0].sourceName).length - 1)
+                            + "<br />Ingredients: <ul>"
+                for (i = 0; i < result.recipes[0].extendedIngredients.length; i++) {
+                    html_string += "<li>" + JSON.stringify(result.recipes[0].extendedIngredients[i].original).substring(1, JSON.stringify(result.recipes[0].extendedIngredients[i].original).length - 1) + "</li>"
+                }    
+                html_string += "</ul>" + JSON.stringify(result.recipes[0].instructions).substring(1, JSON.stringify(result.recipes[0].instructions).length - 1) + "</div>"
+                document.getElementById("data").innerHTML = html_string
+                document.getElementById("waiting_for_data").style = "display:none"
+                document.getElementById("form").style = "display:revert"
+            })
+            .catch (error => {
+                console.log(error)
+                document.getElementById("waiting_for_data").style = "display:none"
+                document.getElementById("form").style = "display:revert"
+            })
+        }
+
+    </script>
+</head>
+<body>
+    <form id="form">
+        Get a random recipie:
+        <input type="button" value="with XMLHttpRequest" onclick="requestdata()">
+        <input type="button" value="with fetch" onclick="fetchdata()">
+    </form>
+    <div id="waiting_for_data" style="display:none">Waiting for data...</div>
+    <div id="data"></div>
+    <div id="info">
+        <ul>
+            <li>The API: I selected spoonacular, which is basically a database of recipies that can be queried to get just about whatever you desire.
+                They have great documentation on all of the things you can do with the API, and explain a bunch of different parameters you can use to access different data.</li>
+            <li>Found at: Google, I looked up good free food APIs and it came up as one of them, their website is <a href="https://spoonacular.com/food-api"></a></li>
+            <li>Options used: I just used a very simple set of options of looking for a random recipie, and only looking for 1, however, I played around with many
+                other fun things like getting multiple recipies, and asking for only specific types of meals like lunch or dinner, but I wanted to have the buttons
+                and the ability to have someone just get a random recipie.</li>
+            <li>Applications: You can use spoonacular for a bunch of different things, for 1, if you have a set of recipies you really like you can find them by name, so you can just store
+                a list of recpies you like and get the info about them directly whenever you like. This can be applied via an online cookbook to basically use this as the database behind it (you can upload recipies as well).
+                Another option for what you can do with it is it can be used in a website that finds people new recipies for a specific meal, so maybe they are looking for new ideas
+                for what to make for dinner and you can just go and find them dinner recipies for them to check out, or any other meal as well.
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
