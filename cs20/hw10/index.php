@@ -157,8 +157,6 @@
         // checks if the time is not within 15 minutes of opening or closing,
         // returns false if the time is not within the range
         function time_check() {
-            // TODO: remove this, its for testing purposes
-            return true
             // making all new dates to ensure that the days are all the same, and
             // then comparison can be done on the hours and minutes.
             current_time = new Date()
