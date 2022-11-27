@@ -11,12 +11,11 @@
 
     <style>
 
-
         /* Title Rules */
         .backdrop {
-            background-image: url("./media/header/home.jpg");
+            background-image: url("./media/header/recipes.jpg");
         }
-        
+
         h1 {
             font-size: 7vw;
             padding: 0vw 2vw;
@@ -32,9 +31,17 @@
         .multi-drop h2 { font-size: 4vw; }
 
         
-        #pre_footer_services {
-            height: 17vw;
+        #find_recipe {
+            height: auto;
         }
+        
+        h3 {margin: 30px auto}
+        #find_recipe li {list-style-position: inside;}
+        #find_recipe table {padding: 0px}
+        table {margin: 30px 200px}
+        
+        #recipe_buttons {margin-bottom: 30px;}
+
     </style>
 
 </head>
@@ -59,15 +66,36 @@
 
     <div class="backdrop">
         <div class="multi-drop">
-            <h1>Welcome to Hain's Bakery</h1>
-            <!-- <h2>Top-Notch Recipes at Your Fingertips</h2> -->
+            <h1>Recipes</h1>
         </div>
     </div>
 
-    <div class="text_block" id="pre_footer_services">
+    <div class="text_block" id="find_recipe">
         <h3>
-            Text
+            Find a New Recipe!
         </h3>
+
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Ingredients</th>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td>
+                    <ul>
+                        <li>Item 1</li>
+                        <li>Item 2</li>
+                        <li>Item 3</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+
+        <div id="recipe_buttons">
+            <button type="button" id="generate_recipe" style="width: 300px">Generate New Recipe</button>
+            <button type="button" id="order_now" style="width: 200px">Order Now</button>
+        </div>
     </div>
 
     <!-- <footer>

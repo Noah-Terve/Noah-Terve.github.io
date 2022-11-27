@@ -1,11 +1,68 @@
+<!DOCTYPE html>
 <html>
 <head>
     <title>Final Project</title>
     <link rel="stylesheet" type = "text/css" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous">
+    </script>
+
+    <style>
+
+        /* Title Rules */
+        .backdrop {
+            background-image: url("./media/header/orders.jpg");
+        }
+
+        h1 {
+            font-size: 7vw;
+            padding: 0vw 2vw;
+            width: fit-content;
+            margin: 0vw auto 0vw auto;
+            line-height: 18vw;
+            background: none;
+        }
+
+        /* Heading Rules */
+        .multi-drop { line-height: 5vw; }
+        .multi-drop h1 { padding: 0vw 0px 0px 0px; font-size: 5vw; }
+        .multi-drop h2 { font-size: 4vw; }
+
+    </style>
+
 </head>
 
 <body>
-    unfinished page
+    <header>
+        <div class="nav_bar">
+            <div class="name_logo">
+                <a href="./index.html" class="logo"><img src="./media/header/logo.jpg" height="50px"></a>
+                <div class="bakery_name">
+                    Hain's Bakery
+                </div>
+            </div>
+
+            <ul class="nav_bar_ul">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./recipes.html">Recipes</a></li>
+                <li><a href="./orders.html">My Orders</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="backdrop">
+        <div class="multi-drop">
+            <h1>My Orders</h1>
+        </div>
+    </div>
+
+
+    <!-- <footer>
+        <p>&copy; Hain's Bakery 2020</p>
+    </footer> -->
+
 </body>
 
 </html>
