@@ -8,6 +8,7 @@
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
             crossorigin="anonymous">
     </script>
+    <script type="text/javascript" src="script.js"></script>
 
     <style>
 
@@ -41,6 +42,10 @@
         table {margin: 30px 200px}
         
         #recipe_buttons {margin-bottom: 30px;}
+
+        li {font-size: 20px; text-align: center;}
+
+        td {max-width: 600px; width: 600px; }
 
     </style>
 
@@ -77,23 +82,19 @@
 
         <table>
             <tr>
-                <th>Title</th>
+                <th id="recipe_title">Title</th>
                 <th>Ingredients</th>
             </tr>
             <tr>
-                <td>Description</td>
+                <td id="recipe_description">Description</td>
                 <td>
-                    <ul>
-                        <li>Item 1</li>
-                        <li>Item 2</li>
-                        <li>Item 3</li>
-                    </ul>
+                    <div id="recipe_ingredients"><em>Recipe Not Yet Generated</em></div>
                 </td>
             </tr>
         </table>
 
         <div id="recipe_buttons">
-            <button type="button" id="generate_recipe" style="width: 300px">Generate New Recipe</button>
+            <button type="button" id="generate_recipe" style="width: 300px" onclick="fetchdata()">Generate New Recipe</button>
             <button type="button" id="order_now" style="width: 200px">Order Now</button>
         </div>
     </div>

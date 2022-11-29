@@ -212,6 +212,8 @@ footer p,#newsletter p {
     width: 100%;
 }
 
+table {align-self: center;}
+
 table * {font-size: 30px;}
 
 button {
