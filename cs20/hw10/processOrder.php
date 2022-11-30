@@ -14,10 +14,10 @@
 </head>
 <body>
     <?
-        $servername = "localhost";
-        $username = "uko051ggklabi";
-        $password = "two_owls_pass";
-        $dbname = "dbytc9cg3z4rtp";
+        $servername = "";
+        $username = "";
+        $password = "";
+        $dbname = "";
     ?>
 
     <h1>Two Owls Cafe</h1>
