@@ -1,6 +1,6 @@
 var fs = require('fs');
 var MongoClient = require('mongodb').MongoClient;
-var mongo_url = "mongodb+srv://terve:terve@cluster0.vluoaxo.mongodb.net/?retryWrites=true&w=majority";
+var mongo_url = "";
 const client = new MongoClient(mongo_url);
 var data_vals_file = "./companies.csv";
 
