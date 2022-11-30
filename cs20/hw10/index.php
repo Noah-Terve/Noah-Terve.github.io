@@ -23,10 +23,10 @@
 
 <body>
     <?
-        $servername = "localhost";
-        $username = "uko051ggklabi";
-        $password = "two_owls_pass";
-        $dbname = "dbytc9cg3z4rtp";    
+        $servername = "";
+        $username = "";
+        $password = "";
+        $dbname = "";    
 
         // makes a select element with the given range
         function makeSelect($name, $minRange, $maxRange){
