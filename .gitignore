@@ -1,0 +1,5 @@
+.DS_Store
+index.html
+*.sh
+.vscode
+sftp.json

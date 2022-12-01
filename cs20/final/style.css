@@ -1,6 +1,7 @@
 /* Used to Define Global Fonts + Color Pallette */
 :root {
     /* Color Pallette */
+    --dark: #1f0d17;
     --taupe: #3f2d37;
     --muave: #7E5A6E;
     --gray-pink: #A57F88;
@@ -111,26 +112,26 @@ h1 {
     margin: 7.5vw auto;
     line-height: 10vw;
     border-radius: 2vw;
+    color: var(--dark);
 }
 
 h2 {
     padding: 2vw 0vw;
     font-size: 4vw;
     text-align: center;
+    color: var(--taupe);
 }
 
 h3 {
     text-align: center;
     font-size: 3.5vw;
-}
-
-h1,h2,h3 {
     color: var(--taupe);
 }
 
 .text_block {
     background-color: var(--taupe);
-    height: 10vw;
+    height: auto;
+    padding: 1vw;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
