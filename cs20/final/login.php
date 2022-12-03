@@ -14,7 +14,7 @@
 
         /* Title Rules */
         .backdrop {
-            background-image: url("./media/header/recipes.jpg");
+            background-image: url("./media/header/orders.jpg");
         }
 
         h1 {
@@ -30,22 +30,6 @@
         .multi-drop { line-height: 5vw; }
         .multi-drop h1 { padding: 0vw 0px 0px 0px; font-size: 5vw; }
         .multi-drop h2 { font-size: 4vw; }
-
-        
-        #find_recipe {
-            height: auto;
-        }
-        
-        h3 {margin: 30px auto}
-        #find_recipe li {list-style-position: inside;}
-        #find_recipe table {padding: 0px}
-        table {margin: 30px 200px}
-        
-        #recipe_buttons {margin-bottom: 30px;}
-
-        li {font-size: 20px; text-align: center;}
-
-        td {max-width: 600px; width: 600px; }
 
     </style>
 
@@ -72,33 +56,59 @@
 
     <div class="backdrop">
         <div class="multi-drop">
-            <h1>Recipes</h1>
+            <h1>Log in</h1>
         </div>
     </div>
 
-    <div class="text_block" id="find_recipe">
-        <h3>
-            Find a New Recipe!
-        </h3>
+    <?php
+        $username = $_REQUEST["user"];
+        $password = $_REQUEST["pass"];
+        
 
-        <table>
-            <tr>
-                <th id="recipe_title">Title</th>
-                <th>Ingredients</th>
-            </tr>
-            <tr>
-                <td id="recipe_description">Description</td>
-                <td>
-                    <div id="recipe_ingredients"><em>Recipe Not Yet Generated</em></div>
-                </td>
-            </tr>
-        </table>
+        // database info
+        $server = "localhost";
+        $userid = "u0m7cp7iogobo";
+        $pw = "finalprojectpass";
+        $db = "dbsikj01q12d1d";
 
-        <div id="recipe_buttons">
-            <button type="button" id="generate_recipe" style="width: 300px" onclick="fetchdata()">Generate New Recipe</button>
-            <button type="button" id="order_now" style="width: 200px">Order Now</button>
-        </div>
-    </div>
+        // connect to database
+        $conn = new mysqli($server, $userid, $pw, $db);
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        // check if user is in database
+        $sql = "SELECT * FROM users WHERE username='$username'";
+        $result = $conn->query($sql);
+
+        if ($result == NULL) {
+            //add user to DB, create session
+            $sql = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
+            if ($conn->query($sql) === TRUE) {
+                echo "added user/pass to db";
+                session_start();
+                $_SESSION['username'] = $username;
+            } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+        } 
+        else {
+            $user = $result->fetch_all(MYSQLI_ASSOC);
+            $db_pass = $user[0]["password"];
+            if ($db_pass == $password) {
+                echo "password correct";
+                session_start();
+                $_SESSION['username'] = $username;
+            }
+            else {
+                echo "<script> alert('incorrect password'); </script>";
+            }
+        }
+        // close database connection
+        $conn->close();
+
+
+    ?>
 
     <!-- <footer>
         <p>&copy; Hain's Delivery 2020</p>

@@ -14,7 +14,7 @@
 
         /* Title Rules */
         .backdrop {
-            background-image: url("./media/header/recipes.jpg");
+            background-image: url("./media/header/orders.jpg");
         }
 
         h1 {
@@ -30,22 +30,6 @@
         .multi-drop { line-height: 5vw; }
         .multi-drop h1 { padding: 0vw 0px 0px 0px; font-size: 5vw; }
         .multi-drop h2 { font-size: 4vw; }
-
-        
-        #find_recipe {
-            height: auto;
-        }
-        
-        h3 {margin: 30px auto}
-        #find_recipe li {list-style-position: inside;}
-        #find_recipe table {padding: 0px}
-        table {margin: 30px 200px}
-        
-        #recipe_buttons {margin-bottom: 30px;}
-
-        li {font-size: 20px; text-align: center;}
-
-        td {max-width: 600px; width: 600px; }
 
     </style>
 
@@ -72,32 +56,39 @@
 
     <div class="backdrop">
         <div class="multi-drop">
-            <h1>Recipes</h1>
+            <h1>Log in</h1>
         </div>
     </div>
 
-    <div class="text_block" id="find_recipe">
-        <h3>
-            Find a New Recipe!
-        </h3>
+    <script> 
+        function validateLogin() {
+            validLogin = false;
+            var user = document.getElementById("user").value;
+            var pass = document.getElementById("pass").value;
+            if (user == "" || pass == "") {
+                alert("Please enter your first and last name.");
+            } else if (user.length > 20 || pass.length > 40) {
+                alert("username or password is too long. There is a 20/40 character\
+                limit respectively on user/pass");
+            }
+            else {
+                validLogin = true;
+            }
+            if (validLogin) {
+                document.getElementById('login_form').submit();
+            }
+        }
+    </script>
 
-        <table>
-            <tr>
-                <th id="recipe_title">Title</th>
-                <th>Ingredients</th>
-            </tr>
-            <tr>
-                <td id="recipe_description">Description</td>
-                <td>
-                    <div id="recipe_ingredients"><em>Recipe Not Yet Generated</em></div>
-                </td>
-            </tr>
-        </table>
-
-        <div id="recipe_buttons">
-            <button type="button" id="generate_recipe" style="width: 300px" onclick="fetchdata()">Generate New Recipe</button>
-            <button type="button" id="order_now" style="width: 200px">Order Now</button>
-        </div>
+    <div class="form box">
+        <form method="post" name="form" id="login_form" action="login.php">
+            <input type="text" id="user" name="user" placeholder="username">
+            <br>
+            <input type="text" id="pass" name="pass" placeholder="password">
+            <br>
+            <input type="button" value="login" onclick="validateLogin()"/>
+            <br>
+        </form>
     </div>
 
     <!-- <footer>
