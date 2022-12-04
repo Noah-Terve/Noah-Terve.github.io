@@ -14,27 +14,22 @@ function fetchdata(){
     .then (res => res.text())
     .then (data => {
         result = JSON.parse(data);
-        // console.log(JSON.stringify(result))
+        
+        // Fetching Title
         $('#recipe_title').text(result.recipes[0].title);
-        // console.log(result.recipes[0].title)
-        // html_string = "<h1>" + JSON.stringify(result.recipes[0].title).substring(1, JSON.stringify(result.recipes[0].title).length - 1)
-        //             + "</h1><div>Source: " + JSON.stringify(result.recipes[0].sourceName).substring(1, JSON.stringify(result.recipes[0].sourceName).length - 1)
-        //             + "<br />Ingredients: <ul>"
-        // ingreds = $('#recipe_ingredients')
+
+        // Fetching Ingredients
         ingredient_list = "<ul>\n"
         for (i = 0; i < result.recipes[0].extendedIngredients.length; i++) {
             ingredient_list += "\t<li>" + JSON.stringify(result.recipes[0].extendedIngredients[i].original).substring(1, JSON.stringify(result.recipes[0].extendedIngredients[i].original).length - 1) + "</li>\n"
         }    
         ingredient_list += "</ul>\n"
         $('#recipe_ingredients').html(ingredient_list)
-        // html_string += "</ul>" + JSON.stringify(result.recipes[0].instructions).substring(1, JSON.stringify(result.recipes[0].instructions).length - 1) + "</div>"
-        // document.getElementById("recipe_ingredients").innerHTML = html_string
-        // document.getElementById("recipe_title").style = "display:none"
-        // document.getElementById("form").style = "display:revert"
+
+        // Fetching Image
+        $('#recipe_ingredients').html(ingredient_list)
     })
     .catch (error => {
         console.log(error)
-        document.getElementById("recipe_title").style = "display:none"
-        // document.getElementById("form").style = "display:revert"
     })
 }
