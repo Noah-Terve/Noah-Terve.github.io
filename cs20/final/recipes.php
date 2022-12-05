@@ -14,27 +14,6 @@ session_start();
     <script type="text/javascript" src="script.js"></script>
 
     <style>
-
-        /* Title Rules */
-        .backdrop {
-            background-image: url("./media/header/recipes.jpg");
-        }
-
-        h1 {
-            font-size: 7vw;
-            padding: 0vw 2vw;
-            width: fit-content;
-            margin: 0vw auto 0vw auto;
-            line-height: 18vw;
-            background: none;
-        }
-
-        /* Heading Rules */
-        .multi-drop { line-height: 5vw; }
-        .multi-drop h1 { padding: 0vw 0px 0px 0px; font-size: 5vw; }
-        .multi-drop h2 { font-size: 4vw; }
-
-        
         .text_block {
             height: auto;
             margin-bottom: 0px;

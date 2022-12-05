@@ -114,6 +114,7 @@ header {
     background-position: center;
     padding: 0px;
     padding-top: 85px;
+    background-image: url("./media/header/orders.jpg");
 }
 
 /* Heading Rules */
@@ -121,11 +122,19 @@ h1 {
     font-size: 7vw;
     padding: 0vw 2vw;
     width: fit-content;
-    margin: 7.5vw auto;
-    line-height: 10vw;
+    margin: 0vw auto 0vw auto;
+    line-height: 18vw;
     border-radius: 2vw;
     color: var(--dark);
+    background: none;
 }
+
+
+/* Heading Rules */
+.multi-drop { line-height: 5vw; }
+.multi-drop h1 { padding: 0vw 0px 0px 0px; font-size: 5vw; }
+.multi-drop h2 { font-size: 4vw; }
+
 
 h2 {
     padding: 2vw 0vw;
