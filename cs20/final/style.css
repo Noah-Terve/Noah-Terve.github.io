@@ -3,7 +3,11 @@
     /* Color Pallette */
     --dark: #1f0d17;
     --taupe: #3f2d37;
+    --maroon: #4a1833;
+
     --muave: #7E5A6E;
+    --mist: #755165;
+    
     --gray-pink: #A57F88;
     --light-pink: #D9B8AD;
     --creme: #F7ECD4;
@@ -83,11 +87,19 @@ header {
 
 .nav_bar_ul li a {
     color: var(--taupe);
+    text-decoration: none;
 }
 
 .nav_bar_ul li a:hover {
-    font-weight: bold;
+    color: var(--maroon);
+    text-decoration: underline;
 }
+
+/* button:hover {
+  border: solid 2px var(--gray-pink);
+  background-color: rgb(255,255,255, 0);
+  box-shadow: 0 12px 16px 0 rgba(165, 127, 136, 0.24), 0 17px 50px 0 rgba(165, 127, 136, 0.19);
+} */
 
 
 /* Page Heading */
