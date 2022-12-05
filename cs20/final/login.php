@@ -47,6 +47,8 @@ session_start();
         $username = $_REQUEST["user"];
         $password = $_REQUEST["pass"];
 
+        echo("username: " .$username . " password: ".$password);
+
         // If the username is empty, they are coming from another page, because
         // we force them to submit the username with a value from this page. 
         // if they come from another page we shouldn't try to log them in.
