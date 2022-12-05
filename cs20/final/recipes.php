@@ -47,6 +47,7 @@ session_start();
         h3 {margin: 30px auto}
         li {font-size: 20px; text-align: center;}
         td {max-width: 600px; width: 600px; }
+        
 
     </style>
 
@@ -122,6 +123,10 @@ session_start();
             echo "<script> alert('user logged in (huh?)'); </script>";
         }
     ?>
+
+    <script>
+        generate_select()
+    </script>
     <!-- <footer>
         <p>&copy; Hain's Delivery 2020</p>
     </footer> -->
