@@ -47,9 +47,9 @@
 
             <ul class="nav_bar_ul">
                 <li><a href="./index.html">Home</a></li>
-                <li><a href="./recipes.html">Recipes</a></li>
+                <li><a href="./recipes.php">Recipes</a></li>
                 <li><a href="./orders.html">My Orders</a></li>
-                <li> <a href="./login_form.html"> Log In </a></li>
+                <li> <a href="./login.php"> Log In </a></li>
             </ul>
         </div>
     </header>
@@ -61,6 +61,7 @@
     </div>
 
     <?php
+    
         $username = $_REQUEST["user"];
         $password = $_REQUEST["pass"];
         
@@ -85,9 +86,11 @@
             //add user to DB, create session
             $sql = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
             if ($conn->query($sql) === TRUE) {
-                echo "added user/pass to db";
+                echo "added new login, you are now logged in";
                 session_start();
                 $_SESSION['username'] = $username;
+
+                echo "<script>history.back(3)</script>";
             } else {
                 echo "Error: " . $sql . "<br>" . $conn->error;
             }
@@ -96,22 +99,58 @@
             $user = $result->fetch_all(MYSQLI_ASSOC);
             $db_pass = $user[0]["password"];
             if ($db_pass == $password) {
-                echo "password correct";
+                echo "password correct, you are now logged in";
                 session_start();
                 $_SESSION['username'] = $username;
+                
+                echo "<script>history.back(3)</script>";
             }
             else {
-                echo "<script> alert('incorrect password'); </script>";
+                echo "incorrect password. try again";
             }
         }
         // close database connection
         $conn->close();
 
-
+        
     ?>
+
+    <script> 
+        function validateLogin() {
+            validLogin = false;
+            var user = document.getElementById("user").value;
+            var pass = document.getElementById("pass").value;
+            if (user == "" || pass == "") {
+                alert("Please enter your first and last name.");
+            } else if (user.length > 20 || pass.length > 40) {
+                alert("username or password is too long. There is a 20/40 character\
+                limit respectively on user/pass");
+            }
+            else {
+                validLogin = true;
+            }
+            if (validLogin) {
+                document.getElementById('login_form').submit();
+            }
+        }
+    </script>
+
+    <div class="form box">
+        <form method="post" name="form" id="login_form" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+            <input type="text" id="user" name="user" placeholder="username">
+            <br>
+            <input type="text" id="pass" name="pass" placeholder="password">
+            <br>
+            <input type="button" value="login" name="login" onclick="validateLogin()">
+            <br>
+        </form>
+    </div>
+
+    
 
     <!-- <footer>
         <p>&copy; Hain's Delivery 2020</p>
+        test junk here
     </footer> -->
 
 </body>
