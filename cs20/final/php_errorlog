@@ -1,0 +1,14 @@
+[03-Dec-2022 16:27:54 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_all() on bool in /home/customer/www/noaht.sgedu.site/public_html/final/login.php:82
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/noaht.sgedu.site/public_html/final/login.php on line 82
+[03-Dec-2022 16:38:31 UTC] PHP Fatal error:  Uncaught Error: Object of class mysqli_result could not be converted to string in /home/customer/www/noaht.sgedu.site/public_html/final/login.php:82
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/noaht.sgedu.site/public_html/final/login.php on line 82
+[03-Dec-2022 16:39:51 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function alert() in /home/customer/www/noaht.sgedu.site/public_html/final/login.php:100
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/noaht.sgedu.site/public_html/final/login.php on line 100
+[03-Dec-2022 16:42:33 UTC] PHP Parse error:  syntax error, unexpected 'incorrect' (T_STRING), expecting ';' or ',' in /home/customer/www/noaht.sgedu.site/public_html/final/login.php on line 100
+[03-Dec-2022 16:42:41 UTC] PHP Parse error:  syntax error, unexpected 'incorrect' (T_STRING), expecting ';' or ',' in /home/customer/www/noaht.sgedu.site/public_html/final/login.php on line 100

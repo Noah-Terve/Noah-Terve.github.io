@@ -38,12 +38,8 @@
         }
         .text_block li {list-style-position: inside;}
         .text_block table {padding: 0px}
-
-        #random_recipe {background-color: var(--mist);}
-        #random_recipe button {background-color: var(--taupe);}
-        #random_recipe button:hover {
-            box-shadow: 0 12px 16px 0 rgba(31, 13, 23, 0.24), 0 17px 50px 0 rgba(31, 13, 23, 0.19);
-        }
+        
+        #recipe_buttons * {display: inline-block;}
         
         h3 {margin: 30px auto}
         li {font-size: 20px; text-align: center;}
@@ -97,36 +93,10 @@
         </table>
 
         <div id="recipe_buttons">
-            <!-- <button type="button" id="generate_recipe" style="width: 300px" onclick="fetch_random()">Generate New Recipe</button> -->
             <button type="button" id="search" style="width: 300px" onclick="recipe_search()">Recipe Search</button>
-            <button type="button" id="order_now" style="width: 200px">Order Now</button>
-        </div>
-    </div>
-
-    <div class="text_block" id="random_recipe">
-        <h3>
-            Find a New Recipe!
-        </h3>
-
-        <table>
-            <tr>
-                <th id="recipe_title">Title</th>
-                <th>Ingredients</th>
-            </tr>
-            <tr>
-                <td id="recipe_description">Description</td>
-                <td>
-                    <div id="recipe_ingredients"><em>Recipe Not Yet Generated</em></div>
-                </td>
-            </tr>
-        </table>
-
-        <div id="recipe_buttons">
-            <button type="button" id="generate_recipe" style="width: 300px" onclick="fetch_random()">Generate New Recipe</button>
-            <!-- <button type="button" id="search" style="width: 300px" onclick="recipe_search()">Recipe Search</button> -->
             <form method="post" name="order_button">
                 <input type="submit" name="order_submit_button"
-                    class="order_submit_button" id="order_now" value="Order Now" />
+                       class="order_submit_button" id="order_now" value="Order Now" />
             </form>
         </div>
     </div>

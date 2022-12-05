@@ -15,22 +15,28 @@ function fetch_random(){
         // Fetching Title
         $('#recipe_title').text(content.title);
 
-        // Fetching Ingredients
-        ingredient_list = "<ul>\n"
-        for (i = 0; i < content.extendedIngredients.length; i++) {
-            ingredient_list += "\t<li>" + JSON.stringify(content.extendedIngredients[i].original).substring(1, JSON.stringify(result.recipes[0].extendedIngredients[i].original).length - 1) + "</li>\n"
-        }    
-        ingredient_list += "</ul>\n"
-        $('#recipe_ingredients').html(ingredient_list)
+        // Fetching Summary
+        // Segments the Summary String For More Digestable Output
+        summary = segment(content.summary, '.', 4)
+        $('#recipe_summary').html(summary);
 
         // Fetching Image
-        $('#recipe_ingredients').html(ingredient_list)
+        image = "Sorry, No Image Available!"
+        if (content.image != "undefined")
+            image = '<img src="' + content.image + '" alt="' + content.title + '">'
+        $('#recipe_image').html(image)
     })
     .catch (error => {
         console.log(error)
     })
 }
 
+/* recipe_search
+ * Input: N/A
+ * Purpose: Using a fetch request to search for a recipe matching specific
+ *          qualifications
+ * Output: N/A
+ */
 function recipe_search() {
     num_results = 5;
     search_term = generate_search()
@@ -42,6 +48,9 @@ function recipe_search() {
     .then (data => {
         // Parsing Data
         result = JSON.parse(data);
+
+        // TODO: ....this...
+
         // console.log(result)
         // content = result.recipes[0]
 
@@ -86,9 +95,20 @@ function url_search_constructor(search_term, num_results) {
 }
 
 
+/* generate_search
+ * Input: N/A
+ * Purpose: Generates a dictionary that corresponds to a user-inputted recipe
+ *          category search
+ * Output: The dictionary of search terms and values
+ */
 function generate_search() {
+    // TODO:
     // search_term = {}
     search_term = {"query": "pasta", "maxFat": 25} // Dummy For Now
 
     return search_term;
 }
+
+// String Helper Functions!
+get_position = (str, m, i) => str.split(m, i).join(m).length;
+segment = (str, m, i) => str.slice(0, get_position(str, m, i) + 1)
