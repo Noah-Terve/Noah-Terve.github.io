@@ -28,8 +28,10 @@ session_start();
             <ul class="nav_bar_ul">
                 <li><a href="./index.php">Home</a></li>
                 <li><a href="./recipes.php">Recipes</a></li>
-                <li><a href="./orders.php">My Orders</a></li>
-                <li> <a href="./login.php"> Log In </a></li>
+                <?php
+                    if (empty($_SESSION['username'])) echo ("<li><a href=\"./login.php\">Log In</a></li>");
+                    else echo("<li><a href=\"./orders.php\">My Orders</a></li>")
+                ?>
             </ul>
         </div>
     </header>

@@ -45,8 +45,10 @@ session_start();
             <ul class="nav_bar_ul">
                 <li><a href="./index.php">Home</a></li>
                 <li><a href="./recipes.php">Recipes</a></li>
-                <li><a href="./orders.php">My Orders</a></li>
-                <li> <a href="./login.php"> Log In </a></li>
+                <?php
+                    if (empty($_SESSION['username'])) echo ("<li><a href=\"./login.php\">Log In</a></li>");
+                    else echo("<li><a href=\"./orders.php\">My Orders</a></li>")
+                ?>
             </ul>
         </div>
     </header>
@@ -86,11 +88,11 @@ session_start();
 
     <?php
         if(isset($_POST["order_submit_button"])) {
-            echo "<script> alert('button'); </script>";
+
             $_SESSION['url'] = "./recipes.php";
             if (empty($_SESSION['username'])) {
+                //TODO: here is where we should store the info which will be added to their account once they create a log in
                 echo "<script> location.href='./login.php'; </script>";
-                echo "<script> alert('user not logged in'); </script>";
                 exit;
             }
             else {
@@ -99,6 +101,7 @@ session_start();
         }
 
         function orderNow() {
+            //TODO: here we should add the order to the database
             echo "<script> alert('user logged in (huh?)'); </script>";
         }
     ?>

@@ -28,8 +28,10 @@ session_start();
             <ul class="nav_bar_ul">
                 <li><a href="./index.php">Home</a></li>
                 <li><a href="./recipes.php">Recipes</a></li>
-                <li><a href="./orders.php">My Orders</a></li>
-                <li> <a href="./login.php"> Log In </a></li>
+                <?php
+                    if (empty($_SESSION['username'])) echo ("<li><a href=\"./login.php\">Log In</a></li>");
+                    else echo("<li><a href=\"./orders.php\">My Orders</a></li>")
+                ?>
             </ul>
         </div>
     </header>
@@ -44,53 +46,59 @@ session_start();
 
         $username = $_REQUEST["user"];
         $password = $_REQUEST["pass"];
-        
 
-        // database info
-        $server = "localhost";
-        $userid = "u0m7cp7iogobo";
-        $pw = "finalprojectpass";
-        $db = "dbsikj01q12d1d";
-
-        // connect to database
-        $conn = new mysqli($server, $userid, $pw, $db);
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
+        // If the username is empty, they are coming from another page, because
+        // we force them to submit the username with a value from this page. 
+        // if they come from another page we shouldn't try to log them in.
+        if (!empty($_SESSION['username'])) {
+            login_user($username, $password);
         }
 
-        // check if user is in database
-        $sql = "SELECT * FROM users WHERE username='$username'";
-        $result = $conn->query($sql);
-
-        if ($result == NULL) {
-            //add user to DB, create session
-            $sql = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
-            if ($conn->query($sql) === TRUE) {
-                echo "added new login, you are now logged in";
-                $_SESSION['username'] = $username;
-
-                //echo "<script>history.back(3)</script>";
-            } else {
-                echo "Error: " . $sql . "<br>" . $conn->error;
+        function login_user($username, $password){
+            // database info
+            $server = "localhost";
+            $userid = "u0m7cp7iogobo";
+            $pw = "finalprojectpass";
+            $db = "dbsikj01q12d1d";
+            
+            // connect to database
+            $conn = new mysqli($server, $userid, $pw, $db);
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
             }
-        } 
-        else {
-            $user = $result->fetch_all(MYSQLI_ASSOC);
-            $db_pass = $user[0]["password"];
-            if ($db_pass == $password) {
-                echo "password correct, you are now logged in";
-                session_start();
-                $_SESSION['username'] = $username;
-                
-                //echo "<script>history.back(3)</script>";
-            }
+
+            // check if user is in database
+            $sql = "SELECT * FROM users WHERE username='$username'";
+            $result = $conn->query($sql);
+
+            if ($result == NULL) {
+                //add user to DB, create session
+                $sql = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
+                if ($conn->query($sql) === TRUE) {
+                    echo "added new login, you are now logged in";
+                    $_SESSION['username'] = $username;
+
+                    //echo "<script>history.back(3)</script>";
+                } else {
+                    echo "Error: " . $sql . "<br>" . $conn->error;
+                }
+            } 
             else {
-                echo "incorrect password. try again";
+                $user = $result->fetch_all(MYSQLI_ASSOC);
+                $db_pass = $user[0]["password"];
+                if ($db_pass == $password) {
+                    echo "password correct, you are now logged in";
+                    $_SESSION['username'] = $username;
+                    
+                    //echo "<script>history.back(3)</script>";
+                }
+                else {
+                    echo "incorrect password. try again";
+                }
             }
+            // close database connection
+            $conn->close();
         }
-        // close database connection
-        $conn->close();
-
     
     ?>
 
