@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,9 +67,9 @@
             </div>
 
             <ul class="nav_bar_ul">
-                <li><a href="./index.html">Home</a></li>
+                <li><a href="./index.php">Home</a></li>
                 <li><a href="./recipes.php">Recipes</a></li>
-                <li><a href="./orders.html">My Orders</a></li>
+                <li><a href="./orders.php">My Orders</a></li>
                 <li> <a href="./login.php"> Log In </a></li>
             </ul>
         </div>

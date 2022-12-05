@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,9 +63,9 @@
             </div>
 
             <ul class="nav_bar_ul">
-                <li><a href="./index.html">Home</a></li>
+                <li><a href="./index.php">Home</a></li>
                 <li><a href="./recipes.php">Recipes</a></li>
-                <li><a href="./orders.html">My Orders</a></li>
+                <li><a href="./orders.php">My Orders</a></li>
                 <li> <a href="./login.php"> Log In </a></li>
             </ul>
         </div>
@@ -102,10 +105,8 @@
     </div>
 
     <?php
-
         if(isset($_POST["order_submit_button"])) {
             echo "<script> alert('button'); </script>";
-            session_start();
             $_SESSION['url'] = "./recipes.php";
             if (empty($_SESSION['username'])) {
                 echo "<script> location.href='./login.php'; </script>";

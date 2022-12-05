@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,9 +49,9 @@
             </div>
 
             <ul class="nav_bar_ul">
-                <li><a href="./index.html">Home</a></li>
+                <li><a href="./index.php">Home</a></li>
                 <li><a href="./recipes.php">Recipes</a></li>
-                <li><a href="./orders.html">My Orders</a></li>
+                <li><a href="./orders.php">My Orders</a></li>
                 <li> <a href="./login.php"> Log In </a></li>
             </ul>
         </div>
@@ -87,7 +90,6 @@
             $sql = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
             if ($conn->query($sql) === TRUE) {
                 echo "added new login, you are now logged in";
-                session_start();
                 $_SESSION['username'] = $username;
 
                 //echo "<script>history.back(3)</script>";

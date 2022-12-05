@@ -1,5 +1,7 @@
-.DS_Store
+*.DS_Store
 index.html
 *.sh
 .vscode
 sftp.json
+*.
+*php_errorlog
