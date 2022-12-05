@@ -32,19 +32,21 @@
         .multi-drop h2 { font-size: 4vw; }
 
         
-        #find_recipe {
+        .text_block {
             height: auto;
+            margin-bottom: 0px;
+        }
+        .text_block li {list-style-position: inside;}
+        .text_block table {padding: 0px}
+
+        #random_recipe {background-color: var(--mist);}
+        #random_recipe button {background-color: var(--taupe);}
+        #random_recipe button:hover {
+            box-shadow: 0 12px 16px 0 rgba(31, 13, 23, 0.24), 0 17px 50px 0 rgba(31, 13, 23, 0.19);
         }
         
         h3 {margin: 30px auto}
-        #find_recipe li {list-style-position: inside;}
-        #find_recipe table {padding: 0px}
-        table {margin: 30px 200px}
-        
-        #recipe_buttons {margin-bottom: 30px;}
-
         li {font-size: 20px; text-align: center;}
-
         td {max-width: 600px; width: 600px; }
 
     </style>
@@ -76,7 +78,32 @@
         </div>
     </div>
 
-    <div class="text_block" id="find_recipe">
+    <div class="text_block" id="search_recipe">
+        <h3>
+            Search For a Recipe!
+        </h3>
+
+        <table>
+            <tr>
+                <th id="recipe_title">Title</th>
+                <th>Ingredients</th>
+            </tr>
+            <tr>
+                <td id="recipe_description">Description</td>
+                <td>
+                    <div id="recipe_ingredients"><em>Recipe Not Yet Generated</em></div>
+                </td>
+            </tr>
+        </table>
+
+        <div id="recipe_buttons">
+            <!-- <button type="button" id="generate_recipe" style="width: 300px" onclick="fetch_random()">Generate New Recipe</button> -->
+            <button type="button" id="search" style="width: 300px" onclick="recipe_search()">Recipe Search</button>
+            <button type="button" id="order_now" style="width: 200px">Order Now</button>
+        </div>
+    </div>
+
+    <div class="text_block" id="random_recipe">
         <h3>
             Find a New Recipe!
         </h3>
@@ -95,18 +122,24 @@
         </table>
 
         <div id="recipe_buttons">
-            <button type="button" id="generate_recipe" style="width: 300px" onclick="fetchdata()">Generate New Recipe</button>
-            <input type="submit" name="order_button"
-                class="order_button" id="order_now" value="Order Now" />
+            <button type="button" id="generate_recipe" style="width: 300px" onclick="fetch_random()">Generate New Recipe</button>
+            <!-- <button type="button" id="search" style="width: 300px" onclick="recipe_search()">Recipe Search</button> -->
+            <form method="post" name="order_button">
+                <input type="submit" name="order_submit_button"
+                    class="order_submit_button" id="order_now" value="Order Now" />
+            </form>
         </div>
     </div>
 
     <?php
-        if(isset($_POST["order_button"])) {
+
+        if(isset($_POST["order_submit_button"])) {
+            echo "<script> alert('button'); </script>";
             session_start();
             $_SESSION['url'] = "./recipes.php";
             if (empty($_SESSION['username'])) {
                 echo "<script> location.href='./login.php'; </script>";
+                echo "<script> alert('user not logged in'); </script>";
                 exit;
             }
             else {
@@ -115,11 +148,9 @@
         }
 
         function orderNow() {
-            echo "success!";
+            echo "<script> alert('user logged in (huh?)'); </script>";
         }
     ?>
-
-
     <!-- <footer>
         <p>&copy; Hain's Delivery 2020</p>
     </footer> -->

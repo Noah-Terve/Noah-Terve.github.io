@@ -61,7 +61,7 @@
     </div>
 
     <?php
-    
+
         $username = $_REQUEST["user"];
         $password = $_REQUEST["pass"];
         
@@ -90,7 +90,7 @@
                 session_start();
                 $_SESSION['username'] = $username;
 
-                echo "<script>history.back(3)</script>";
+                //echo "<script>history.back(3)</script>";
             } else {
                 echo "Error: " . $sql . "<br>" . $conn->error;
             }
@@ -103,7 +103,7 @@
                 session_start();
                 $_SESSION['username'] = $username;
                 
-                echo "<script>history.back(3)</script>";
+                //echo "<script>history.back(3)</script>";
             }
             else {
                 echo "incorrect password. try again";
@@ -112,7 +112,7 @@
         // close database connection
         $conn->close();
 
-        
+    
     ?>
 
     <script> 
