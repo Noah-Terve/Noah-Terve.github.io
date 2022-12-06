@@ -107,7 +107,6 @@ session_start();
     <?php
         if(isset($_POST["order_submit_button"])) {
 
-            $_SESSION['url'] = "./recipes.php";
             if (empty($_SESSION['username'])) {
                 //TODO: here is where we should store the info which will be added to their account once they create a log in
                 echo "<script> location.href='./login.php'; </script>";
