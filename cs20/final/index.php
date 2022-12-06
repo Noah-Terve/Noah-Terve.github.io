@@ -5,6 +5,7 @@ session_start();
 <html>
 <head>
     <title>Final Project</title>
+
     <link rel="stylesheet" type = "text/css" href="./style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -97,10 +98,6 @@ session_start();
             wait? <a href="./login.php">Get set up with an account</a> so you can place an order today!
         </em></p>
     </div>
-
-    <!-- <footer>
-        <p>&copy; Hain's Delivery 2020</p>
-    </footer> -->
 
 </body>
 

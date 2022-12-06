@@ -5,7 +5,13 @@ session_start();
 <html>
 <head>
     <title>Final Project</title>
+
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway'>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+    <link rel="stylesheet" href="select_tools/select_style.css">
+
     <link rel="stylesheet" type = "text/css" href="./style.css">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
@@ -26,7 +32,18 @@ session_start();
         h3 {margin: 30px auto}
         li {font-size: 20px; text-align: center;}
         td {max-width: 600px; width: 600px; }
-        
+
+        h1 {
+            font-size: 7vw;
+            padding: 0vw 2vw;
+            width: fit-content;
+            margin: 0vw auto 0vw auto;
+            line-height: 18vw;
+            border-radius: 2vw;
+            color: var(--dark);
+            background: none;
+        }
+
 
     </style>
 
@@ -64,18 +81,17 @@ session_start();
             Search For a Recipe!
         </h3>
 
-        <table>
-            <tr>
-                <th id="recipe_title">Title</th>
-                <th>Ingredients</th>
-            </tr>
-            <tr>
-                <td id="recipe_description">Description</td>
-                <td>
-                    <div id="recipe_ingredients"><em>Recipe Not Yet Generated</em></div>
-                </td>
-            </tr>
-        </table>
+        <div class="container">
+            <section>
+                <select multiple="multiple" id="myMulti">
+                <option>Item 1</option>
+                <option>Item 2</option>
+                <option>Item 3</option>
+                <option>Item 4</option>
+                
+                </select>
+            </section>
+        </div>
 
         <div id="recipe_buttons">
             <button type="button" id="search" style="width: 300px" onclick="recipe_search()">Recipe Search</button>
@@ -106,9 +122,10 @@ session_start();
         }
     ?>
 
-    <script>
+    <script src="select_tools/select_index.js"></script>
+    <!-- <script>
         generate_select()
-    </script>
+    </script> -->
     <!-- <footer>
         <p>&copy; Hain's Delivery 2020</p>
     </footer> -->
