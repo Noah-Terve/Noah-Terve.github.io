@@ -109,16 +109,6 @@ function generate_search() {
     return search_term;
 }
 
-function generate_selet() {
-    new SlimSelect({
-        select: '#multiple'
-    });
-
-    new SlimSelect({
-        select: '#moptgroups'
-    });
-
-}
 
 // String Helper Functions!
 get_position = (str, m, i) => str.split(m, i).join(m).length;

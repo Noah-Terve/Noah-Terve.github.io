@@ -1,4 +1,5 @@
-//Varun Dewan 2019
+// Author: Varun Dewan (2019)
+// Edited By: Team HAIN
 var $ = {
    get: function(selector){ 
       var ele = document.querySelectorAll(selector);
@@ -174,7 +175,7 @@ var options = [
 ];
 
 var myDrop = new drop({
-   selector:  '#myMulti',
-   preselected: [0, 2]
+   selector:  '#recipe_selction',
+   // preselected: [0, 2]
 });
  myDrop.toggle();

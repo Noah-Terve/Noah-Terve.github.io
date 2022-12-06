@@ -44,8 +44,6 @@ session_start();
             background: none;
         }
 
-        /* a {font-family: var(--font_default);} */
-
 
     </style>
 
@@ -85,12 +83,12 @@ session_start();
 
         <div class="container">
             <section>
-                <select multiple="multiple" id="myMulti">
-                <option>Item 1</option>
-                <option>Item 2</option>
-                <option>Item 3</option>
-                <option>Item 4</option>
-                
+                <select multiple="multiple" id="recipe_selction">
+                    <option>Item 0</option>
+                    <option>Item 1</option>
+                    <option>Item 2</option>
+                    <option>Item 3</option>
+                    <!-- <option>Item 4</option> -->
                 </select>
             </section>
         </div>
@@ -126,9 +124,6 @@ session_start();
     ?>
 
     <script src="select_tools/select_index.js"></script>
-    <!-- <script>
-        generate_select()
-    </script> -->
     <!-- <footer>
         <p>&copy; Hain's Delivery 2020</p>
     </footer> -->
