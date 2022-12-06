@@ -180,3 +180,8 @@ var myDrop = new drop({
 });
 
 myDrop.toggle();
+
+// function recipe_search2() {
+//    console.log(myDrop.options)
+//    console.log(myDrop.isSelected(0))
+// }

@@ -38,11 +38,30 @@ function fetch_random(){
  * Output: N/A
  */
 function recipe_search() {
-    num_results = 5;
+    num_results = 1;
+    // options = [...document.getElementById("recipe_selction")];
+    options = [...document.getElementsByClassName("drop-display")][0],
+              descendants = options.getElementsByTagName('*');
+    
+    selected = []
+    for (item of descendants) {
+        class_name = item.className.trim()
+
+        if (class_name == "item" || class_name == "item add") {
+            text = item.textContent
+            text = text.slice(0, text.length - 1).trim()
+
+            selected.push(text)
+        }
+    }
+
+    console.log(selected)
+    
     // search_term = generate_search()
     
     // url = url_search_constructor(search_term, num_results)
     // console.log(url)
+    /*
     url = ""
 
     res = fetch(url)
@@ -73,6 +92,7 @@ function recipe_search() {
     .catch (error => {
         console.log(error)
     })
+    */
 }
 
 

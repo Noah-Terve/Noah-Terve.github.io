@@ -85,11 +85,9 @@ session_start();
             <section>
                 <!-- TODO: Add margin bottom to top of multi-select to extend page automatically -->
                 <select multiple="multiple" id="recipe_selction">
-                    <option>Item 0</option>
-                    <option>Item 1</option>
-                    <option>Item 2</option>
-                    <option>Item 3</option>
-                    <!-- <option>Item 4</option> -->
+                    <option>Vegan</option>
+                    <option>Gluten Free</option>
+                    <option>Cheap</option>
                 </select>
             </section>
         </div>
@@ -123,10 +121,6 @@ session_start();
         }
     ?>
 
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-            crossorigin="anonymous"> -->
-    <!-- </script> -->
     <!-- <footer>
         <p>&copy; Hain's Delivery 2020</p>
     </footer> -->
