@@ -39,9 +39,11 @@ function fetch_random(){
  */
 function recipe_search() {
     num_results = 5;
-    search_term = generate_search()
+    // search_term = generate_search()
     
-    url = url_search_constructor(search_term, num_results)
+    // url = url_search_constructor(search_term, num_results)
+    // console.log(url)
+    url = ""
 
     res = fetch(url)
     .then (res => res.text())

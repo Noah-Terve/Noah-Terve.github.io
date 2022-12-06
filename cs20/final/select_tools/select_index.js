@@ -176,6 +176,7 @@ var options = [
 
 var myDrop = new drop({
    selector:  '#recipe_selction',
-   // preselected: [0, 2]
+   preselected: [0, 2]
 });
- myDrop.toggle();
+
+myDrop.toggle();

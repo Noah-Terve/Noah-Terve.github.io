@@ -5,6 +5,10 @@ session_start();
 <html>
 <head>
     <title>Final Project</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous">
+    </script>
 
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway'>
     <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
@@ -13,10 +17,6 @@ session_start();
     <link rel="stylesheet" type = "text/css" href="./style.css">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-            crossorigin="anonymous">
-    </script>
     <script type="text/javascript" src="script.js"></script>
 
     <style>
@@ -83,6 +83,7 @@ session_start();
 
         <div class="container">
             <section>
+                <!-- TODO: Add margin bottom to top of multi-select to extend page automatically -->
                 <select multiple="multiple" id="recipe_selction">
                     <option>Item 0</option>
                     <option>Item 1</option>
@@ -123,10 +124,14 @@ session_start();
         }
     ?>
 
-    <script src="select_tools/select_index.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"> -->
+    <!-- </script> -->
     <!-- <footer>
         <p>&copy; Hain's Delivery 2020</p>
     </footer> -->
+    <script src="select_tools/select_index.js"></script>
 
 </body>
 
