@@ -16,6 +16,73 @@ session_start();
 </head>
 
 <body>
+    <?php
+        $username = $_REQUEST["user"];
+        $password = $_REQUEST["pass"];
+
+        // If the username is empty, they are coming from another page, because
+        // we force them to submit the username with a value from this page. 
+        // if they come from another page we shouldn't try to log them in.
+        if (!empty($username)) {
+            // if user has not logged in though they would have to actively navigate
+            // to this page as we don't display it anymore once you log in.
+            if (empty($_SESSION['username'])) {
+                login_user($username, $password);
+            }
+        }
+
+        function login_user($username, $password){
+
+            // database info
+            $server = "localhost";
+            $userid = "u0m7cp7iogobo";
+            $pw = "finalprojectpass";
+            $db = "dbsikj01q12d1d";
+            
+            // connect to database
+            $conn = new mysqli($server, $userid, $pw, $db);
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
+            // check if user is in database
+            $sql = "SELECT * FROM users WHERE username='$username'";
+            $result = $conn->query($sql);
+            $results = $result->fetch_all(MYSQLI_ASSOC);
+
+            //TODO: Handling multiple users with the same username requires for loop over
+            // all entries in array. Then, if not found either prompt for if they are a new
+            // user, or change the form to have that included...
+            if ($result->num_rows == 0) {
+                //add user to DB, create session
+                $sql = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
+                $result = $conn->query($sql);
+                
+                if ($result == TRUE) {
+                    $_SESSION['username'] = $username;
+                    echo "<script> alert(Created a new user, you are now logged in); location.href='./orders.php'; </script>";
+                } else {
+                    echo "<script> alert(We ran into an issue, please try again soon); console.log(Error: "
+                            . $sql . "<br>" . $conn->error . ") </script>";
+                }
+            } 
+            else {
+                $db_pass = $results[0]["password"];
+
+                //TODO: check over all passwords in case multiple people have same username
+                if ($db_pass == $password) {
+                    $_SESSION['username'] = $username;
+                    echo "<script> alert(Password correct, you are now logged in); location.href='./orders.php'; </script>";
+                }
+                else {
+                    echo "<script> alert(Incorrect password, please try again); </script>";
+                }
+            }
+            // close database connection
+            $conn->close();
+        }
+    
+    ?>
     <header>
         <div class="nav_bar">
             <div class="name_logo">
@@ -42,67 +109,6 @@ session_start();
         </div>
     </div>
 
-    <?php
-
-        $username = $_REQUEST["user"];
-        $password = $_REQUEST["pass"];
-
-        echo("username: " .$username . " password: ".$password);
-
-        // If the username is empty, they are coming from another page, because
-        // we force them to submit the username with a value from this page. 
-        // if they come from another page we shouldn't try to log them in.
-        if (!empty($_SESSION['username'])) {
-            login_user($username, $password);
-        }
-
-        function login_user($username, $password){
-            // database info
-            $server = "localhost";
-            $userid = "u0m7cp7iogobo";
-            $pw = "finalprojectpass";
-            $db = "dbsikj01q12d1d";
-            
-            // connect to database
-            $conn = new mysqli($server, $userid, $pw, $db);
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
-
-            // check if user is in database
-            $sql = "SELECT * FROM users WHERE username='$username'";
-            $result = $conn->query($sql);
-
-            if ($result == NULL) {
-                //add user to DB, create session
-                $sql = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
-                if ($conn->query($sql) === TRUE) {
-                    echo "added new login, you are now logged in";
-                    $_SESSION['username'] = $username;
-
-                    //echo "<script>history.back(3)</script>";
-                } else {
-                    echo "Error: " . $sql . "<br>" . $conn->error;
-                }
-            } 
-            else {
-                $user = $result->fetch_all(MYSQLI_ASSOC);
-                $db_pass = $user[0]["password"];
-                if ($db_pass == $password) {
-                    echo "password correct, you are now logged in";
-                    $_SESSION['username'] = $username;
-                    
-                    //echo "<script>history.back(3)</script>";
-                }
-                else {
-                    echo "incorrect password. try again";
-                }
-            }
-            // close database connection
-            $conn->close();
-        }
-    
-    ?>
 
     <script> 
         function validateLogin() {
