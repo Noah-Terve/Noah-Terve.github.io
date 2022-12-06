@@ -60,9 +60,9 @@ session_start();
                 
                 if ($result == TRUE) {
                     $_SESSION['username'] = $username;
-                    echo "<script> alert(Created a new user, you are now logged in); location.href='./orders.php'; </script>";
+                    echo "<script> alert(\"Created a new user, you are now logged in\"); location.href='./orders.php'; </script>";
                 } else {
-                    echo "<script> alert(We ran into an issue, please try again soon); console.log(Error: "
+                    echo "<script> alert(\"We ran into an issue, please try again soon\"); console.log(Error: "
                             . $sql . "<br>" . $conn->error . ") </script>";
                 }
             } 
@@ -72,10 +72,10 @@ session_start();
                 //TODO: check over all passwords in case multiple people have same username
                 if ($db_pass == $password) {
                     $_SESSION['username'] = $username;
-                    echo "<script> alert(Password correct, you are now logged in); location.href='./orders.php'; </script>";
+                    echo "<script> alert(\"Password correct, you are now logged in\"); location.href='./orders.php'; </script>";
                 }
                 else {
-                    echo "<script> alert(Incorrect password, please try again); </script>";
+                    echo "<script> alert(\"Incorrect password, please try again\"); </script>";
                 }
             }
             // close database connection
