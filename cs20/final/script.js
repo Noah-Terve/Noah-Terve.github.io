@@ -43,7 +43,7 @@ function recipe_search() {
     options = [...document.getElementsByClassName("drop-display")][0],
               descendants = options.getElementsByTagName('*');
     
-    selected = []
+    search_terms = []
     for (item of descendants) {
         class_name = item.className.trim()
 
@@ -51,16 +51,12 @@ function recipe_search() {
             text = item.textContent
             text = text.slice(0, text.length - 1).trim()
 
-            selected.push(text)
+            search_terms.push(text)
         }
     }
-
-    console.log(selected)
     
-    // search_term = generate_search()
-    
-    // url = url_search_constructor(search_term, num_results)
-    // console.log(url)
+    url = url_search_constructor(search_terms, num_results)
+    console.log(url)
     /*
     url = ""
 
@@ -108,9 +104,14 @@ function url_search_constructor(search_term, num_results) {
     url = "https://api.spoonacular.com/recipes/complexSearch?";
 
 
-    for (key in search_term) {
-        url += key + "=" + search_term[key] + "&"
-    }
+    camel_search = []
+    search_term.forEach(element => {
+        camel_search.push(camel_search)
+    });
+
+    camel_search.forEach(element => {
+        url += element + "=true&"
+    });
 
     url += "number=" + num_results + "&apiKey=bd18dc08d7954c4cae19b14f4f47eda8"
     return url;
@@ -135,3 +136,8 @@ function generate_search() {
 // String Helper Functions!
 get_position = (str, m, i) => str.split(m, i).join(m).length;
 segment = (str, m, i) => str.slice(0, get_position(str, m, i) + 1)
+function camelize(str) {
+  return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
+    return index === 0 ? word.toLowerCase() : word.toUpperCase();
+  }).replace(/\s+/g, '');
+}
