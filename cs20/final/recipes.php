@@ -44,6 +44,8 @@ session_start();
             background: none;
         }
 
+        /* a {font-family: var(--font_default);} */
+
 
     </style>
 
@@ -94,11 +96,12 @@ session_start();
         </div>
 
         <div id="recipe_buttons">
-            <button type="button" id="search" style="width: 300px" onclick="recipe_search()">Recipe Search</button>
-            <form method="post" name="order_button">
-                <input type="submit" name="order_submit_button"
-                       class="order_submit_button" id="order_now" value="Order Now" />
+            <button type="button" id="search" style="width: 300px" onclick="recipe_search()">Search Recipe!</button>
+            <form method="post" name="order_button" id="order_form">
+                <!-- <input type="submit" name="order_submit_button" form="order_form"
+                       class="submit_button" id="order_now" value="Order Now" /> -->
             </form>
+            <button type="button" id="order_now" style="width: 220px" form="order_form">Order Now!</button>
         </div>
     </div>
 
