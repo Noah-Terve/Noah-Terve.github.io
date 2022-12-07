@@ -42,7 +42,7 @@ async function recipe_search() {
     search_terms = generate_search()
     search_url = url_search_constructor(search_terms, num_results)
     
-    // console.log(search_url)
+    console.log(search_url)
     
     result = await fetch_req(search_url)
 
@@ -59,8 +59,6 @@ async function recipe_search() {
 
     console.log(id_urls)
     
-    
-    
 }
 
 
@@ -73,7 +71,7 @@ async function recipe_search() {
  * Output: The url to perform a complex search request
  */
 function url_search_constructor(search_term, num_results) {
-    url = "https://api.spoonacular.com/recipes/complexSearch?";
+    url = "https://api.spoonacular.com/recipes/complexSearch?instructionsRequired=true&";
 
     camel_search = []
     search_term.forEach(element => {
