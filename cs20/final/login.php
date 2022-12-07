@@ -12,7 +12,11 @@ session_start();
             crossorigin="anonymous">
     </script>
     <script type="text/javascript" src="script.js"></script>
-
+    <style>
+        .backdrop {
+            background-image: url("./media/header/home.jpg");
+        }
+    </style>
 </head>
 
 <body>

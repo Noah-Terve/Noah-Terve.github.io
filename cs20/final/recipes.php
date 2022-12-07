@@ -20,6 +20,10 @@ session_start();
     <script type="text/javascript" src="script.js"></script>
 
     <style>
+        .backdrop {
+            background-image: url("./media/header/recipes.jpg");
+        }
+
         .text_block {
             height: auto;
             margin-bottom: 0px;
