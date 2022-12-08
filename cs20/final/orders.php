@@ -23,7 +23,7 @@ session_start();
 <body>
 <?php
     if (empty($_SESSION['username'])) echo ("<script> alert(\"You must be logged in to view your orders!\");
-                                                location.href='./index.php'; </script>");
+                                             location.href='./index.php'; </script>");
     ?>
     <header>
         <div class="nav_bar">
