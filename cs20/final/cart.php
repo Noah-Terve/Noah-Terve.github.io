@@ -16,6 +16,26 @@ session_start();
         .backdrop {
             background-image: url("./media/header/orders.jpg");
         }
+
+        table {
+            line-height: 25px;
+            margin: 1rem 1rem;
+            border-collapse: collapse;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        th {
+            color: var(--muave);
+        }
+
+        tr:not(:last-child) {
+            border-bottom: 2px solid var(--muave);
+        }
+
+        tr:not(:first-child) {
+            border-top: 2px solid var(--muave);
+        }
     </style>
 
 </head>
@@ -50,10 +70,15 @@ session_start();
         </div>
     </div>
 
-    <div class="text_block" id="search_recipe">
-        <h3>
-            Order your recipes now!
-        </h3>
+    <div class="text_block">
+
+        <table>
+            <tr>
+                <th>Recipe</th>
+                <th>Servings</th>
+                <th>Cost Per Serving</th>
+                <th>Total Cost</th>
+            </tr>
 
         <?php
             function get_cart($username){
@@ -75,26 +100,55 @@ session_start();
                 $result = $conn->query($sql);
                 $items = $result->fetch_all(MYSQLI_ASSOC);
 
-                if ($items->num_rows == 0) {
-                    echo "no items in cart!";
-                } 
-                else {
-                    foreach($items as $item) { 
-                        echo "here is one of your items:";
-                        echo $item;
-                    }
+                // get each item and print to page
+                foreach($items as $item) { 
+                    $recipe = json_decode($item["recipe"],true);
+                    $cost = $item["serving_cost"];
+                    $servings = $item["servings"];
+                    $totalcost = number_format($cost * $servings, 2, '.', "");
+                    print_recipe($recipe, $cost, $servings, $totalcost);
                 }
+
                 // close database connection
                 $conn->close();
             }
+
+            function print_recipe($recipe, $cost, $servings, $totalcost){
+                $s = "<tr>";
+                $s .= td($recipe["title"], "name");
+                $s .= td(makeSelect("quantity", 1, 20,$servings), "servings");
+                $s .= td("$" . $cost, "cost");
+                $s .= td("$" . $totalcost, "totalcost");
+                $s.= "</tr>";
+
+                echo $s;
+            }
+
+            // functions to create select item and td item
+            function makeSelect($name, $minRange, $maxRange, $selected) {
+                $t = "<select name='$name' size='1'>";
+                for ($i = $minRange; $i <= $maxRange; $i++) {
+                    if ($i == $selected) {
+                        $t .= "<option selected> $i </option>";
+                    } else {
+                        $t .= "<option> $i </option>";
+                    }
+                }
+                $t .= "</select>"; 
+                return $t;
+            }
+            function td($content, $className) {
+                return "<td class = '$className'> $content </td>";
+            }
+
             get_cart($_SESSION['username']);
         ?>
+        </table>
 
-        <div id="recipe_buttons">
-            <button type="button" id="search" style="width: 300px" onclick="recipe_search()">Search Recipe!</button>
+        <div id="order_button">
+            <button type="button" id="order" style="width: 300px" onclick="">Place Order!</button>
         </div>
     </div>
-
 
 </body>
 
