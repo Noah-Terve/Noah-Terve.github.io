@@ -16,6 +16,77 @@ session_start();
         .backdrop {
             background-image: url("./media/header/home.jpg");
         }
+
+        .formcontainer {
+        background-color: var(--creme);
+        height: auto;
+        padding: 20px;
+        }
+
+        .form {
+            display: flex;
+            justify-content: center;
+        }
+
+        .formcol {
+            margin: 20px;
+        }
+
+        input, textarea {
+            background: none;
+            font-family: inherit;
+            font-size: 100%;
+            padding: 10px;
+            border: 2px solid var(--taupe);
+            box-sizing: border-box;
+            color: var(--taupe);
+            width: 100%;
+        }
+
+        textarea {
+            height: 95%;
+            resize: none;
+        }
+
+        select {
+            appearance: none;
+            background: transparent;
+            cursor: pointer;
+            font-family: inherit;
+            border: 2px solid var(--taupe);
+            padding: 10px;
+            width: 100%;
+            font-size: 100%;
+        }
+
+        .button {
+            background: var(--taupe) !important;
+            color: var(--creme) !important;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background: var(--muave) !important;
+        }
+
+        #email_enter {
+            width: auto;
+        }
+
+        #submit {
+            display: block;
+            margin: 0 auto;
+            width: 40%;
+        }
+
+        #submitNewsletter {
+            width: auto;
+            margin-bottom: 1vw;
+        }
+
+        .error {
+            color: var(--muave);
+        }
     </style>
 </head>
 
@@ -145,6 +216,43 @@ session_start();
             <input type="button" value="login" name="login" onclick="validateLogin()">
             <br>
         </form>
+    </div>
+
+    <div class="formcontainer">
+        <form name="contact" id="contact">
+            <div class="form">   
+                <div class="formcol">
+                    <input id="name" type="text" placeholder="Name" />
+                    <div class="error" id="nameError">&nbsp;</div><br />
+
+                    <input id="email" type="email" placeholder="Email" />
+                    <div class="error" id="emailError">&nbsp;</div><br />
+
+                    <input id="phone" type="text" placeholder="Phone Number" />
+                    <div class="error" id="phoneError">&nbsp;</div><br />
+
+                    <select id="reason">
+                        <option value selected disabled hidden>Contact Reason</option>
+                        <option>Catering</option>
+                        <option>Order</option>
+                        <option>Job interest</option>
+                        <option>Other inquiries</option>
+                    </select>
+                    <div class="error" id="reasonError">&nbsp;</div>
+
+                </div>
+
+                <div class="formcol">
+                    <textarea form="contact" id="message" placeholder="Message"></textarea>
+                    <div class="error" id="messageError">&nbsp;</div>
+                </div>
+
+            </div>
+
+            <input class="button" id="submit" type="button" value="Submit!" onclick="submitMessage()">
+        </form><br />
+
+        <div id="formsubmitted">&nbsp;</div>
     </div>
 
     
