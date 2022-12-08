@@ -32,7 +32,7 @@ session_start();
             margin: 20px;
         }
 
-        input, textarea {
+        input {
             background: none;
             font-family: inherit;
             font-size: 100%;
@@ -48,11 +48,6 @@ session_start();
             width: 60%;
             text-align: center;
             font-size: 1.75vw;
-        }
-
-        textarea {
-            height: 95%;
-            resize: none;
         }
 
         select {
@@ -76,24 +71,12 @@ session_start();
             background: var(--muave) !important;
         }
 
-        #email_enter {
-            width: auto;
-        }
-
-        #submit {
+        #submit_button {
             display: block;
             margin: 0 auto;
             width: 40%;
         }
 
-        #submitNewsletter {
-            width: auto;
-            margin-bottom: 1vw;
-        }
-
-        .error {
-            color: var(--muave);
-        }
     </style>
 </head>
 
@@ -154,7 +137,7 @@ session_start();
                 //TODO: check over all passwords in case multiple people have same username
                 if ($db_pass == $password) {
                     $_SESSION['username'] = $username;
-                    echo "<script> location.href='./orders.php'; </script>";
+                    echo "<script> alert(\"You are now logged in\"); location.href='./orders.php'; </script>";
                 }
                 else {
                     echo "<script> alert(\"Incorrect password, please try again\"); </script>";
@@ -215,7 +198,7 @@ session_start();
     </script>
 
     <div class="formcontainer">
-        <form method="post" id="login_form" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+        <form method="post" name="form" id="login_form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
             <div class="prompt">If you are a returning user please enter your information,
                  if you are a new user please enter a username and password to generate an account</div>
             <div class="form">
@@ -226,7 +209,7 @@ session_start();
                     <input type="text" id="pass" name="pass" placeholder="password">
                 </div>
             </div>
-            <input class="button" id="submit" type="button" value="Login" onclick="validateLogin()">
+            <input class="button" id="submit_button" type="button" value="Login" onclick="validateLogin()">
         </form>
     </div>
 
