@@ -46,6 +46,8 @@ session_start();
         .prompt {
             margin: 0 auto;
             width: 60%;
+            text-align: center;
+            font-size: 1.75vw;
         }
 
         textarea {
