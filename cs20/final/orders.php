@@ -35,7 +35,7 @@ session_start();
                 <li><a href="./recipes.php">Recipes</a></li>
                 <?php
                     if (empty($_SESSION['username'])) echo ("<li><a href=\"./login.php\">Log In</a></li>");
-                    else echo("<li><a href=\"./orders.php\">My Orders</a></li><li><a href=\"./logout.php\">Log Out</a></li>");
+                    else echo("<li><a href=\"./orders.php\">My Cart</a></li><li><a href=\"./orders.php\">My Orders</a></li><li><a href=\"./logout.php\">Log Out</a></li>");
                 ?>
             </ul>
         </div>
