@@ -15,6 +15,10 @@ session_start();
     <script type="text/javascript" src="script.js"></script>
 
     <style>
+        .backdrop {
+            background-image: url("./media/header/home.jpg");
+        }
+
         #purpose {padding: 30px 200px; background-color: var(--mist);}
         h3 { margin: 20px }
 
