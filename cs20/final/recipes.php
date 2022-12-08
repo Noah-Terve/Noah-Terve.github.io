@@ -72,6 +72,10 @@ session_start();
 </head>
 
 <body>
+    <?php
+    if (empty($_SESSION['username'])) echo ("<script> alert(\"You must be logged in to find new recipes!\");
+                                                location.href='./index.php'; </script>");
+    ?>
     <header>
         <div class="nav_bar">
             <div class="name_logo">
@@ -84,10 +88,9 @@ session_start();
             <ul class="nav_bar_ul">
                 <li><a href="./index.php">Home</a></li>
                 <li><a href="./recipes.php">Recipes</a></li>
-                <?php
-                    if (empty($_SESSION['username'])) echo ("<li><a href=\"./login.php\">Log In</a></li>");
-                    else echo("<li><a href=\"./orders.php\">My Cart</a></li><li><a href=\"./orders.php\">My Orders</a></li><li><a href=\"./logout.php\">Log Out</a></li>");
-                ?>
+                <li><a href="./cart.php">My Cart</a></li>
+                <li><a href="./orders.php">My Orders</a></li>
+                <li><a href="./logout.php">Log Out</a></li>
             </ul>
         </div>
     </header>
