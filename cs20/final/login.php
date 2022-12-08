@@ -43,6 +43,11 @@ session_start();
             width: 100%;
         }
 
+        .prompt {
+            margin: 0 auto;
+            width: 60%;
+        }
+
         textarea {
             height: 95%;
             resize: none;
@@ -207,55 +212,21 @@ session_start();
         }
     </script>
 
-    <div class="form box">
-        <form method="post" name="form" id="login_form" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-            <input type="text" id="user" name="user" placeholder="username">
-            <br>
-            <input type="text" id="pass" name="pass" placeholder="password">
-            <br>
-            <input type="button" value="login" name="login" onclick="validateLogin()">
-            <br>
+    <div class="formcontainer">
+        <form method="post" id="login_form" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+            <div class="prompt">If you are a returning user please enter your information,
+                 if you are a new user please enter a username and password to generate an account</div>
+            <div class="form">
+                <div class="formcol">
+                    <input type="text" id="user" name="user" placeholder="username">
+                </div>
+                <div class="formcol">
+                    <input type="text" id="pass" name="pass" placeholder="password">
+                </div>
+            </div>
+            <input class="button" id="submit" type="button" value="Login" onclick="validateLogin()">
         </form>
     </div>
-
-    <div class="formcontainer">
-        <form name="contact" id="contact">
-            <div class="form">   
-                <div class="formcol">
-                    <input id="name" type="text" placeholder="Name" />
-                    <div class="error" id="nameError">&nbsp;</div><br />
-
-                    <input id="email" type="email" placeholder="Email" />
-                    <div class="error" id="emailError">&nbsp;</div><br />
-
-                    <input id="phone" type="text" placeholder="Phone Number" />
-                    <div class="error" id="phoneError">&nbsp;</div><br />
-
-                    <select id="reason">
-                        <option value selected disabled hidden>Contact Reason</option>
-                        <option>Catering</option>
-                        <option>Order</option>
-                        <option>Job interest</option>
-                        <option>Other inquiries</option>
-                    </select>
-                    <div class="error" id="reasonError">&nbsp;</div>
-
-                </div>
-
-                <div class="formcol">
-                    <textarea form="contact" id="message" placeholder="Message"></textarea>
-                    <div class="error" id="messageError">&nbsp;</div>
-                </div>
-
-            </div>
-
-            <input class="button" id="submit" type="button" value="Submit!" onclick="submitMessage()">
-        </form><br />
-
-        <div id="formsubmitted">&nbsp;</div>
-    </div>
-
-    
 
     <!-- <footer>
         <p>&copy; Hain's Delivery 2020</p>
