@@ -48,9 +48,6 @@ session_start();
     </div>
 
     <div class="text_block" id="search_recipe">
-        <h3>
-            Order your recipes now!
-        </h3>
 
         <?php
             function get_cart($username){
@@ -72,23 +69,28 @@ session_start();
                 $result = $conn->query($sql);
                 $items = $result->fetch_all(MYSQLI_ASSOC);
 
-                if ($items->num_rows == 0) {
-                    echo "no items in cart!";
-                } 
-                else {
-                    foreach($items as $item) { 
-                        echo "here is one of your items:";
-                        echo $item;
-                    }
+                // get each item and print to page
+                foreach($items as $item) { 
+                    print_recipe(json_decode($item["recipe"], true));
                 }
+
                 // close database connection
                 $conn->close();
             }
+
+            function print_recipe($recipe){
+                $name = $recipe["title"];
+
+                echo "<div class='recipe'>
+                        <h4>$name</h4>
+                     </div>";
+            }
+
             get_cart($_SESSION['username']);
         ?>
 
-        <div id="recipe_buttons">
-            <button type="button" id="search" style="width: 300px" onclick="recipe_search()">Search Recipe!</button>
+        <div id="order_button">
+            <button type="button" id="order" style="width: 300px" onclick="">Place Order!</button>
         </div>
     </div>
 
