@@ -48,6 +48,24 @@ session_start();
             background: none;
         }
 
+        #results_title {background-color: var(--dark)}
+        #results_title h3 {margin: 10px auto; max-height: 100px;}
+
+        .search_result { display: inline; height: fit-content; padding: 15px}
+        .search_result button {margin-bottom: 0px}
+
+        h4 {margin: 0px; max-height: 3vw; width: 100%; margin-top: 0px;}
+        
+        /* #search_results img {height: 200px; border: solid 0.3vw var(--creme);} */
+        #search_results:nth-child(even) {background-color: var(--muave)}
+        #search_results:nth-child(odd)  {background-color: var(--taupe)}
+
+        .json {display: none}
+        .json * {display: none}
+
+        #order_section {background-color: var(--taupe); align-items: center;}
+
+        
 
     </style>
 
@@ -96,23 +114,40 @@ session_start();
             </section>
         </div>
 
+
         <div id="recipe_buttons">
             <button type="button" id="search" style="width: 300px" onclick="recipe_search()">Search Recipe!</button>
-            <form method="post" name="order_button" id="order_form">
-                <!-- <input type="submit" name="order_submit_button" form="order_form"
-                       class="submit_button" id="order_now" value="Order Now" /> -->
-            </form>
-            <button type="button" id="order_now" style="width: 220px" form="order_form">Order Now!</button>
         </div>
     </div>
 
+    <div class="text_block" id="results_title">
+        <h3>
+            Search Results:
+        </h3>
+    </div>
+
+
+    <!-- <button type="button" id="order_now" style="width: 220px" form="order_form">Order Now!</button> -->
+        <form method="post" name="order_button" id="order_form">
+            <div class="text_block" id="search_results">
+                <p><em>Nothing Yet! Search for a Recipe When You're Ready!</em></p>
+            </div>
+
+            <div class="text_block" id="order_section">
+                <input type="submit" name="order_submit_button"
+                       class="submit_button" id="order_now" value="Order Now!" />
+            </div>
+        </form>
+
     <?php
         if(isset($_POST["order_submit_button"])) {
-
+            // TODO: A
             if (empty($_SESSION['username'])) {
-                //TODO: here is where we should store the info which will be added to their account once they create a log in
-                echo "<script> location.href='./login.php'; </script>";
-                exit;
+                //TODO: Remove These Print Statements Which Display How the Post Data is Stored
+                echo "<script> console.log('" . $_POST['json_0_title'] . "') </script>";
+                echo "<script> console.log('" . $_POST['json_0_summary'] . "') </script>";
+                echo "<script> console.log('" . $_POST['json_0_price'] . "') </script>";
+                echo "<script> console.log('" . $_POST['json_0_ingredients'] . "') </script>";
             }
             else {
                 orderNow();
@@ -120,15 +155,26 @@ session_start();
         }
 
         function orderNow() {
-            //TODO: here we should add the order to the database
-            echo "<script> alert('user logged in (huh?)'); </script>";
+            // NOTES ON DATA STORAGE:
+            /* POST DATA: Stored in the Following Variables
+             * $_POST['json_i_title']: Name of the i^th food selected
+             * $_POST['json_i_summary']: Summary/Description of the i^th food selected
+             * $_POST['json_i_price']: Price of the i^th food selected
+             * $_POST['json_i_ingredients']: List of ingredients of the i^th food selected
+            */
+
+            // echo "<script> alert('user logged in (huh?)'); </script>";
         }
+        
+        // echo `<script> location.reload(); </script>`;
+
     ?>
 
     <!-- <footer>
         <p>&copy; Hain's Delivery 2020</p>
     </footer> -->
     <script src="select_tools/select_index.js"></script>
+    <!-- <script> location.reload(); </script> -->
 
 </body>
 
