@@ -76,7 +76,7 @@ session_start();
                 //TODO: check over all passwords in case multiple people have same username
                 if ($db_pass == $password) {
                     $_SESSION['username'] = $username;
-                    echo "<script> alert(\"Password correct, you are now logged in\"); location.href='./orders.php'; </script>";
+                    echo "<script> location.href='./orders.php'; </script>";
                 }
                 else {
                     echo "<script> alert(\"Incorrect password, please try again\"); </script>";
@@ -124,7 +124,7 @@ session_start();
             if (user == "" || pass == "") {
                 alert("Please enter your first and last name.");
             } else if (user.length > 20 || pass.length > 40) {
-                alert("username or password is too long. There is a 20/40 character\
+                alert("Username or password is too long. There is a 20/40 character\
                 limit respectively on user/pass");
             }
             else {
