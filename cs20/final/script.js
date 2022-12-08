@@ -4,31 +4,30 @@
  *          API
  * Output: N/A
  */
-function fetch_random(){
-    res = fetch("https://api.spoonacular.com/recipes/random?number=1&apiKey=bd18dc08d7954c4cae19b14f4f47eda8")
-    .then (res => res.text())
-    .then (data => {
-        // Parsing Data
-        result = JSON.parse(data);
-        content = result.recipes[0]
 
-        // Fetching Title
-        $('#recipe_title').text(content.title);
+const KEY = "bd18dc08d7954c4cae19b14f4f47eda8"
 
-        // Fetching Summary
-        // Segments the Summary String For More Digestable Output
-        summary = segment(content.summary, '.', 4)
-        $('#recipe_summary').html(summary);
+async function fetch_random(){
+    // Performing Fetch
+    url = `https://api.spoonacular.com/recipes/random?number=1&apiKey=${KEY}`
+    result = await fetch_req(url)
+    
+    // Main Recipe Content
+    content = result.recipes[0]
 
-        // Fetching Image
-        image = "Sorry, No Image Available!"
-        if (content.image != "undefined")
-            image = '<img src="' + content.image + '" alt="' + content.title + '">'
-        $('#recipe_image').html(image)
-    })
-    .catch (error => {
-        console.log(error)
-    })
+    // Fetching Title
+    $('#recipe_title').text(content.title);
+
+    // Fetching Summary
+    // Segments the Summary String For More Digestable Output
+    summary = segment(content.summary, '.', 4)
+    $('#recipe_summary').html(summary);
+
+    // Fetching Image
+    image = "Sorry, No Image Available!"
+    if (content.image != "undefined")
+        image = '<img src="' + content.image + '" alt="' + content.title + '">'
+    $('#recipe_image').html(image)
 }
 
 /* recipe_search
@@ -37,9 +36,71 @@ function fetch_random(){
  *          qualifications
  * Output: N/A
  */
-function recipe_search() {
-    num_results = 1;
-    // options = [...document.getElementById("recipe_selction")];
+async function recipe_search() {
+    // Constructing & Fetching Search URL
+    num_results = 3;
+    search_terms = generate_search()
+    search_url = url_search_constructor(search_terms, num_results)
+    
+    console.log(search_url)
+    
+    result = await fetch_req(search_url)
+
+
+    // Parsing Search Results for Product IDs
+    items = result['results']
+    ids = []
+    items.forEach(item => { ids.push(item['id']) });
+
+    id_urls = []
+    ids.forEach(id => { 
+        id_urls.push(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${KEY}`) 
+    });
+
+    console.log(id_urls)
+    
+}
+
+
+
+/* url_search_constructor
+ * Input: A dictionary of key-value pairs that describe what to search by as
+ *        well as an integer indicating the number of results to return
+ * Purpose: Turns the dictionary of search into a url than can be fetch
+ *          requested
+ * Output: The url to perform a complex search request
+ */
+function url_search_constructor(search_term, num_results) {
+    url = "https://api.spoonacular.com/recipes/complexSearch?instructionsRequired=true&";
+
+    camel_search = []
+    search_term.forEach(element => {
+        camel_search.push(camelize(element))
+    });
+
+    camel_search.forEach(element => {
+        url += `${element}=true&`
+    });
+
+    url += `number=${num_results}&apiKey=${KEY}`
+    
+    return url;
+}
+
+async function fetchMovies() {
+  const response = await fetch('/movies');
+  // waits until the request completes...
+  console.log(response);
+}
+
+
+/* generate_search
+ * Input: N/A
+ * Purpose: Generates a dictionary that corresponds to a user-inputted recipe
+ *          category search
+ * Output: The dictionary of search terms and values
+ */
+function generate_search() {
     options = [...document.getElementsByClassName("drop-display")][0],
               descendants = options.getElementsByTagName('*');
     
@@ -54,90 +115,33 @@ function recipe_search() {
             search_terms.push(text)
         }
     }
-    
-    url = url_search_constructor(search_terms, num_results)
-    console.log(url)
-    /*
-    url = ""
 
-    res = fetch(url)
-    .then (res => res.text())
-    .then (data => {
-        // Parsing Data
-        result = JSON.parse(data);
+    return search_terms;
+}
 
-        // TODO: ....this...
 
-        // console.log(result)
-        // content = result.recipes[0]
+async function fetch_req(url) {
+    const response = await fetch(url);
 
-        // // Fetching Title
-        // $('#recipe_title').text(content.title);
+    if (!response.ok) {
+        const err = `An error has occured: ${response.status}`;
+        console.log(err);
+    }
 
-        // // Fetching Ingredients
-        // ingredient_list = "<ul>\n"
-        // for (i = 0; i < content.extendedIngredients.length; i++) {
-        //     ingredient_list += "\t<li>" + JSON.stringify(content.extendedIngredients[i].original).substring(1, JSON.stringify(result.recipes[0].extendedIngredients[i].original).length - 1) + "</li>\n"
-        // }    
-        // ingredient_list += "</ul>\n"
-        // $('#recipe_ingredients').html(ingredient_list)
-
-        // // Fetching Image
-        // $('#recipe_ingredients').html(ingredient_list)
-    })
-    .catch (error => {
-        console.log(error)
-    })
-    */
+    const response_json = await response.json();
+    return response_json;
 }
 
 
 
-/* url_search_constructor
- * Input: A dictionary of key-value pairs that describe what to search by as
- *        well as an integer indicating the number of results to return
- * Purpose: Turns the dictionary of search into a url than can be fetch
- *          requested
- * Output: The url to perform a complex search request
- */
-function url_search_constructor(search_term, num_results) {
-    url = "https://api.spoonacular.com/recipes/complexSearch?";
-
-
-    camel_search = []
-    search_term.forEach(element => {
-        camel_search.push(camel_search)
-    });
-
-    camel_search.forEach(element => {
-        url += element + "=true&"
-    });
-
-    url += "number=" + num_results + "&apiKey=bd18dc08d7954c4cae19b14f4f47eda8"
-    return url;
-}
-
-
-/* generate_search
- * Input: N/A
- * Purpose: Generates a dictionary that corresponds to a user-inputted recipe
- *          category search
- * Output: The dictionary of search terms and values
- */
-function generate_search() {
-    // TODO:
-    // search_term = {}
-    search_term = {"query": "pasta", "maxFat": 25} // Dummy For Now
-
-    return search_term;
-}
-
-
-// String Helper Functions!
+/* # * # * # * # *    String Helper Functions!    * # * # * # * # */
 get_position = (str, m, i) => str.split(m, i).join(m).length;
+
 segment = (str, m, i) => str.slice(0, get_position(str, m, i) + 1)
+
 function camelize(str) {
   return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
     return index === 0 ? word.toLowerCase() : word.toUpperCase();
   }).replace(/\s+/g, '');
 }
+
