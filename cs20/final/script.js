@@ -108,7 +108,7 @@ async function build_search_result(url, id_num, total_results) {
         background = "background-color: var(--barossa)"
     
     overall_price = (content.pricePerServing * content.servings / 50).toFixed(2)
-    if (overall_price < 5) overall_price = (overall_price * 5).toFixed(2) // if the price is crazy low just adjust it up a bit 
+    if (overall_price < 5) (overall_price = overall_price * 5).toFixed(2) // if the price is crazy low just adjust it up a bit 
 
     message =
 `<div class="search_result" id="result_${id_num}" style="align-items: center;${background}">
@@ -117,6 +117,9 @@ async function build_search_result(url, id_num, total_results) {
     <label for="id_${id_num}">Select For Addition!</label>
     
     <div class="json">
+        <input type='hidden' name='json_${id_num}_title' value='${content.title}'/>
+        <input type='hidden' name='json_${id_num}_summary' value='${content.summary}'/>
+        <input type='hidden' name='json_${id_num}_instructions' value='${content.instructions}'/>
         <input type='hidden' name='json_${id_num}' value='${content}'/>
         <input type='hidden' name='json_${id_num}_price' value='${overall_price}'/>
         <input type='hidden' name='num_results' value='${total_results}'/>
