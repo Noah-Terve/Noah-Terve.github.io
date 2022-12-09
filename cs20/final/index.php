@@ -19,8 +19,8 @@ session_start();
             background-image: url("./media/header/home.jpg");
         }
 
-        #purpose {padding: 30px 200px; background-color: var(--mist);}
-        h3 { margin: 20px }
+        #purpose {padding: 30px 20vw; background-color: var(--mist);}
+        h3 { margin: 1vw }
 
         #random_recipe {background-color: var(--taupe);}
         #random_recipe button {background-color: var(--mist);}
@@ -31,10 +31,66 @@ session_start();
         }
         
         /* h3 {margin: 20px auto} */
-        li {font-size: 20px; text-align: center;}
         td {max-width: 600px; width: 600px; }
+        table img {margin-top: 20px; margin-right: 0px;}
+        li {font-size: 20px; text-align: center;}
 
-        #recipe_image {width: 556px; height: 370px; line-height: 370px;}
+        #recipe_image {width: 556px; height: fit-content; line-height: 370px; max-height: 370px;}
+        
+        #generate_recipe { margin-top: 40px; }
+
+        #purpose p {margin: 0px;}
+
+        @media (max-width: 1050px) {
+            .h3 {
+                font-size: 25px;
+            }
+            th {
+                font-size: 22px;
+            }
+            #recipe_summary,#recipe_summary * {
+                font-size:19px
+            }
+            table img {
+                width: 400px;
+            }
+            #generate_recipe {
+                margin-top: 10px;
+            }
+            #purpose p {font-size: 15px;}
+        }
+
+        @media (max-width: 740px) {
+            .h3 {
+                font-size: 22px;
+            }
+            th {
+                font-size: 18px;
+            }
+            #recipe_summary,#recipe_summary *,th:last-of-type {
+                display: none;
+            }
+        }
+        /*
+        @media (max-width: 580px) {
+            .nav_bar_ul li {
+                font-size: 10px;
+            }
+            header {
+                height: 50px;
+            }
+            .logo img {
+                height: 25px;
+            }
+
+            .bakery_name {
+                font-size: 10px;
+            }
+
+            .backdrop {
+                padding-top: 50px;
+            }
+        } */
 
     </style>
 
