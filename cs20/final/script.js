@@ -65,34 +65,45 @@ async function recipe_search() {
 
 
     // Filling Correct HTML Block With Info
-    document.getElementById("search_results").innerHTML = ""
+    jQuery("#search_results").html("")
     success = true;
 
-    id_urls = [test_fetch] // TODO: Remove
-    content = []
-    for (i = 0; i < id_urls.length; i = i) {
-        curr_content = await fetch_req(id_urls[i])
-        // console.log(curr_content)
-        content.push(curr_content)
-        success = await build_search_result(id_urls[i], i++, curr_content) && success
-        break
-    }
+    id_urls = [test_fetch, test_fetch] // TODO: Remove
 
-    if (!success)
-       document.getElementById("search_results").innerHTML = "<p><em>Sorry, an error has occurred. Please Try Again.</em></p>"
+    i = 0
+    for (const id_url of id_urls) {
+        success = await build_search_result(id_url, i++) && success
+        
+        if (!success) {
+            jQuery("#search_results").html("<p><em>Sorry, an error has occurred. Please Try Again.</em></p>")
+            break
+        }
+    }
+    
+    console.log(jQuery("input[type=checkbox]"))
+    // $( "#dataTable tbody" ).on( "click", "tr", function() {
+    //     console.log( $( this ).text() );
+    // });
+    console.log(jQuery("input[type=checkbox]:checked"))
+    console.log(jQuery("input[checked]"))
+    // console.log(jQuery("#id_0").attr())
+
 
 }
 
-async function build_search_result(url, id_num, content) {
+async function build_search_result(url, id_num) {
     // Performing Fetch
+    content = await fetch_req(url)
     if (content === null) return false;
 
+    console.log(id_num)
     console.log(content)
+
     overall_price = content.pricePerServing * content.servings / 100
     message =
 `<div class="search_result" id="result_${id_num}" style="align-items: center">
     <h4 id="title_${id_num}">${content.title}</h4>
-    <input type="checkbox" id="id_${id_num}" name="name_${id_num}" value="value_${id_num}">
+    <input type="checkbox" id="id_${id_num}" name="select_${id_num}" value="false" checked>
     <label for="id_${id_num}">Select For Addition!</label>
     
     <div class="json">
@@ -103,17 +114,8 @@ async function build_search_result(url, id_num, content) {
     </div>
 </div>
 `
-    // <div  class="json" id="json_${id_num}" name="json_${id_num}">${JSON.stringify(content)}</div>
-    // <input type="checkbox" id="fruit1" name="name_${id_num}" value="value_${id_num}">
-    // <label for="name_${id_num}">Select For Addition!</label>
-    // <button type="button" id="search" style="width: 300px">Select for Addition!</button>
 
-    // <h4 id="b2_${id_num}" style="grid-area: button2">Button 2</h4>
-    /* <img src="${content.image}" alt="${content.title} style="grid-area: image"> */
-
-
-    
-    document.getElementById("search_results").innerHTML += message
+    jQuery("#search_results").append(message)
     return true;
 }
 
