@@ -57,7 +57,7 @@ session_start();
         }
 
         if (!$failed) {
-            echo("<script> alert(\"We have recieved your order, you can now close this window\"); </script>");
+            echo("<script> alert(\"Item has been added to your cart!\"); window.close();</script>");
         }
     ?>
 </body>
