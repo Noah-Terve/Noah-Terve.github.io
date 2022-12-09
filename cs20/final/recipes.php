@@ -147,13 +147,20 @@ session_start();
             // TODO: A
             if (empty($_SESSION['username'])) {
                 //TODO: Remove These Print Statements Which Display How the Post Data is Stored
-                echo "<script> console.log('" . $_POST['json_0_title'] . "') </script>";
-                echo "<script> console.log('" . $_POST['json_0_summary'] . "') </script>";
-                echo "<script> console.log('" . $_POST['json_0_price'] . "') </script>";
-                echo "<script> console.log('" . $_POST['json_0_ingredients'] . "') </script>";
+                
+                // ("input[type=checkbox]")
+
+                // echo "<script> console.log('" . $_POST['json_0_title'] . "') </script>";
+                // echo "<script> console.log('" . $_POST['json_0_summary'] . "') </script>";
+                // echo "<script> console.log('" . $_POST['json_0_price'] . "') </script>";
+                // echo "<script> console.log('" . $_POST['json_0_ingredients'] . "') </script>";
             }
             else {
-                orderNow();
+                echo "<script> console.log('$_POST[select_0]') </script>";
+                // echo "$_POST[select_0]";
+                // echo '<script> console.log("TEST 2") </script>';
+                // echo '<script> console.log(jQuery("input[type=checkbox]:checked")) </script>';
+                // orderNow();
             }
         }
 
@@ -177,7 +184,27 @@ session_start();
         <p>&copy; Hain's Delivery 2020</p>
     </footer> -->
     <script src="select_tools/select_index.js"></script>
-    <!-- <script> location.reload(); </script> -->
+    <script>
+        jQuery(document).ready(function() {
+            var countChecked = function() {
+                var n = jQuery( "input:checked" ).length;
+                jQuery( "div" ).text( n + (n === 1 ? " is" : " are") + " checked!" );
+            };
+            countChecked();
+            
+            jQuery( "input[type=checkbox]" ).on( "click", countChecked );
+        });
+        // jQuery(document).ready(function() {
+        //     jQuery('input[type=checkbox]').click(function() {
+        //         error = jQuery('#email-field .error')
+        //         console.log(error)
+        //         error.css({"display":"inline"})
+        //         console.log(jQuery('#email-field .error').val())
+        //         error.innerHTML("Email is required")
+        //         // error.val("Email is required")
+        //     });
+        // });
+    </script>
 
 </body>
 
