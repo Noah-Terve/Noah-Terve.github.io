@@ -83,6 +83,8 @@ session_start();
         hr {
             border: 2px solid var(--creme);
         }
+        .order h3 {color: var(--creme); font-weight: bold;}
+        .order p,.order p:first-of-type {font-size: 1.5vw;}
     </style>
 
 </head>
