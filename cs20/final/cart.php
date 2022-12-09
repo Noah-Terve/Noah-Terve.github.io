@@ -67,7 +67,24 @@ session_start();
             width: 100%;
             font-size: 100%;
         }
+
+        #removebutton {
+            background-color: var(--muave);
+            color: var(--creme);
+            border: none;
+            width: 70px;
+            margin: 10px 10px;
+            height: 40px;
+            border-radius: 6px;
+            padding: 10px;
+            text-align: center;
+            font-size: 14px;
+            transition-duration: 0.4s;
+            font-weight: bold;
+            font-family: var(--font_default)
+        }
         
+
         .totals {font-size: 1.5vw !important;
                  margin: 10px !important;}
 
@@ -84,7 +101,7 @@ session_start();
         table {width: 90%; table-layout: auto; }
         table * {height: fit-content; line-height: 2.2vw;
                  font-size: 2vw;}
-        td.name,td.name * {font-size: 1vw;}
+        td.name,td.name * {font-size: 1.75vw;}
         td.servings select {font-size: 1.2vw !important;}
         td.servings select:hover {border: 0.2vw solid var(--clay);
                                   background-color: var(--maroon)}
@@ -248,12 +265,36 @@ session_start();
                 $conn->close();
             }
 
+            function delete_from_cart($username, $title){
+
+                // database info
+                $server = "localhost";
+                $userid = "u0m7cp7iogobo";
+                $pw = "finalprojectpass";
+                $db = "dbsikj01q12d1d";
+                
+                // connect to database
+                $conn = new mysqli($server, $userid, $pw, $db);
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+    
+                // update order to "not in cart"
+                $sql = "DELETE FROM orders WHERE username='$username' AND title='$title'";
+                $conn->query($sql);
+
+                // close database connection
+                $conn->close();
+            }
+
             function print_recipe($title, $index, $cost, $servings, $totalcost){
                 $s = "<tr>";
-                $s .= td("<strong><em>$title:</em></strong>", "name");
+                $s .= td("<strong><em>$title</em></strong>", "name");
                 $s .= td(makeSelect("quan".$index, 1, 20,$servings), "servings");
                 $s .= td("$" . $cost, "cost");
                 $s .= td("$" . $totalcost, "totalcost");
+                $s .= td("<form method='post'><input type='hidden' name='title' value='$title'><input type='submit' name='remove'
+                class='submit_button' id='removebutton' value='Remove'></form>", "remove");
                 $s .= "</tr>";
 
                 echo $s;
@@ -282,6 +323,11 @@ session_start();
             if (!empty($info)) {
                 submit_order($_SESSION['username']);
                 echo "<script>alert('Thank you for your order!'); location.href='./orders.php'; </script>";
+            }
+
+            if (isset($_POST['remove'])) {
+                delete_from_cart($_SESSION['username'], $_REQUEST["title"]);
+                echo "<script>location.href='./cart.php'; </script>";
             }
         ?>
 
