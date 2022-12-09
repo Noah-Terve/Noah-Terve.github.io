@@ -85,6 +85,16 @@ session_start();
         }
         .order h3 {color: var(--creme); font-weight: bold;}
         .order p,.order p:first-of-type {font-size: 1.5vw;}
+
+        .ordertitle {margin-bottom: 0.45vw;}
+
+        p.recipe {display: inline-block; width: fit-content;}
+        p.recipe:hover {
+            background-color: var(--creme);
+            color: var(--taupe);
+            text-decoration: underline;
+        }
+
     </style>
 
 </head>
@@ -170,7 +180,7 @@ session_start();
 
                         foreach($i as $item) {
                             $title = $item["title"];
-                            echo "<p class='recipe' onclick='displayPopup(this.innerHTML)'>$title</p>";
+                            echo "<p class='recipe' onclick='displayPopup(this.innerHTML)'>$title</p></br>";
                         }
                         echo "</div><br><hr><br>";
                     } 

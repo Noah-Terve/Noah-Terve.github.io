@@ -81,7 +81,13 @@ session_start();
             font-size: 14px;
             transition-duration: 0.4s;
             font-weight: bold;
-            font-family: var(--font_default)
+            font-family: var(--font_default);
+            line-height: 20px;
+        }
+        
+        #removebutton:hover,#submit_button:hover {
+            box-shadow: 0 12px 16px 0 rgba(165, 127, 136, 0.24), 0 17px 50px 0 rgba(165, 127, 136, 0.19);
+            cursor: pointer;
         }
         
 
@@ -107,6 +113,7 @@ session_start();
                                   background-color: var(--maroon)}
     
         ::placeholder { color: var(--clay); }
+
 
     </style>
 

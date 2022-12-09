@@ -66,7 +66,7 @@ session_start();
         #order_section {background-color: var(--taupe);
                         align-items: center; padding-top: 0px; padding-bottom: 15px;}
 
-        #search_results p {margin-top: 20px;}
+        #search_results p {margin: 20px 1vw; font-size: 1.5vw !important}
 
         #search {margin-top: 75px}
         

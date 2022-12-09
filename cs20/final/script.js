@@ -3,8 +3,10 @@
 // const KEY = "79488a502b0548a2a5c775147fe33aa4"
 // const KEY = "cbd2598021174749b69a6e76bcb83ff4"
 const KEY = "478cf94642dc4b7da69f909e9be9480e"
-// const KEY = ""
+// const KEY = "c50c7500434245e88c156e2399258fe1" /* FOR SUBMISSION USE */
+
 // console.log("Note: Turning API Calls Off Temporarily to Preserve Spoonacular Points!\nUsing `example_recipe.json` file instead")
+// const KEY = null
 
 
 /* fetch_random
@@ -48,7 +50,7 @@ async function fetch_random(){
  */
 async function recipe_search() {
     // Constructing & Fetching Search URL
-    num_results = 4;
+    num_results = 5;
     search_terms = generate_search()
     search_url = url_search_constructor(search_terms, num_results)
 
@@ -122,9 +124,13 @@ async function build_search_result(url, id_num, total_results) {
         ingredients += "<li>" + JSON.stringify(content.extendedIngredients[j].original).substring(1, JSON.stringify(content.extendedIngredients[i].original).length - 1) + "</li>"
     }
 
+    stripped_summary = strip_html(segment(content.summary, ".", 4))
+    // stripped_summary = strip_html(content.summary)
+
     message =
 `<div class="search_result" id="result_${id_num}" style="align-items: center;${background}">
     <h4 id="title_${id_num}">${content.title}</h4>
+    <p id="summary_${id_num}"><em>${stripped_summary}</em></p>
     <input type="checkbox" id="id_${id_num}" name="select_${id_num}" value="false">
     <label for="id_${id_num}">Select For Addition!</label>
     
@@ -260,4 +266,9 @@ function camelize(str) {
   return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
     return index === 0 ? word.toLowerCase() : word.toUpperCase();
   }).replace(/\s+/g, '');
+}
+
+function strip_html(html)
+{
+   return html.replace(/<[^>]*>?/gm, '');
 }
