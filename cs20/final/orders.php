@@ -48,6 +48,11 @@ session_start();
 
         #popup p{
             text-align: left;
+            font-size: 16px;
+        }
+
+        #popup h3{
+            color: var(--muave)
         }
 
         #popup li{
@@ -58,6 +63,25 @@ session_start();
             float: right;
             padding: 10px;
             cursor: pointer;
+        }
+
+        .order {
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .recipe:hover {
+            color: var(--muave);
+        }
+
+        .ordertitle {
+            color: var(--muave);
+            font-weight: 60px;
+            font-size: 24px;
+        }
+
+        hr {
+            border: 2px solid var(--creme);
         }
     </style>
 
@@ -96,7 +120,7 @@ session_start();
     <div class="text_block" id="page_content">
 
         <h3>Your Recipes</h3>
-        <p><em>Click on a recipe to see all the details!</em></p>
+        <p><em>Click on a recipe to see all the details!</em></p> <br> <hr><br>
 
         <?php
             function get_orders($username){
@@ -140,12 +164,13 @@ session_start();
 
                         $i = array_filter($items, $inorder);
 
-                        echo "<p class='ordertitle'>Order $x:</p>";
+                        echo "<div class='order'><h3 class='ordertitle'>Order $x:</h3>";
 
                         foreach($i as $item) {
                             $title = $item["title"];
                             echo "<p class='recipe' onclick='displayPopup(this.innerHTML)'>$title</p>";
                         }
+                        echo "</div><br><hr><br>";
                     } 
                     
                 }
@@ -168,8 +193,6 @@ session_start();
         </div>
 
         <script>
-            console.log(recipes);
-
             var closePopup = document.getElementById("popupclose");
             var overlay = document.getElementById("overlay");
             var popup = document.getElementById("popup");
@@ -185,11 +208,11 @@ session_start();
                 recipe = recipes.find(recipe => recipe["title"] == recipename);
                 popupcontent.innerHTML = "<h3>" + recipename + "</h3>";
                 popupcontent.innerHTML += "<h4> Description: </h4>";
-                popupcontent.innerHTML += "<p>" + recipe["description"] + "</p>";
+                popupcontent.innerHTML += "<p>" + recipe["description"] + "</p><br>";
                 popupcontent.innerHTML += "<h4> Ingredients: </h4>";
-                popupcontent.innerHTML += "<p>" + recipe["ingredients"] + "</p>";
+                popupcontent.innerHTML += "<p>" + recipe["ingredients"] + "</p><br>";
                 popupcontent.innerHTML += "<h4> Instructions: </h4>";
-                popupcontent.innerHTML += "<p>" + recipe["steps"] + "</p>";
+                popupcontent.innerHTML += "<p>" + recipe["steps"] + "</p><br>";
 
                 overlay.style.display = 'block';
 	            popup.style.display = 'block';
