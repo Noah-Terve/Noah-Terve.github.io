@@ -90,7 +90,10 @@ session_start();
 
         <div id="recipe_buttons">
             <button type="button" id="generate_recipe" style="width: 320px" onclick="fetch_random()">Generate New Recipe!</button>
-            <button type="button" id="log_in" style="width: 210px" onclick="location.href='./login.php';">Log In Now!</button>
+            <script>fetch_random()</script>
+            <?php
+                if(empty($_SESSION['username'])) echo("<button type=\"button\" id=\"log_in\" style=\"width: 210px\" onclick=\"location.href='./login.php';\">Log In Now!</button>");
+            ?>
         </div>
     </div>
 
