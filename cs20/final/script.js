@@ -1,9 +1,10 @@
 
 // const KEY = "bd18dc08d7954c4cae19b14f4f47eda8"
-// const KEY = "79488a502b0548a2a5c775147fe33aa4"
-const KEY = ""
+const KEY = "79488a502b0548a2a5c775147fe33aa4"
+// const KEY = ""
 const test_fetch = "./example_recipe.json"
-console.log("Note: Turning API Calls Off Temporarily to Preserve Spoonacular Points!\nUsing `example_recipe.json` file instead")
+// console.log("Note: Turning API Calls Off Temporarily to Preserve Spoonacular Points!\nUsing `example_recipe.json` file instead")
+
 
 /* fetch_random
  * Input: N/A
@@ -14,13 +15,14 @@ console.log("Note: Turning API Calls Off Temporarily to Preserve Spoonacular Poi
 async function fetch_random(){
     // Performing Fetch
     url = `https://api.spoonacular.com/recipes/random?number=1&apiKey=${KEY}`
-    url = test_fetch // TODO: Remove
+    // url = test_fetch // TODO: Remove
     result = await fetch_req(url)
 
-    if (content === null) return;
+    if (result === null) return;
     
     // Main Recipe Content
     content = result.recipes[0]
+    // content = result
 
     // Attaining Title
     $('#recipe_title').text(content.title);
@@ -48,62 +50,69 @@ async function recipe_search() {
     num_results = 3;
     search_terms = generate_search()
     search_url = url_search_constructor(search_terms, num_results)
-    
-    // result = await fetch_req(search_url)
-    // if (result === null) return;
 
+    result = await fetch_req(search_url)
+    if (result === null) return;
 
-    // // Parsing Search Results for Product IDs
-    // items = result['results']
-    // ids = []
-    // items.forEach(item => { ids.push(item['id']) });
+    // Parsing Search Results for Product IDs
+    items = result['results']
+    ids = []
+    items.forEach(item => { ids.push(item['id']) });
 
-    // id_urls = []
-    // ids.forEach(id => { 
-    //     id_urls.push(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${KEY}`) 
-    // });
+    id_urls = []
+    ids.forEach(id => { 
+        id_urls.push(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${KEY}`) 
+    });
 
 
     // Filling Correct HTML Block With Info
     jQuery("#search_results").html("")
     success = true;
 
-    id_urls = [test_fetch, test_fetch] // TODO: Remove
+    // id_urls = [test_fetch, test_fetch, test_fetch, test_fetch] // TODO: Remove
 
     i = 0
     for (const id_url of id_urls) {
-        success = await build_search_result(id_url, i++) && success
+        success = await build_search_result(id_url, i++, id_urls.length) && success
         
         if (!success) {
             jQuery("#search_results").html("<p><em>Sorry, an error has occurred. Please Try Again.</em></p>")
             break
         }
     }
-    
-    console.log(jQuery("input[type=checkbox]"))
-    // $( "#dataTable tbody" ).on( "click", "tr", function() {
-    //     console.log( $( this ).text() );
-    // });
-    console.log(jQuery("input[type=checkbox]:checked"))
-    console.log(jQuery("input[checked]"))
-    // console.log(jQuery("#id_0").attr())
 
+    // console.log(jQuery('input[type=checkbox]'))
+    jQuery(document).ready(function() {
+        jQuery('input[type=checkbox]').change(function() {
+            this.value = this.checked
+        });
+    });
 
 }
 
-async function build_search_result(url, id_num) {
+/* build_search_result
+ * Input: The url to fetch, the current numerical search result and the total
+ *        number of search results
+ * Purpose: Using a fetch request to search for a recipe matching specific
+ *          qualifications and adds/formats to the results onto the page
+ * Output: N/A
+ */
+async function build_search_result(url, id_num, total_results) {
     // Performing Fetch
     content = await fetch_req(url)
     if (content === null) return false;
 
-    console.log(id_num)
-    console.log(content)
 
+    background = "background-color: var(--mist)"
+    if (id_num %2 == 1)
+        background = "background-color: var(--barossa)"
+    
     overall_price = content.pricePerServing * content.servings / 100
+
     message =
-`<div class="search_result" id="result_${id_num}" style="align-items: center">
+`<div class="search_result" id="result_${id_num}" style="align-items: center;${background}">
     <h4 id="title_${id_num}">${content.title}</h4>
-    <input type="checkbox" id="id_${id_num}" name="select_${id_num}" value="false" checked>
+    <input type="checkbox" id="id_${id_num}" name="select_${id_num}" value="false">
     <label for="id_${id_num}">Select For Addition!</label>
     
     <div class="json">
@@ -111,6 +120,7 @@ async function build_search_result(url, id_num) {
         <input type='hidden' name='json_${id_num}_summary' value='${content.summary}'/>
         <input type='hidden' name='json_${id_num}_price' value='${overall_price}'/>
         <input type='hidden' name='json_${id_num}_ingredients' value='${JSON.stringify(content.extendedIngredients)}'/>
+        <input type='hidden' name='num_results' value='${total_results}'/>
     </div>
 </div>
 `
@@ -131,14 +141,11 @@ async function build_search_result(url, id_num) {
 function url_search_constructor(search_term, num_results) {
     url = "https://api.spoonacular.com/recipes/complexSearch?instructionsRequired=true&";
 
-    camel_search = []
-    search_term.forEach(element => {
-        camel_search.push(camelize(element))
-    });
+    categorized_queries = categorize_query(search_term)
 
-    camel_search.forEach(element => {
-        url += `${element}=true&`
-    });
+    for (const [category, query] of Object.entries(categorized_queries)) {
+        url += query + '&'
+    }
 
     url += `number=${num_results}&apiKey=${KEY}`
     
@@ -189,33 +196,6 @@ async function fetch_req(url) {
     return response_json;
 }
 
-function read_data() {
-    // json = [...document.getElementsByClassName("json")]
-
-    // console.log(json)
-
-    // json.forEach(option => {
-    //     console.log(option)
-    // });
-
-
-
-    // search_terms = []
-    // for (item of descendants) {
-    //     class_name = item.className.trim()
-
-    //     if (class_name == "item" || class_name == "item add") {
-    //         text = item.textContent
-    //         text = text.slice(0, text.length - 1).trim()
-
-    //         search_terms.push(text)
-    //     }
-    // }
-
-    // return search_terms;
-}
-
-
 
 /* # * # * # * # *    String Helper Functions!    * # * # * # * # */
 get_position = (str, m, i) => str.split(m, i).join(m).length;
@@ -228,3 +208,42 @@ function camelize(str) {
   }).replace(/\s+/g, '');
 }
 
+
+
+function categorize_query(options) {
+    query_types = {"type": ["main course", "side dish", "dessert", "appetizer", "salad", "bread", "breakfast", "soup", "beverage", "sauce", "marinade", "fingerfood", "snack", "drink"],
+                   "cuisine": ["African", "American", "British", "Cajun", "Caribbean", "Chinese", "Eastern European", "European", "French", "German", "Greek", "Indian", "Irish", "Italian", "Japanese", "Jewish", "Korean", "Latin American", "Mediterranean", "Mexican", "Middle Eastern", "Nordic", "Southern", "Spanish", "Thai", "Vietnamese"],
+                   "diet": ["Gluten Free", "Ketogenic", "Vegetarian", "Lacto-Vegetarian", "Ovo-Vegetarian", "Vegan", "Pescetarian", "Paleo"]
+                  };
+    
+    modified_query_types = {"type": [], "cuisine": [], "diet": [] };
+    query_match = {"type": [], "cuisine": [], "diet": [] };
+
+
+    // Making All Lists Lowercase
+    for (const [key, list] of Object.entries(query_types)) {
+        for (item of list) {
+            modified_query_types[key].push(item.toLowerCase());
+        }
+    }
+
+    query_types = modified_query_types
+
+    // Checking For Matches
+    for (option of options) {
+        for (const [key, list] of Object.entries(query_types)) {
+            if (list.includes(option.toLowerCase())) {
+                query_match[key].push(camelize(option));
+                continue;
+            }
+        }
+    }
+
+    // Constructing Query String Parts
+    query_strings = {"type": "type=", "cuisine": "cuisine=", "diet": "diet=" };
+    query_strings["type"] += query_match["type"].join('|')
+    query_strings["cuisine"] += query_match["cuisine"].join('|')
+    query_strings["diet"] += query_match["diet"].join(',')
+     
+    return query_strings
+}
