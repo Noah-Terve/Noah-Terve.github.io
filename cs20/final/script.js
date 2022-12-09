@@ -3,7 +3,6 @@ const KEY = "bd18dc08d7954c4cae19b14f4f47eda8"
 // const KEY = "79488a502b0548a2a5c775147fe33aa4"
 // const KEY = "cbd2598021174749b69a6e76bcb83ff4"
 // const KEY = ""
-const test_fetch = "./example_recipe.json"
 // console.log("Note: Turning API Calls Off Temporarily to Preserve Spoonacular Points!\nUsing `example_recipe.json` file instead")
 
 
