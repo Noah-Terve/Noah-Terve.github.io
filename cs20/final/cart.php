@@ -82,9 +82,12 @@ session_start();
                        justify-content: space-evenly; align-items: center;}
 
         table {width: 90%; table-layout: auto; }
-        table * {height: 50px; line-height: 2.2vw;
-                 max-width: 500px !important; font-size: 2vw;}
-        td.name {font-size: 1.5vw;}
+        table * {height: fit-content; line-height: 2.2vw;
+                 font-size: 2vw;}
+        td.name,td.name * {font-size: 1vw;}
+        td.servings select {font-size: 1.2vw !important;}
+        td.servings select:hover {border: 0.2vw solid var(--clay);
+                                  background-color: var(--maroon)}
     
         ::placeholder { color: var(--clay); }
 
@@ -187,20 +190,15 @@ session_start();
                         </tr>";
 
                     // get each item and print to page
-                    foreach($items as $index => $item) { 
-                        $recipe = json_decode($item["recipe"],true);
+                    foreach($items as $index => $item) {
+                        $title = $item["title"];
+                        $recipe = $item["steps"];
                         $cost = $item["serving_cost"];
                         $servings = $item["servings"];
                         $totalcost = number_format($cost * $servings, 2, '.', "");
                         
-                        // // For testing
-                        // $recipe = array("title"=> "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pharetra eget diam quis cursus. Sed vitae leo ut risus tempus tincidunt dapibus sit amet quam. Praesent massa tellus, posuere non ex at, laoreet tempus massa. Proin efficitur consequat posuere. Mauris non pellentesque ante, vel laoreet lectus. Curabitur auctor est vitae aliquam euismod. Aenean fringilla dolor ut tempor vestibulum. Mauris quis dui semper, mattis ipsum at, sollicitudin libero.");
-                        // $cost = 15;
-                        // $servings = 3;
-                        // $totalcost = "45.00";
-                        // $index = 0;
 
-                        print_recipe($recipe, $index, $cost, $servings, $totalcost);
+                        print_recipe($title, $recipe, $index, $cost, $servings, $totalcost);
                     }
 
                     echo 
@@ -245,9 +243,10 @@ session_start();
                 $conn->close();
             }
 
-            function print_recipe($recipe, $index, $cost, $servings, $totalcost){
+            function print_recipe($title, $recipe, $index, $cost, $servings, $totalcost){
                 $s = "<tr>";
-                $s .= td($recipe["title"], "name");
+                // $s .= td($title, "title");
+                $s .= td("<strong><em>$title:</em></strong><br/>$recipe", "name");
                 $s .= td(makeSelect("quan".$index, 1, 20,$servings), "servings");
                 $s .= td("$" . $cost, "cost");
                 $s .= td("$" . $totalcost, "totalcost");

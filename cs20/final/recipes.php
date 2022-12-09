@@ -67,6 +67,8 @@ session_start();
                         align-items: center; padding-top: 0px; padding-bottom: 15px;}
 
         #search_results p {margin-top: 20px;}
+
+        #search {margin-top: 75px}
         
 
     </style>
@@ -121,11 +123,15 @@ session_start();
                     <option>Dessert</option>
                     <option>Breakfast</option>
                     <option>Snack</option>
+                    <option>Salad</option>
+                    <option>Soup</option>
                     
                     <option>Greek</option>
                     <option>Southern</option>
                     <option>Mexican</option>
                     <option>American</option>
+                    <option>Italian</option>
+                    <option>Japanese</option>
                 </select>
             </section>
         </div>

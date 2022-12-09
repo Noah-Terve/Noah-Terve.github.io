@@ -1,6 +1,7 @@
 
 // const KEY = "bd18dc08d7954c4cae19b14f4f47eda8"
-const KEY = "79488a502b0548a2a5c775147fe33aa4"
+// const KEY = "79488a502b0548a2a5c775147fe33aa4"
+const KEY = "cbd2598021174749b69a6e76bcb83ff4"
 // const KEY = ""
 const test_fetch = "./example_recipe.json"
 // console.log("Note: Turning API Calls Off Temporarily to Preserve Spoonacular Points!\nUsing `example_recipe.json` file instead")
@@ -47,7 +48,7 @@ async function fetch_random(){
  */
 async function recipe_search() {
     // Constructing & Fetching Search URL
-    num_results = 3;
+    num_results = 1;
     search_terms = generate_search()
     search_url = url_search_constructor(search_terms, num_results)
 
@@ -76,7 +77,7 @@ async function recipe_search() {
         success = await build_search_result(id_url, i++, id_urls.length) && success
         
         if (!success) {
-            jQuery("#search_results").html("<p><em>Sorry, an error has occurred. Please Try Again.</em></p>")
+            jQuery("#search_results").html("<p><em>Sorry, no results were found. Please Try Again.</em></p>")
             break
         }
     }
@@ -110,6 +111,14 @@ async function build_search_result(url, id_num, total_results) {
     overall_price = (content.pricePerServing * content.servings / 50).toFixed(2)
     if (overall_price < 5) (overall_price = overall_price * 5).toFixed(2) // if the price is crazy low just adjust it up a bit 
 
+    content.analyzedInstructions[0].steps
+    instructions = ""
+    content.analyzedInstructions[0].steps.forEach(part => {
+        instructions += part["step"] + " "
+    });
+    instructions = instructions.trim().replaceAll("'", '')
+    if (instructions.length < 10) { return false; }
+
     message =
 `<div class="search_result" id="result_${id_num}" style="align-items: center;${background}">
     <h4 id="title_${id_num}">${content.title}</h4>
@@ -119,7 +128,7 @@ async function build_search_result(url, id_num, total_results) {
     <div class="json">
         <input type='hidden' name='json_${id_num}_title' value='${content.title}'/>
         <input type='hidden' name='json_${id_num}_summary' value='${content.summary}'/>
-        <input type='hidden' name='json_${id_num}_instructions' value='${content.instructions}'/>
+        <input type='hidden' name='json_${id_num}_instructions' value='${instructions}'/>
         <input type='hidden' name='json_${id_num}' value='${content}'/>
         <input type='hidden' name='json_${id_num}_price' value='${overall_price}'/>
         <input type='hidden' name='num_results' value='${total_results}'/>
@@ -199,18 +208,6 @@ async function fetch_req(url) {
 }
 
 
-/* # * # * # * # *    String Helper Functions!    * # * # * # * # */
-get_position = (str, m, i) => str.split(m, i).join(m).length;
-
-segment = (str, m, i) => str.slice(0, get_position(str, m, i) + 1)
-
-function camelize(str) {
-  return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
-    return index === 0 ? word.toLowerCase() : word.toUpperCase();
-  }).replace(/\s+/g, '');
-}
-
-
 
 function categorize_query(options) {
     query_types = {"type": ["main course", "side dish", "dessert", "appetizer", "salad", "bread", "breakfast", "soup", "beverage", "sauce", "marinade", "fingerfood", "snack", "drink"],
@@ -248,4 +245,16 @@ function categorize_query(options) {
     query_strings["diet"] += query_match["diet"].join(',')
      
     return query_strings
+}
+
+
+/* # * # * # * # *    String Helper Functions!    * # * # * # * # */
+get_position = (str, m, i) => str.split(m, i).join(m).length;
+
+segment = (str, m, i) => str.slice(0, get_position(str, m, i) + 1)
+
+function camelize(str) {
+  return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
+    return index === 0 ? word.toLowerCase() : word.toUpperCase();
+  }).replace(/\s+/g, '');
 }
