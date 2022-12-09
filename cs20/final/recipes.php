@@ -138,7 +138,7 @@ session_start();
 
 
         <div id="recipe_buttons">
-            <button type="button" id="search" style="width: 300px" onclick="recipe_search()">Search Recipe!</button>
+            <button type="button" id="search" style="width: 340px" onclick="recipe_search()">Search For Recipes!</button>
         </div>
     </div>
 

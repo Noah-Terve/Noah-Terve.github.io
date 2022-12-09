@@ -1,7 +1,8 @@
 
-const KEY = "bd18dc08d7954c4cae19b14f4f47eda8"
+// const KEY = "bd18dc08d7954c4cae19b14f4f47eda8"
 // const KEY = "79488a502b0548a2a5c775147fe33aa4"
 // const KEY = "cbd2598021174749b69a6e76bcb83ff4"
+const KEY = "478cf94642dc4b7da69f909e9be9480e"
 // const KEY = ""
 // console.log("Note: Turning API Calls Off Temporarily to Preserve Spoonacular Points!\nUsing `example_recipe.json` file instead")
 
@@ -15,7 +16,7 @@ const KEY = "bd18dc08d7954c4cae19b14f4f47eda8"
 async function fetch_random(){
     // Performing Fetch
     url = `https://api.spoonacular.com/recipes/random?number=1&apiKey=${KEY}`
-    // url = test_fetch // TODO: Remove
+    // url = test_fetch
     result = await fetch_req(url)
 
     if (result === null) return;
@@ -47,7 +48,7 @@ async function fetch_random(){
  */
 async function recipe_search() {
     // Constructing & Fetching Search URL
-    num_results = 5;
+    num_results = 4;
     search_terms = generate_search()
     search_url = url_search_constructor(search_terms, num_results)
 
@@ -69,7 +70,7 @@ async function recipe_search() {
     jQuery("#search_results").html("")
     success = true;
 
-    // id_urls = [test_fetch, test_fetch, test_fetch, test_fetch] // TODO: Remove
+    // id_urls = [test_fetch, test_fetch, test_fetch, test_fetch]
 
     i = 0
     for (const id_url of id_urls) {
@@ -81,7 +82,6 @@ async function recipe_search() {
         }
     }
 
-    // console.log(jQuery('input[type=checkbox]'))
     jQuery(document).ready(function() {
         jQuery('input[type=checkbox]').change(function() {
             this.value = this.checked
@@ -102,10 +102,10 @@ async function build_search_result(url, id_num, total_results) {
     content = await fetch_req(url)
     if (content === null) return false;
 
-
     background = "background-color: var(--mist)"
-    if (id_num %2 == 1)
+    if (id_num %2 == 1) {
         background = "background-color: var(--barossa)"
+    }
     
     overall_price = (content.pricePerServing * content.servings / 100).toFixed(2)
 
@@ -118,8 +118,8 @@ async function build_search_result(url, id_num, total_results) {
     if (instructions.length < 10) { return false; }
 
     ingredients = ""
-    for (i = 0; i < content.extendedIngredients.length; i++) {
-        ingredients += "<li>" + JSON.stringify(content.extendedIngredients[i].original).substring(1, JSON.stringify(content.extendedIngredients[i].original).length - 1) + "</li>"
+    for (j = 0; j < content.extendedIngredients.length; j++) {
+        ingredients += "<li>" + JSON.stringify(content.extendedIngredients[j].original).substring(1, JSON.stringify(content.extendedIngredients[i].original).length - 1) + "</li>"
     }
 
     message =
