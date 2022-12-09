@@ -292,3 +292,7 @@ input[type=checkbox]:checked + label:before {
   border-color: var(--creme);
   color: #fff;
 }
+
+#order_form {
+    color: black !important;
+}
