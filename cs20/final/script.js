@@ -108,20 +108,19 @@ async function build_search_result(url, id_num, total_results) {
     if (id_num %2 == 1)
         background = "background-color: var(--barossa)"
     
-    overall_price = (content.pricePerServing * content.servings / 50).toFixed(2)
-    if (overall_price < 5) (overall_price = overall_price * 5).toFixed(2) // if the price is crazy low just adjust it up a bit 
+    overall_price = (content.pricePerServing * content.servings / 100).toFixed(2)
 
-    content.analyzedInstructions[0].steps
     instructions = ""
     content.analyzedInstructions[0].steps.forEach(part => {
-        instructions += part["step"] + " "
+        instructions += "<li>" + part["step"] + "</li>"
     });
+
     instructions = instructions.trim().replaceAll("'", '')
     if (instructions.length < 10) { return false; }
 
-    ingredients_string = ""
+    ingredients = ""
     for (i = 0; i < content.extendedIngredients.length; i++) {
-        ingredients_string += "<li>" + JSON.stringify(content.extendedIngredients[i].original).substring(1, JSON.stringify(content.extendedIngredients[i].original).length - 1) + "</li>"
+        ingredients += "<li>" + JSON.stringify(content.extendedIngredients[i].original).substring(1, JSON.stringify(content.extendedIngredients[i].original).length - 1) + "</li>"
     }
 
     message =
@@ -134,7 +133,7 @@ async function build_search_result(url, id_num, total_results) {
         <input type='hidden' name='json_${id_num}_title' value='${content.title}'/>
         <input type='hidden' name='json_${id_num}_summary' value='${content.summary}'/>
         <input type='hidden' name='json_${id_num}_instructions' value='${instructions}'/>
-        <input type='hidden' name='json_${id_num}_ingredients' value='${ingredients_string}'/>
+        <input type='hidden' name='json_${id_num}_ingredients' value='${ingredients}'/>
         <input type='hidden' name='json_${id_num}_price' value='${overall_price}'/>
         <input type='hidden' name='num_results' value='${total_results}'/>
     </div>

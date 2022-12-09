@@ -60,7 +60,7 @@ session_start();
             // insert order into database
             for ($i = 0; $i < $true_count; $i++) {
                 $sql = "INSERT INTO orders (username, order_id, in_cart, serving_cost, servings, title, description, steps, ingredients) 
-                                    VALUES ('$username', '$order_num', '1', '$prices[$i]', '" . round($prices[$i] / 8) . "', '$titles[$i]', '$summaries[$i]', '$instructions[$i]', '$ingredients[$i]')";
+                                    VALUES ('$username', '$order_num', '1', '$prices[$i]', '1', '$titles[$i]', '$summaries[$i]', '$instructions[$i]', '$ingredients[$i]')";
                 $result = $conn->query($sql);
     
                 if ($result == FAlSE) {
