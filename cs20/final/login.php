@@ -115,9 +115,6 @@ session_start();
             $result = $conn->query($sql);
             $results = $result->fetch_all(MYSQLI_ASSOC);
 
-            //TODO: Handling multiple users with the same username requires for loop over
-            // all entries in array. Then, if not found either prompt for if they are a new
-            // user, or change the form to have that included...
             if ($result->num_rows == 0) {
                 //add user to DB, create session
                 $sql = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
@@ -134,7 +131,6 @@ session_start();
             else {
                 $db_pass = $results[0]["password"];
 
-                //TODO: check over all passwords in case multiple people have same username
                 if ($db_pass == $password) {
                     $_SESSION['username'] = $username;
                     echo "<script> alert(\"You are now logged in\"); location.href='./orders.php'; </script>";

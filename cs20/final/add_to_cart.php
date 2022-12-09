@@ -44,15 +44,30 @@ session_start();
         $username = $_SESSION['username'];
         $failed = FAlSE;
 
-        for ($i = 0; $i < $true_count; $i++) {
-            $sql = "INSERT INTO orders (username, in_cart, serving_cost, servings, title, description, steps, ingredients) 
-                                VALUES ('$username', '1', '$prices[$i]', '" . round($prices[$i] / 8) . "', '$titles[$i]', '$summaries[$i]', '$instructions[$i]', '$ingredients[$i]')";
-            $result = $conn->query($sql);
+        // get number of orders from user
+        $sql1 = "SELECT num_orders FROM users WHERE username='$username'";
+        $result1 = $conn->query($sql1);
+        $results = $result1->fetch_all(MYSQLI_ASSOC);
 
-            if ($result == FAlSE) {
-                echo "<script> alert(\"We ran into an issue, please try again soon\"); console.log(Error: "
-                            . $sql . "<br>" . $conn->error . ") </script>";
-                $failed = TRUE;
+        if ($result1 == FAlSE) {
+            echo "<script> alert(\"We ran into an issue, please try again soon\"); console.log(Error: "
+                        . $sql1 . "<br>" . $conn->error . ") </script>";
+            $failed = TRUE;
+        }
+        else {
+            $order_num = $results[0]["num_orders"] + 1;
+
+            // insert order into database
+            for ($i = 0; $i < $true_count; $i++) {
+                $sql = "INSERT INTO orders (username, order_id, in_cart, serving_cost, servings, title, description, steps, ingredients) 
+                                    VALUES ('$username', '$order_num', '1', '$prices[$i]', '" . round($prices[$i] / 8) . "', '$titles[$i]', '$summaries[$i]', '$instructions[$i]', '$ingredients[$i]')";
+                $result = $conn->query($sql);
+    
+                if ($result == FAlSE) {
+                    echo "<script> alert(\"We ran into an issue, please try again soon\"); console.log(Error: "
+                                . $sql . "<br>" . $conn->error . ") </script>";
+                    $failed = TRUE;
+                }
             }
         }
 
