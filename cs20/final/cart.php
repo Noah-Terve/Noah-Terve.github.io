@@ -68,13 +68,13 @@ session_start();
             font-size: 100%;
         }
         
-        .totals {font-size: 1vw !important;
+        .totals {font-size: 1.5vw !important;
                  margin: 10px !important;}
 
-        .totals:first-of-type {font-size: 1vw !important;
+        .totals:first-of-type {font-size: 1.5vw !important;
                                margin: 10px !important;}
 
-        .totals:last-of-type {font-size: 1.5vw !important;
+        .totals:last-of-type {font-size: 1.75vw !important;
                                margin-bottom: 30px !important;
                                font-weight: bold}
 
@@ -176,7 +176,7 @@ session_start();
                 $result = $conn->query($sql);
                 $items = $result->fetch_all(MYSQLI_ASSOC);
 
-                if (sizeof($items) == 0 && false) {
+                if (sizeof($items) == 0) {
                     echo "<p1> There is nothing in your cart. Go to the recipes page 
                     to add ingredients!";
                 }
@@ -192,14 +192,14 @@ session_start();
                     // get each item and print to page
                     foreach($items as $index => $item) {
                         $title = $item["title"];
-                        $recipe = $item["steps"];
                         $cost = $item["serving_cost"];
                         $servings = $item["servings"];
                         $totalcost = number_format($cost * $servings, 2, '.', "");
                         
-
-                        print_recipe($title, $recipe, $index, $cost, $servings, $totalcost);
+                        print_recipe($title, $index, $cost, $servings, $totalcost);
                     }
+
+                    echo "</table>";
 
                     echo 
                     "<p class='totals'>Subtotal: $<span id='subtotal'></span></p>
@@ -211,7 +211,7 @@ session_start();
                     echo "<div> <input type='text' id='order_name' name='order_name' placeholder='Name'>
                         <input type='password' id='cc_info' name='cc_info' placeholder='Credit Card'> </div>
                         <input type='text' id='address' name='address' placeholder='Address'>
-                        <div id='order_button'>
+                        <div id='recipe_buttons'>
                             <input class='button' id='submit_button' type='button' value='Place Order' onclick='validateLogin()'>
                         </div> 
                     </form>";
@@ -235,18 +235,21 @@ session_start();
                     die("Connection failed: " . $conn->connect_error);
                 }
     
-                // check if user is in database
+                // update order to "not in cart"
                 $sql = "UPDATE orders SET in_cart='0' WHERE username='$username' AND in_cart='1'";
+                $result = $conn->query($sql);
+
+                // increment user's num orders
+                $sql = "UPDATE users SET num_orders=num_orders+1 WHERE username='$username'";
                 $result = $conn->query($sql);
 
                 // close database connection
                 $conn->close();
             }
 
-            function print_recipe($title, $recipe, $index, $cost, $servings, $totalcost){
+            function print_recipe($title, $index, $cost, $servings, $totalcost){
                 $s = "<tr>";
-                // $s .= td($title, "title");
-                $s .= td("<strong><em>$title:</em></strong><br/>$recipe", "name");
+                $s .= td("<strong><em>$title:</em></strong>", "name");
                 $s .= td(makeSelect("quan".$index, 1, 20,$servings), "servings");
                 $s .= td("$" . $cost, "cost");
                 $s .= td("$" . $totalcost, "totalcost");
@@ -277,10 +280,9 @@ session_start();
             $info = $_REQUEST["address"];
             if (!empty($info)) {
                 submit_order($_SESSION['username']);
-                echo "<script>alert('order is placed!');</script>";
+                echo "<script>alert('Thank you for your order!'); location.href='./orders.php'; </script>";
             }
         ?>
-        </table>
 
         <script>
             itemcosts = document.getElementsByClassName("cost");

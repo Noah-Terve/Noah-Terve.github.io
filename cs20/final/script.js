@@ -48,7 +48,7 @@ async function fetch_random(){
  */
 async function recipe_search() {
     // Constructing & Fetching Search URL
-    num_results = 1;
+    num_results = 5;
     search_terms = generate_search()
     search_url = url_search_constructor(search_terms, num_results)
 

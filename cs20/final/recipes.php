@@ -156,7 +156,7 @@ session_start();
 
         <div class="text_block" id="order_section">
             <input type="submit" name="order_submit_button"
-                    class="submit_button" id="order_now" value="Order Now!" />
+                    class="submit_button" id="order_now" value="Add to Cart!" />
         </div>
     </form>
 
