@@ -206,7 +206,7 @@ session_start();
                     <input type="text" id="user" name="user" placeholder="username">
                 </div>
                 <div class="formcol">
-                    <input type="text" id="pass" name="pass" placeholder="password">
+                    <input type="password" id="pass" name="pass" placeholder="password">
                 </div>
             </div>
             <input class="button" id="submit_button" type="button" value="Login" onclick="validateLogin()">

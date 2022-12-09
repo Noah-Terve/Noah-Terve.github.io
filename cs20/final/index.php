@@ -96,12 +96,11 @@ session_start();
 
     <div class="text_block" id="purpose">
         <h3>
-            What We Do
+            Why Wait?
         </h3>
         <p><em>
-            Hain's Delivery is dedicated to showing you bold and exciting new
-            recipes and delivering ingredients right to your doorstep. And why
-            wait? <a href="./login.php">Get set up with an account</a> so you can place an order today!
+            Hain's Delivery is dedicated to showing you <strong>bold</strong> and exciting new
+            recipes and delivering ingredients right to your doorstep. <a href="./login.php">Get set up with an account</a> so you can place an order today!
         </em></p>
     </div>
 

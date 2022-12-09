@@ -143,7 +143,7 @@ session_start();
     </div>
 
 
-    <form method="post" name="order_button" id="order_form">
+    <form method="post" name="order_button" id="order_form" target="_blank" action="./add_to_cart.php">
         <div class="text_block" id="search_results">
             <p><em>Nothing Yet! Search for a Recipe When You're Ready!</em></p>
         </div>
@@ -153,45 +153,6 @@ session_start();
                     class="submit_button" id="order_now" value="Order Now!" />
         </div>
     </form>
-
-    <?php
-        if(isset($_POST["order_submit_button"])) {
-            if (!empty($_SESSION['username'])) {
-                add_to_cart();
-            }
-        }
-
-        function add_to_cart() {
-            // NOTES ON DATA STORAGE:
-            /* POST DATA: Stored in the Following Variables
-             * $_POST['json_title']: A List of the Names of the foods selected
-             * $_POST['json_summary']: A List of the Summaries/Descriptions of the foods selected
-             * $_POST['json_price']: A List of the Prices of the foods selected
-             * $_POST['json_ingredients']: A List of the List of ingredients of the foods selected
-             * $_POST['num_results']: The total number of foods selected
-            */
-
-            // $_POST['select'] = []
-            $_POST['json_title'] = [];
-            $_POST['json_summary'] = [];
-            $_POST['json_price'] = [];
-            $_POST['json_ingredients'] = [];
-
-            $true_count = 0;
-            for ($i = 0; $i < $_POST['num_results']; $i++) {
-                if ($_POST["select_{$i}"]) {
-                    $_POST['json_title'][]       = $_POST["json_{$i}_title"];
-                    $_POST['json_summary'][]     = $_POST["json_{$i}_summary"];
-                    $_POST['json_price'][]       = $_POST["json_{$i}_price"];
-                    $_POST['json_ingredients'][] = $_POST["json_{$i}_ingredients"];
-                    $true_count += 1;
-                }
-            }
-            $_POST['num_results'] = $true_count;
-
-        }
-        
-    ?>
 
     <!-- <footer>
         <p>&copy; Hain's Delivery 2020</p>

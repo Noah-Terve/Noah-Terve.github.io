@@ -36,6 +36,58 @@ session_start();
         tr:not(:first-child) {
             border-top: 2px solid var(--muave);
         }
+
+        input[type=text],input[type=password] {
+            background-color: var(--barossa);
+            /* background: none; */
+            font-family: inherit;
+            font-size: 1.2vw;
+            padding: 15px;
+            border: 2px solid var(--creme);
+            color: var(--creme);
+            margin: 0.5vw;
+            box-sizing: border-box;
+            width: 12vw; height: 2.5vw;
+        }
+
+        #address {
+            width: 25.25vw;
+        }
+
+        #order_button {margin-bottom: 30px}
+
+
+        select {
+            appearance: none;
+            background: transparent;
+            cursor: pointer;
+            font-family: inherit;
+            border: 2px solid var(--taupe);
+            padding: 10px;
+            width: 100%;
+            font-size: 100%;
+        }
+        
+        .totals {font-size: 1vw !important;
+                 margin: 10px !important;}
+
+        .totals:first-of-type {font-size: 1vw !important;
+                               margin: 10px !important;}
+
+        .totals:last-of-type {font-size: 1.5vw !important;
+                               margin-bottom: 30px !important;
+                               font-weight: bold}
+
+        #page_content {display: flexbox; flex-direction: column;
+                       justify-content: space-evenly; align-items: center;}
+
+        table {width: 90%; table-layout: auto; }
+        table * {height: 50px; line-height: 2.2vw;
+                 max-width: 500px !important; font-size: 2vw;}
+        td.name {font-size: 1.5vw;}
+    
+        ::placeholder { color: var(--clay); }
+
     </style>
 
 </head>
@@ -99,7 +151,7 @@ session_start();
         }
     </script>
 
-    <div class="text_block">
+    <div class="text_block" id="page_content">
 
         <?php
             function get_cart($username){
@@ -121,7 +173,7 @@ session_start();
                 $result = $conn->query($sql);
                 $items = $result->fetch_all(MYSQLI_ASSOC);
 
-                if (sizeof($items) == 0) {
+                if (sizeof($items) == 0 && false) {
                     echo "<p1> There is nothing in your cart. Go to the recipes page 
                     to add ingredients!";
                 }
@@ -140,6 +192,14 @@ session_start();
                         $cost = $item["serving_cost"];
                         $servings = $item["servings"];
                         $totalcost = number_format($cost * $servings, 2, '.', "");
+                        
+                        // // For testing
+                        // $recipe = array("title"=> "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pharetra eget diam quis cursus. Sed vitae leo ut risus tempus tincidunt dapibus sit amet quam. Praesent massa tellus, posuere non ex at, laoreet tempus massa. Proin efficitur consequat posuere. Mauris non pellentesque ante, vel laoreet lectus. Curabitur auctor est vitae aliquam euismod. Aenean fringilla dolor ut tempor vestibulum. Mauris quis dui semper, mattis ipsum at, sollicitudin libero.");
+                        // $cost = 15;
+                        // $servings = 3;
+                        // $totalcost = "45.00";
+                        // $index = 0;
+
                         print_recipe($recipe, $index, $cost, $servings, $totalcost);
                     }
 
@@ -150,9 +210,9 @@ session_start();
 
                     $formheader = "<form method='post' name='form' id='order_form' action='cart.php'>";
                     echo $formheader;
-                    echo "<input type='text' id='order_name' name='order_name' placeholder='Name'>
+                    echo "<div> <input type='text' id='order_name' name='order_name' placeholder='Name'>
+                        <input type='password' id='cc_info' name='cc_info' placeholder='Credit Card'> </div>
                         <input type='text' id='address' name='address' placeholder='Address'>
-                        <input type='text' id='cc_info' name='cc_info' placeholder='Credit Card'>
                         <div id='order_button'>
                             <input class='button' id='submit_button' type='button' value='Place Order' onclick='validateLogin()'>
                         </div> 
@@ -191,7 +251,7 @@ session_start();
                 $s .= td(makeSelect("quan".$index, 1, 20,$servings), "servings");
                 $s .= td("$" . $cost, "cost");
                 $s .= td("$" . $totalcost, "totalcost");
-                $s.= "</tr>";
+                $s .= "</tr>";
 
                 echo $s;
             }

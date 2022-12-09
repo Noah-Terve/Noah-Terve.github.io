@@ -11,10 +11,12 @@
     
     --gray-pink: #A57F88;
     --light-pink: #D9B8AD;
+    --clay: #f2cec2;
     --creme: #F7ECD4;
 
     --font_default: "Palatino";
 }
+
 
 * {
     margin: 0;
@@ -237,7 +239,7 @@ table {align-self: center;}
 
 table * {font-size: 30px;}
 
-button,#order_now {
+button,#order_now,#submit_button {
   background-color: var(--muave);
   color: var(--creme);
   border: none;
@@ -253,10 +255,11 @@ button,#order_now {
   font-family: var(--font_default)
 }
 
-button:hover,#order_now:hover {
+button:hover,#order_now:hover,#submit_button:hover {
   border: solid 2px var(--gray-pink);
   background-color: rgb(255,255,255, 0);
   box-shadow: 0 12px 16px 0 rgba(165, 127, 136, 0.24), 0 17px 50px 0 rgba(165, 127, 136, 0.19);
+  cursor: pointer;
 }
 
 
