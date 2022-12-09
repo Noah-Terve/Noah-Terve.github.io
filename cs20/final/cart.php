@@ -312,12 +312,12 @@ session_start();
             function updateTotals() 
             {
                 subt = 0;
-                for (i = 0; i < totalcosts.length; i++)
+                for (i = 0; i < totalcosts.length; i++) {
                     subt += parseFloat(totalcosts[i].innerHTML.split("$")[1]);
-
-                subtotal.innerHTML = subt.toFixed(2);;
+                }
+                subtotal.innerHTML = subt.toFixed(2);
                 tax.innerHTML = (subtotal.innerHTML * taxp).toFixed(2);
-                total.innerHTML = (parseFloat(subtotal.innerHTML) + parseFloat(tax.innerHTML)).toFixed(2);;
+                total.innerHTML = (parseFloat(subtotal.innerHTML) + parseFloat(tax.innerHTML)).toFixed(2);
             }
 
         </script>

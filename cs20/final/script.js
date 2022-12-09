@@ -1,7 +1,7 @@
 
-// const KEY = "bd18dc08d7954c4cae19b14f4f47eda8"
+const KEY = "bd18dc08d7954c4cae19b14f4f47eda8"
 // const KEY = "79488a502b0548a2a5c775147fe33aa4"
-const KEY = "cbd2598021174749b69a6e76bcb83ff4"
+// const KEY = "cbd2598021174749b69a6e76bcb83ff4"
 // const KEY = ""
 const test_fetch = "./example_recipe.json"
 // console.log("Note: Turning API Calls Off Temporarily to Preserve Spoonacular Points!\nUsing `example_recipe.json` file instead")
@@ -119,6 +119,11 @@ async function build_search_result(url, id_num, total_results) {
     instructions = instructions.trim().replaceAll("'", '')
     if (instructions.length < 10) { return false; }
 
+    ingredients_string = ""
+    for (i = 0; i < content.extendedIngredients.length; i++) {
+        ingredients_string += "<li>" + JSON.stringify(content.extendedIngredients[i].original).substring(1, JSON.stringify(content.extendedIngredients[i].original).length - 1) + "</li>"
+    }
+
     message =
 `<div class="search_result" id="result_${id_num}" style="align-items: center;${background}">
     <h4 id="title_${id_num}">${content.title}</h4>
@@ -129,7 +134,7 @@ async function build_search_result(url, id_num, total_results) {
         <input type='hidden' name='json_${id_num}_title' value='${content.title}'/>
         <input type='hidden' name='json_${id_num}_summary' value='${content.summary}'/>
         <input type='hidden' name='json_${id_num}_instructions' value='${instructions}'/>
-        <input type='hidden' name='json_${id_num}' value='${content}'/>
+        <input type='hidden' name='json_${id_num}_ingredients' value='${ingredients_string}'/>
         <input type='hidden' name='json_${id_num}_price' value='${overall_price}'/>
         <input type='hidden' name='num_results' value='${total_results}'/>
     </div>
