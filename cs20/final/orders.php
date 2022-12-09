@@ -121,9 +121,6 @@ session_start();
 
     <div class="text_block" id="page_content">
 
-        <h3>Your Recipes</h3>
-        <p><em>Click on a recipe to see all the details!</em></p> <br> <hr><br>
-
         <?php
             function get_orders($username){
 
@@ -151,10 +148,13 @@ session_start();
                 $items = $result->fetch_all(MYSQLI_ASSOC);
 
                 if (sizeof($items) == 0) {
-                    echo "<p1> You haven't placed any orders yet, go to the recipes page to browse!";
+                    echo "<p1> You haven't placed any orders yet. Go to the recipes page to browse!";
                 }
 
                 else {
+                    echo "<h3>Your Recipes</h3>
+                    <p><em>Click on a recipe to see all the details!</em></p> <br> <hr><br>";
+
                     $js_items = json_encode($items);
                     echo "<script>var recipes = $js_items;</script>";
 
