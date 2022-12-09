@@ -30,15 +30,28 @@ session_start();
         }
 
         #popup {
+            border-radius: 40px 40px 40px 40px;
+            padding: 25px;
             display: none;
             position: absolute;
             top: 50%;
             left: 50%;
-            background: #fff;
-            width: 80%;
-            height: 80%;
-            margin: -80% 0 0 -80%;
+            background: var(--taupe);
+            width: 80vw;
+            height: 80vh;
+            margin-left: -40vw; 
+            margin-top: -40vh;
             z-index: 200;
+            overflow: auto;
+            text-align: left;
+        }
+
+        #popup p{
+            text-align: left;
+        }
+
+        #popup li{
+            text-align: left;
         }
 
         #popupclose {
@@ -171,8 +184,11 @@ session_start();
                 
                 recipe = recipes.find(recipe => recipe["title"] == recipename);
                 popupcontent.innerHTML = "<h3>" + recipename + "</h3>";
+                popupcontent.innerHTML += "<h4> Description: </h4>";
                 popupcontent.innerHTML += "<p>" + recipe["description"] + "</p>";
+                popupcontent.innerHTML += "<h4> Ingredients: </h4>";
                 popupcontent.innerHTML += "<p>" + recipe["ingredients"] + "</p>";
+                popupcontent.innerHTML += "<h4> Instructions: </h4>";
                 popupcontent.innerHTML += "<p>" + recipe["steps"] + "</p>";
 
                 overlay.style.display = 'block';
