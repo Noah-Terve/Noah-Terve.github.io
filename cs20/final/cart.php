@@ -178,11 +178,12 @@ session_start();
 
                 if (sizeof($items) == 0) {
                     echo "<p1> There is nothing in your cart. Go to the recipes page 
-                    to add ingredients!";
+                    to add ingredients!</p1>";
                 }
 
                 else {
-                    echo "<table><tr>
+                    echo "<p1><em>Click on the number of servings to change how much you want to order!</em></p1>
+                        <table><tr>
                             <th>Recipe</th>
                             <th>Servings</th>
                             <th>Cost Per Serving</th>
