@@ -2,8 +2,8 @@
 // const KEY = "bd18dc08d7954c4cae19b14f4f47eda8"
 // const KEY = "79488a502b0548a2a5c775147fe33aa4"
 // const KEY = "cbd2598021174749b69a6e76bcb83ff4"
-const KEY = "478cf94642dc4b7da69f909e9be9480e"
-// const KEY = "c50c7500434245e88c156e2399258fe1" /* FOR SUBMISSION USE */
+// const KEY = "478cf94642dc4b7da69f909e9be9480e"
+const KEY = "c50c7500434245e88c156e2399258fe1" /* FOR SUBMISSION USE */
 
 // console.log("Note: Turning API Calls Off Temporarily to Preserve Spoonacular Points!\nUsing `example_recipe.json` file instead")
 // const KEY = null
